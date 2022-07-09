@@ -8,6 +8,7 @@ import androidx.core.app.ActivityCompat;
 import androidx.core.content.ContextCompat;
 
 import android.Manifest;
+import android.content.ContentValues;
 import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.graphics.Bitmap;
@@ -31,24 +32,35 @@ import org.w3c.dom.Text;
 import java.io.IOException;
 
 public class ScanActivity extends AppCompatActivity {
+
+    private static final int IMAGE_CAPTURE_CODE = 1001;
     private TextView output;
     //private EditText input;
-    private Button extract,choose;
+    private Button extract,choose,scan;
     private ImageView image;
     private Bitmap bitmap;
+    private Uri image_uri;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_scan);
 
-        ActivityCompat.requestPermissions(this,new String[]{Manifest.permission.READ_EXTERNAL_STORAGE, Manifest.permission.WRITE_EXTERNAL_STORAGE},
+        ActivityCompat.requestPermissions(this,new String[]{Manifest.permission.READ_EXTERNAL_STORAGE, Manifest.permission.WRITE_EXTERNAL_STORAGE,Manifest.permission.CAMERA},
                 PackageManager.PERMISSION_GRANTED);
 
         output=findViewById(R.id.output);
         extract=findViewById(R.id.extract);
         image=findViewById(R.id.imageView);
         choose=findViewById(R.id.btt_choose);
+        scan=findViewById(R.id.scan);
+
+        scan.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                openCamera();
+            }
+        });
 
         extract.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -92,11 +104,36 @@ public class ScanActivity extends AppCompatActivity {
         }
     }
 
+    private void openCamera(){
+        ContentValues values = new ContentValues();
+        values.put(MediaStore.Images.Media.TITLE,"New Picture");
+        values.put(MediaStore.Images.Media.DESCRIPTION,"From Camera");
+        image_uri=getContentResolver().insert(MediaStore.Images.Media.EXTERNAL_CONTENT_URI,values);
+        Intent cameraIntent = new Intent(MediaStore.ACTION_IMAGE_CAPTURE);
+        cameraIntent.putExtra(MediaStore.EXTRA_OUTPUT,image_uri);
+        System.out.println(MediaStore.EXTRA_OUTPUT);
+        startActivityForResult(cameraIntent,1);
+
+    }
+
     @Override
     public void onActivityResult(int requestCode, int resultCode, Intent data){
         super.onActivityResult(requestCode,resultCode,data);
         if(requestCode==1){
+
             Uri returnUri = data.getData();
+            System.out.println("Return URI"+returnUri);
+            if(returnUri==null){
+                returnUri=image_uri;
+            }
+
+            //Uri returnUri;
+            //if(data==null){
+            //    returnUri=(Uri)data.getExtras().get("output");
+            //}
+            //else {
+            //    returnUri = data.getData();
+            //}
             Bitmap bitmapImage = null;
             try {
                 bitmapImage = MediaStore.Images.Media.getBitmap(this.getContentResolver(), returnUri);
@@ -107,5 +144,11 @@ public class ScanActivity extends AppCompatActivity {
             bitmap = bitmapImage;
 
         }
+
+
     }
+
+
+
+
 }
