@@ -1,33 +1,25 @@
 package com.example.infs3605ess;
 
-import androidx.activity.result.ActivityResultCallback;
-import androidx.activity.result.ActivityResultLauncher;
-import androidx.activity.result.contract.ActivityResultContracts;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.app.ActivityCompat;
-import androidx.core.content.ContextCompat;
 
 import android.Manifest;
 import android.content.ContentValues;
 import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.graphics.Bitmap;
-import android.graphics.BitmapFactory;
 import android.net.Uri;
 import android.os.Bundle;
 import android.provider.MediaStore;
 import android.util.SparseArray;
 import android.view.View;
 import android.widget.Button;
-import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.google.android.gms.vision.Frame;
 import com.google.android.gms.vision.text.TextBlock;
 import com.google.android.gms.vision.text.TextRecognizer;
-
-import org.w3c.dom.Text;
 
 import java.io.IOException;
 
@@ -36,7 +28,7 @@ public class ScanActivity extends AppCompatActivity {
     private static final int IMAGE_CAPTURE_CODE = 1001;
     private TextView output;
     //private EditText input;
-    private Button extract,choose,scan;
+    private Button extract,choose,scanfromcamera;
     private ImageView image;
     private Bitmap bitmap;
     private Uri image_uri;
@@ -53,9 +45,9 @@ public class ScanActivity extends AppCompatActivity {
         extract=findViewById(R.id.extract);
         image=findViewById(R.id.imageView);
         choose=findViewById(R.id.btt_choose);
-        scan=findViewById(R.id.scan);
+        scanfromcamera=findViewById(R.id.scanfromcamera);
 
-        scan.setOnClickListener(new View.OnClickListener() {
+        scanfromcamera.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 openCamera();
@@ -119,7 +111,7 @@ public class ScanActivity extends AppCompatActivity {
     @Override
     public void onActivityResult(int requestCode, int resultCode, Intent data){
         super.onActivityResult(requestCode,resultCode,data);
-        if(requestCode==1){
+        if(requestCode==1 && data!=null){
 
             Uri returnUri = data.getData();
             System.out.println("Return URI"+returnUri);
