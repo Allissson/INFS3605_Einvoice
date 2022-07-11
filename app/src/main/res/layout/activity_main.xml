@@ -28,7 +28,7 @@
         android:layout_height="56dp"
         android:layout_marginTop="6dp"
         android:background="@drawable/login_border"
-        android:hint="Ex: abc@example.com"
+        android:hint="    Ex: abc@example.com"
         app:layout_constraintStart_toStartOf="@+id/textView3"
         app:layout_constraintTop_toBottomOf="@+id/textView3" />
 
@@ -38,7 +38,7 @@
         android:layout_height="56dp"
         android:layout_marginTop="6dp"
         android:background="@drawable/login_border"
-        android:hint="*****"
+        android:hint="   *****"
         android:inputType="textPassword"
         app:layout_constraintStart_toStartOf="@+id/textView4"
         app:layout_constraintTop_toBottomOf="@+id/textView4" />
@@ -96,7 +96,7 @@
         app:layout_constraintTop_toBottomOf="@+id/passsword" />
 
     <TextView
-        android:id="@+id/textView2"
+        android:id="@+id/user_email"
         android:layout_width="286dp"
         android:layout_height="44dp"
         android:layout_marginTop="16dp"
@@ -118,12 +118,12 @@
         android:textColor="#000000"
         android:textFontWeight="400"
         android:textSize="16dp"
-        app:layout_constraintStart_toStartOf="@+id/textView2"
-        app:layout_constraintTop_toBottomOf="@+id/textView2" />
+        app:layout_constraintStart_toStartOf="@+id/user_email"
+        app:layout_constraintTop_toBottomOf="@+id/user_email" />
 
     <TextView
         android:id="@+id/textView4"
-        android:layout_width="40dp"
+        android:layout_width="wrap_content"
         android:layout_height="24dp"
         android:layout_marginTop="28dp"
         android:fontFamily="@font/inter"
