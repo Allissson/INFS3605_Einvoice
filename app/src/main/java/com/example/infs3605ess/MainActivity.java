@@ -6,6 +6,7 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.graphics.Paint;
 import android.os.Bundle;
 import android.util.Log;
 import android.util.Patterns;
@@ -30,7 +31,6 @@ public class MainActivity extends AppCompatActivity {
     private EditText emailText, passwordText;
     private ProgressBar progressBar;
     private Button loginBtt, register,forget;
-    private Button test;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -44,8 +44,9 @@ public class MainActivity extends AppCompatActivity {
         progressBar=findViewById(R.id.progressBar);
         loginBtt=findViewById(R.id.logIn);
         register=findViewById(R.id.register);
-        test=findViewById(R.id.test);
         forget=findViewById(R.id.forgetPass);
+        register.setPaintFlags(register.getPaintFlags() | Paint.UNDERLINE_TEXT_FLAG);
+        forget.setPaintFlags(forget.getPaintFlags() | Paint.UNDERLINE_TEXT_FLAG);
         forget.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -62,12 +63,6 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 toRegister();
-            }
-        });
-        test.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                launchDashboard();
             }
         });
 
