@@ -100,7 +100,7 @@ public class MainActivity extends AppCompatActivity {
         startActivity(intent);
     }
     private void launchDashboard(){
-        Intent intent = new Intent(this, DashboardActivity.class);
+        Intent intent = new Intent(this, HomeActivity.class);
         startActivity(intent);
     }
     private void toForget(){
@@ -191,7 +191,7 @@ public class MainActivity extends AppCompatActivity {
         super.onStart();
         FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
         if(user!=null){
-            Intent intent = new Intent(this, DashboardActivity.class);
+            Intent intent = new Intent(this, HomeActivity.class);
             startActivity(intent);
         }
     }
