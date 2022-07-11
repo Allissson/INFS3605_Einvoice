@@ -10,7 +10,7 @@
         android:id="@+id/textView12"
         android:layout_width="200dp"
         android:layout_height="24dp"
-        android:layout_marginTop="12dp"
+        android:layout_marginTop="15dp"
         android:fontFamily="@font/inter"
         android:text="Company Name"
         android:textColor="#000000"
@@ -25,7 +25,7 @@
         android:layout_height="56dp"
         android:layout_marginTop="5dp"
         android:background="@drawable/login_border"
-        android:hint="Ex: abc Co,.Ltd"
+        android:hint="  Ex: abc Co,.Ltd"
         app:layout_constraintStart_toStartOf="@+id/textView10"
         app:layout_constraintTop_toBottomOf="@+id/textView12" />
 
@@ -141,11 +141,8 @@
         android:layout_width="343dp"
         android:layout_height="56dp"
         android:layout_marginTop="5dp"
-        android:layout_marginEnd="32dp"
-        android:layout_marginRight="32dp"
         android:background="@drawable/login_border"
-        android:hint="●●●●●●"
-        app:layout_constraintEnd_toEndOf="parent"
+        android:hint="  ●●●●●●"
         app:layout_constraintStart_toStartOf="@+id/textView11"
         app:layout_constraintTop_toBottomOf="@+id/textView11" />
 
@@ -155,7 +152,7 @@
         android:layout_height="56dp"
         android:layout_marginTop="5dp"
         android:background="@drawable/login_border"
-        android:hint="Ex: Michael Jackson"
+        android:hint="  Ex: Michael Jackson"
         app:layout_constraintStart_toStartOf="@+id/textView9"
         app:layout_constraintTop_toBottomOf="@+id/textView9" />
 
@@ -165,7 +162,7 @@
         android:layout_height="56dp"
         android:layout_marginTop="5dp"
         android:background="@drawable/login_border"
-        android:hint="Ex: abc@example.com"
+        android:hint="  Ex: abc@example.com"
         app:layout_constraintStart_toStartOf="@+id/textView10"
         app:layout_constraintTop_toBottomOf="@+id/textView10" />
 
@@ -184,8 +181,8 @@
         android:id="@+id/ReturnImageView"
         android:layout_width="48dp"
         android:layout_height="36dp"
-        android:layout_marginStart="35dp"
-        android:layout_marginLeft="35dp"
+        android:layout_marginStart="20dp"
+        android:layout_marginLeft="20dp"
         android:layout_marginTop="5dp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
