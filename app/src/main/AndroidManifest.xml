@@ -14,9 +14,10 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.INFS3605ESS">
+        <activity android:name=".ScanResultActivity"></activity>
         <activity
             android:name=".HomeActivity"
-            android:label="@string/title_activity_home"></activity>
+            android:label="@string/title_activity_home" />
         <activity android:name=".ScanActivity" />
         <activity android:name=".ForgotPasswordActivity" />
         <activity android:name=".DashboardActivity" />

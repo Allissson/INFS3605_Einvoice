@@ -6,6 +6,7 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
@@ -14,6 +15,7 @@ import androidx.fragment.app.Fragment;
 import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProvider;
 
+import com.example.infs3605ess.MainActivity;
 import com.example.infs3605ess.R;
 import com.example.infs3605ess.ScanActivity;
 import com.example.infs3605ess.User;
@@ -35,6 +37,7 @@ public class AccountFragment extends Fragment {
     private FirebaseAuth mFirebaseAuth;
     private DatabaseReference mDb;
     private String userId,userName;
+    private Button logout;
 
     public View onCreateView(@NonNull LayoutInflater inflater,
                              ViewGroup container, Bundle savedInstanceState) {
@@ -49,13 +52,18 @@ public class AccountFragment extends Fragment {
     // Didn't Finish
     public void onViewCreated(@NonNull View view, Bundle savedInstanceState) {
         mFirebaseAuth=FirebaseAuth.getInstance();
-
+        logout=view.findViewById(R.id.btt_logout);
         mDb = FirebaseDatabase.getInstance().getReference();
         Log.d(TAG, "mDb connection");
         message=view.findViewById(R.id.account_text);
         userId=mFirebaseAuth.getCurrentUser().getUid();
         Log.d(TAG, userId);
-
+        logout.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                logout();
+            }
+        });
 
         mDb.child("User").child(userId).addValueEventListener(new ValueEventListener() {
             @Override
@@ -72,4 +80,9 @@ public class AccountFragment extends Fragment {
         });
         message.setText(userName);
     };
+    private void logout(){
+        mFirebaseAuth.signOut();
+        Intent intent = new Intent(getActivity(), MainActivity.class);
+        startActivity(intent);
+    }
 }

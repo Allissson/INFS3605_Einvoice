@@ -1,10 +1,12 @@
 package com.example.infs3605ess;
 
+import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.app.ActivityCompat;
 
 import android.Manifest;
 import android.content.ContentValues;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.graphics.Bitmap;
@@ -86,7 +88,17 @@ public class ScanActivity extends AppCompatActivity {
                 outputText = outputText+" "+textBlock.getValue();
 
             }
-            output.setText(outputText);
+            System.out.println(outputText);
+
+            if(outputText==""){
+                alter("There is no text in the image! Try again");
+            }
+            else{
+                Intent intent = new Intent(this, ScanResultActivity.class);
+                intent.putExtra("output",outputText);
+                startActivity(intent);
+            }
+
 
 
         }
@@ -138,6 +150,20 @@ public class ScanActivity extends AppCompatActivity {
         }
 
 
+    }
+
+    // Hint Pop Up Window Method
+    private void alter(String message) {
+        AlertDialog alertDialog = new AlertDialog.Builder(ScanActivity.this).setTitle("Message")
+                .setMessage(message)
+                .setPositiveButton("Close", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+                        dialog.dismiss();
+                    }
+                })
+                .create();
+        alertDialog.show();
     }
 
 
