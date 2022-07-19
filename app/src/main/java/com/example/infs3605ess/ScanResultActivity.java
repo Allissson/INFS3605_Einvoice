@@ -8,7 +8,7 @@ import android.widget.TextView;
 
 public class ScanResultActivity extends AppCompatActivity {
     private String message;
-    private TextView InvoiceNum, InvoiceDate, DueDate, Subtotal, ShipHand, GST, Total;
+    private TextView Issuer, Country, State, City, Street, InvoiceNum, InvoiceDate, DueDate, Subtotal, ShipHand, Total, GST;
 
 
     @Override
@@ -16,6 +16,11 @@ public class ScanResultActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_scan_result);
 
+        Issuer=findViewById(R.id.Issuer);
+        Country=findViewById(R.id.Country);
+        State=findViewById(R.id.State);
+        City=findViewById(R.id.City);
+        Street=findViewById(R.id.Street);
         InvoiceNum=findViewById(R.id.InvoiceNum);
         InvoiceDate=findViewById(R.id.InvoiceDate);
         DueDate=findViewById(R.id.DueDate);
@@ -30,21 +35,26 @@ public class ScanResultActivity extends AppCompatActivity {
         String ScanResult = message;
 
         //Get variables
+
+        //发方地址
         String FromInfo = ScanResult.substring(0, ScanResult.indexOf("INVOICE"));
         String[] FromSplit = FromInfo.split(", ");
-        String Country = FromSplit[FromSplit.length - 1];
-        String State = FromSplit[FromSplit.length - 2];
-        String City = FromSplit[FromSplit.length - 3];
+
+        String country = FromSplit[FromSplit.length - 1];
+        String state = FromSplit[FromSplit.length - 2];
+        String city = FromSplit[FromSplit.length - 3];
+
         String StreetInfo = FromSplit[FromSplit.length - 4];
         String[] StreetSplit = StreetInfo.split(" ");
-        String Street = StreetSplit[StreetSplit.length - 3] + " " + StreetSplit[StreetSplit.length - 2] + " " + StreetSplit[StreetSplit.length - 1];
-        String From = ScanResult.substring(0, ScanResult.indexOf(Street));
+        String street = StreetSplit[StreetSplit.length - 3] + " " + StreetSplit[StreetSplit.length - 2] + " " + StreetSplit[StreetSplit.length - 1];
+
+        //发方姓名
+        String From = ScanResult.substring(0, ScanResult.indexOf(street));
 
 
-        //String To = ScanResult.substring(ScanResult.indexOf("Invoice To: ") + 12);
-        //To = To.substring(0, To.indexOf(" Invoice No: "));
 
 
+        //Number, date, due date
         String invoicenumber = (ScanResult.substring(ScanResult.indexOf("Invoice No:") + 12)).substring(0, 5);
         String invoicedate = (ScanResult.substring(ScanResult.indexOf("Date: ") + 6)).substring(0, 11);
         String duedate = (ScanResult.substring(ScanResult.indexOf("Due Date: ") + 10)).substring(0, 11);
@@ -59,6 +69,7 @@ public class ScanResultActivity extends AppCompatActivity {
         String Description1Price = DescriptionSplit[1];
         String Description1Amount = DescriptionSplit[2];
 
+        //Tax, subtotal, shipping & handling, Total Due
         String Tax =  ScanResult.substring(ScanResult.indexOf("Tax ") + 4);
         Tax = Tax.substring(0, Tax.indexOf(" Sub Total"));
 
@@ -86,6 +97,11 @@ public class ScanResultActivity extends AppCompatActivity {
 
         System.out.println(message);
 
+        Issuer.setText(From);
+        Country.setText(country);
+        State.setText(state);
+        City.setText(city);
+        Street.setText(street);
         InvoiceNum.setText(invoicenumber);
         InvoiceDate.setText(invoicedate);
         DueDate.setText(duedate);
