@@ -97,11 +97,10 @@
                 android:id="@+id/DueDate"
                 android:layout_width="343dp"
                 android:layout_height="56dp"
-                android:layout_marginTop="5dp"
                 android:layout_marginLeft="35dp"
+                android:layout_marginTop="5dp"
                 android:background="@drawable/login_border"
-                android:editable="true"
-                android:hint="    Ex: abc@example.com" />
+                android:editable="true" />
 
             <TextView
                 android:id="@+id/textView24"
@@ -119,11 +118,10 @@
                 android:id="@+id/Subtotal"
                 android:layout_width="343dp"
                 android:layout_height="56dp"
-                android:layout_marginTop="5dp"
                 android:layout_marginLeft="35dp"
+                android:layout_marginTop="5dp"
                 android:background="@drawable/login_border"
-                android:editable="true"
-                android:hint="    Ex: abc@example.com" />
+                android:editable="true" />
 
             <TextView
                 android:id="@+id/textView25"
@@ -141,11 +139,10 @@
                 android:id="@+id/ShipHand"
                 android:layout_width="343dp"
                 android:layout_height="56dp"
-                android:layout_marginTop="5dp"
                 android:layout_marginLeft="35dp"
+                android:layout_marginTop="5dp"
                 android:background="@drawable/login_border"
-                android:editable="true"
-                android:hint="    Ex: abc@example.com" />
+                android:editable="true" />
 
             <TextView
                 android:id="@+id/textView26"
@@ -163,11 +160,10 @@
                 android:id="@+id/GST"
                 android:layout_width="343dp"
                 android:layout_height="56dp"
-                android:layout_marginTop="5dp"
                 android:layout_marginLeft="35dp"
+                android:layout_marginTop="5dp"
                 android:background="@drawable/login_border"
-                android:editable="true"
-                android:hint="    Ex: abc@example.com" />
+                android:editable="true" />
 
             <TextView
                 android:id="@+id/textView27"
@@ -185,11 +181,10 @@
                 android:id="@+id/Total"
                 android:layout_width="343dp"
                 android:layout_height="56dp"
-                android:layout_marginTop="5dp"
                 android:layout_marginLeft="35dp"
+                android:layout_marginTop="5dp"
                 android:background="@drawable/login_border"
-                android:editable="true"
-                android:hint="    Ex: abc@example.com" />
+                android:editable="true" />
         </LinearLayout>
     </ScrollView>
 

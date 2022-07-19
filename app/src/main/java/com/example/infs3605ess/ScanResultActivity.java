@@ -30,23 +30,65 @@ public class ScanResultActivity extends AppCompatActivity {
         String ScanResult = message;
 
         //Get variables
-        String invoicenumber = (ScanResult.substring(ScanResult.indexOf("Invoice number:") + 15)).substring(0, 7);
-        String invoicedate = (ScanResult.substring(ScanResult.indexOf("Invoice date") + 13)).substring(0, 13);
-        String duedate = (ScanResult.substring(ScanResult.indexOf("Due date:") + 10)).substring(0, 7);
-        //String Description1
+        String From = ScanResult.substring(0, ScanResult.indexOf("INVOICE"));
+        String[] FromSplit = From.split(", ");
+        String s1 = FromSplit[0];
+        String s2 = FromSplit[1];
+        String s3 = FromSplit[2];
+        String s4 = FromSplit[3];
+        String s5 = FromSplit[4];
+
+        //String To = ScanResult.substring(ScanResult.indexOf("Invoice To: ") + 12);
+        //To = To.substring(0, To.indexOf(" Invoice No: "));
+
+
+        String invoicenumber = (ScanResult.substring(ScanResult.indexOf("Invoice No:") + 12)).substring(0, 5);
+        String invoicedate = (ScanResult.substring(ScanResult.indexOf("Date: ") + 6)).substring(0, 11);
+        String duedate = (ScanResult.substring(ScanResult.indexOf("Due Date: ") + 10)).substring(0, 11);
+
+
+
+        //思路如果是multiple description， 用if查一下$的数量。
+        String DescriptionT = ScanResult.substring(ScanResult.indexOf("Amount ") + 7);
+        DescriptionT = DescriptionT.substring(0, DescriptionT.indexOf(" Tax "));
+        String[] DescriptionSplit = DescriptionT.split(" \\$");
+        String Description1Name = DescriptionSplit[0];
+        String Description1Price = DescriptionSplit[1];
+        String Description1Amount = DescriptionSplit[2];
+
+        String Tax =  ScanResult.substring(ScanResult.indexOf("Tax ") + 4);
+        Tax = Tax.substring(0, Tax.indexOf(" Sub Total"));
+
+        String SubTotal =  ScanResult.substring(ScanResult.indexOf("Sub Total ") + 10);
+        SubTotal = SubTotal.substring(0, SubTotal.indexOf(" Shipping"));
+
+        String ShippingHandling = ScanResult.substring(ScanResult.indexOf("Handling ") + 9);
+        ShippingHandling = ShippingHandling.substring(0, ShippingHandling.indexOf(" Total Due "));
+
+        String total = ScanResult.substring(ScanResult.indexOf("Total Due ") + 10);
+        total = total.substring(0, total.indexOf(" Please make"));
+
+
+
+
+
+
+
+
         //String Description2
-        String subtotal = ScanResult.substring(ScanResult.indexOf("Subtotal ") + 9, ScanResult.indexOf("Shipping/handling"));
-        String ShippingHandling = ScanResult.substring(ScanResult.indexOf("Shipping/handling ") + 18, ScanResult.indexOf("GST"));
-        String gst = ScanResult.substring(ScanResult.indexOf("GST ") + 10, ScanResult.indexOf("Total"));
-        String total = (ScanResult.substring(ScanResult.indexOf("Total ") + 6)).substring(0, 8);
+        //String subtotal = ScanResult.substring(ScanResult.indexOf("Subtotal ") + 9, ScanResult.indexOf("Shipping/handling"));
+        //String ShippingHandling = ScanResult.substring(ScanResult.indexOf("Shipping/handling ") + 18, ScanResult.indexOf("GST"));
+
+
+
         System.out.println(message);
 
         InvoiceNum.setText(invoicenumber);
         InvoiceDate.setText(invoicedate);
         DueDate.setText(duedate);
-        Subtotal.setText(subtotal);
-        ShipHand.setText(ShippingHandling);
-        GST.setText(gst);
+        Subtotal.setText(From);
+        ShipHand.setText(Description1Price);
+        //GST.setText(gst);
         Total.setText(total);
 
 
