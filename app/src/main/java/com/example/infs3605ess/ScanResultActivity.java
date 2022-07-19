@@ -30,13 +30,16 @@ public class ScanResultActivity extends AppCompatActivity {
         String ScanResult = message;
 
         //Get variables
-        String From = ScanResult.substring(0, ScanResult.indexOf("INVOICE"));
-        String[] FromSplit = From.split(", ");
-        String s1 = FromSplit[0];
-        String s2 = FromSplit[1];
-        String s3 = FromSplit[2];
-        String s4 = FromSplit[3];
-        String s5 = FromSplit[4];
+        String FromInfo = ScanResult.substring(0, ScanResult.indexOf("INVOICE"));
+        String[] FromSplit = FromInfo.split(", ");
+        String Country = FromSplit[FromSplit.length - 1];
+        String State = FromSplit[FromSplit.length - 2];
+        String City = FromSplit[FromSplit.length - 3];
+        String StreetInfo = FromSplit[FromSplit.length - 4];
+        String[] StreetSplit = StreetInfo.split(" ");
+        String Street = StreetSplit[StreetSplit.length - 3] + " " + StreetSplit[StreetSplit.length - 2] + " " + StreetSplit[StreetSplit.length - 1];
+        String From = ScanResult.substring(0, ScanResult.indexOf(Street));
+
 
         //String To = ScanResult.substring(ScanResult.indexOf("Invoice To: ") + 12);
         //To = To.substring(0, To.indexOf(" Invoice No: "));
@@ -86,9 +89,9 @@ public class ScanResultActivity extends AppCompatActivity {
         InvoiceNum.setText(invoicenumber);
         InvoiceDate.setText(invoicedate);
         DueDate.setText(duedate);
-        Subtotal.setText(From);
-        ShipHand.setText(Description1Price);
-        //GST.setText(gst);
+        Subtotal.setText(Description1Price);
+        ShipHand.setText(Description1Amount);
+        GST.setText(Description1Name);
         Total.setText(total);
 
 
