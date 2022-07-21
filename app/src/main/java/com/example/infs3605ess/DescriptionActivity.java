@@ -68,7 +68,7 @@ public class DescriptionActivity extends AppCompatActivity {
         @Override
         public boolean onCreateOptionsMenu(Menu menu) {
             MenuInflater inflater = getMenuInflater();
-            inflater.inflate(R.menu.menu_main, menu);
+            inflater.inflate(R.menu.menu_description, menu);
             SearchView searchView = (SearchView) menu.findItem(R.id.search).getActionView();
             searchView.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
                 @Override
