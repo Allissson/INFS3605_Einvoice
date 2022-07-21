@@ -8,7 +8,7 @@ import android.widget.TextView;
 
 public class ScanResultActivity extends AppCompatActivity {
     private String message;
-    private TextView Issuer, Country, State, City, Street, InvoiceNum, InvoiceDate, DueDate, Subtotal, ShipHand, Total, GST;
+    private TextView Issuer, Country, State, City, Street, InvoiceNum, InvoiceDate, DueDate, Subtotal, ShipHand, Total, Extra;
 
 
     @Override
@@ -26,7 +26,7 @@ public class ScanResultActivity extends AppCompatActivity {
         DueDate=findViewById(R.id.DueDate);
         Subtotal=findViewById(R.id.Subtotal);
         ShipHand=findViewById(R.id.ShipHand);
-        GST=findViewById(R.id.GST);
+        Extra=findViewById(R.id.Extra);
         Total=findViewById(R.id.Total);
 
         message=getIntent().getStringExtra("output");
@@ -105,10 +105,10 @@ public class ScanResultActivity extends AppCompatActivity {
         InvoiceNum.setText(invoicenumber);
         InvoiceDate.setText(invoicedate);
         DueDate.setText(duedate);
-        Subtotal.setText(Description1Price);
-        ShipHand.setText(Description1Amount);
-        GST.setText(Description1Name);
+        Subtotal.setText(SubTotal);
+        ShipHand.setText(ShippingHandling);
         Total.setText(total);
+        //Extra.setText(Description1Name);
 
 
     }

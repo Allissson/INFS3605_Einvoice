@@ -271,13 +271,13 @@
                 android:editable="true" />
 
             <TextView
-                android:id="@+id/textView26"
+                android:id="@+id/Extra"
                 android:layout_width="300dp"
                 android:layout_height="24dp"
                 android:layout_marginLeft="35dp"
                 android:layout_marginTop="5dp"
                 android:fontFamily="@font/inter"
-                android:text="GST:"
+                android:text="TestEXTRA"
                 android:textColor="#000000"
                 android:textFontWeight="400"
                 android:textSize="16dp" />
