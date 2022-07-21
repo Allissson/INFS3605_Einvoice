@@ -12,6 +12,10 @@ public class Description {
         this.price = mPrice;
         this.total = mTotal;
     }
+
+    public Description(){
+
+    }
     public String getName() {
         return name;
     }

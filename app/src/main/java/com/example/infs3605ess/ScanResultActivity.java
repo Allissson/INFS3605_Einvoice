@@ -141,4 +141,6 @@ public class ScanResultActivity extends AppCompatActivity {
         startActivity(i);
     }
 
+
+
 }

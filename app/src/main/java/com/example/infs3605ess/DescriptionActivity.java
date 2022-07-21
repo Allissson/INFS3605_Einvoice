@@ -1,6 +1,7 @@
 package com.example.infs3605ess;
 
 import android.os.Bundle;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
@@ -17,7 +18,8 @@ import java.util.List;
 import java.util.Random;
 
 public class DescriptionActivity extends AppCompatActivity {
-        private String message;
+    private static final String TAG = "Description Activity";
+    private String message;
         private List<Description> mDescription = new ArrayList<>();
         private DescriptionAdapter mAdapter;
         private RecyclerView mRecyclerView;
@@ -42,8 +44,40 @@ public class DescriptionActivity extends AppCompatActivity {
              int i = messageSplit.length;
              System.out.println(String.valueOf(i));
 
+
+             for(int a=0;a<i;a=a+4){
+                 Description d = new Description();
+                 Log.d(TAG, messageSplit[a]);
+                 d.setName(messageSplit[a]);
+                 d.setQuantity(Integer.parseInt(messageSplit[a+1]));
+                 Log.d(TAG, messageSplit[a+1]);
+                 String price = messageSplit[a+2];
+                 String total = messageSplit[a+3];
+                 price = price.replace("$","");
+                 price = price.replace(",","");
+                 price = price.substring(0, price.length() - 3);
+
+                 System.out.println(price);
+
+                 total = total.replace("$","");
+                 total = total.replace(",","");
+                 total = total.substring(0, total.length() - 3);
+
+                 System.out.println(total);
+
+                 d.setTotal(Integer.parseInt(total));
+                 d.setPrice(Integer.parseInt(price));
+                 mDescription.add(d);
+             }
+             for(int b=0;b<mDescription.size();b++){
+                 System.out.println(mDescription.get(b).getName());
+             }
+
+
+
+
             // Prepare data
-            prepareDescription();
+            //prepareDescription();
 
             DescriptionAdapter.ClickListener listener = new DescriptionAdapter.ClickListener() {
                 @Override
