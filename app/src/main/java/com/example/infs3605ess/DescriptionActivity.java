@@ -38,6 +38,9 @@ public class DescriptionActivity extends AppCompatActivity {
             // Specify grid layout manager for RecyclerView
             //RecyclerView.LayoutManager layoutManager = new GridLayoutManager(getApplicationContext(), 2);
             mRecyclerView.setLayoutManager(layoutManager);
+            String[] messageSplit = message.split(" ");
+             int i = messageSplit.length;
+             System.out.println(String.valueOf(i));
 
             // Prepare data
             prepareDescription();
