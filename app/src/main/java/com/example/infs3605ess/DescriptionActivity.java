@@ -17,6 +17,7 @@ import java.util.List;
 import java.util.Random;
 
 public class DescriptionActivity extends AppCompatActivity {
+        private String message;
         private List<Description> mDescription = new ArrayList<>();
         private DescriptionAdapter mAdapter;
         private RecyclerView mRecyclerView;
@@ -25,7 +26,8 @@ public class DescriptionActivity extends AppCompatActivity {
         protected void onCreate(Bundle savedInstanceState) {
             super.onCreate(savedInstanceState);
             setContentView(R.layout.description_recycler_view);
-
+            message=getIntent().getStringExtra("key");
+            System.out.println(message);
             // Instantiate Recyclerview
             mRecyclerView = findViewById(R.id.recycleView);
             // Set setHasFixedSize true if contents of the adapter does not change it's height or the width

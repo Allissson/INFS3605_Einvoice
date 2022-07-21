@@ -2,12 +2,16 @@ package com.example.infs3605ess;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Intent;
 import android.os.Bundle;
+import android.view.View;
+import android.widget.Button;
 import android.widget.TextView;
 
 public class ScanResultActivity extends AppCompatActivity {
-    private String message;
+    private String message,DescriptionInfo;
     private TextView Issuer, Country, State, City, Street, InvoiceNum, InvoiceDate, DueDate, Subtotal, ShipHand, Total, Extra;
+    private Button Description;
 
 
     @Override
@@ -27,6 +31,7 @@ public class ScanResultActivity extends AppCompatActivity {
         ShipHand=findViewById(R.id.ShipHand);
         Extra=findViewById(R.id.Extra);
         Total=findViewById(R.id.Total);
+        Description=findViewById(R.id.Description);
 
         message=getIntent().getStringExtra("output");
 
@@ -71,7 +76,7 @@ public class ScanResultActivity extends AppCompatActivity {
         String Description1Price = DescriptionSplit[1];
         String Description1Amount = DescriptionSplit[2];
         */
-        String DescriptionInfo = ScanResult.substring(ScanResult.indexOf("Amount ") + 7);
+        DescriptionInfo = ScanResult.substring(ScanResult.indexOf("Amount ") + 7);
         DescriptionInfo = DescriptionInfo.substring(0, DescriptionInfo.indexOf(" Tax "));
         System.out.println(DescriptionInfo);
         int count = DescriptionInfo.split("\\$",-1).length-1;
@@ -120,6 +125,20 @@ public class ScanResultActivity extends AppCompatActivity {
         Total.setText(total);
         Extra.setText(Test);
 
+        Description.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                switchActivities();
+
+            }
+        });
 
     }
+
+    private void switchActivities() {
+        Intent i = new Intent(this, DescriptionActivity.class);
+        i.putExtra("key",DescriptionInfo);
+        startActivity(i);
+    }
+
 }
