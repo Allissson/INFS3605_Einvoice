@@ -50,6 +50,9 @@ public class ScanResultActivity extends AppCompatActivity {
 
         //发方姓名
         String From = ScanResult.substring(0, ScanResult.indexOf(street));
+        String[] FromEliminateSpace = From.split(" ");
+        String Name = FromEliminateSpace[1] + " " + FromEliminateSpace[2];
+
 
 
 
@@ -97,7 +100,7 @@ public class ScanResultActivity extends AppCompatActivity {
 
         System.out.println(message);
 
-        Issuer.setText(From);
+        Issuer.setText(Name);
         Country.setText(country);
         State.setText(state);
         City.setText(city);
