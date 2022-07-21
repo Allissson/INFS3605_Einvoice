@@ -2,7 +2,6 @@ package com.example.infs3605ess;
 
 import androidx.appcompat.app.AppCompatActivity;
 
-import android.content.Intent;
 import android.os.Bundle;
 import android.widget.TextView;
 
@@ -65,12 +64,20 @@ public class ScanResultActivity extends AppCompatActivity {
 
 
         //思路如果是multiple description， 用if查一下$的数量。
-        String DescriptionT = ScanResult.substring(ScanResult.indexOf("Amount ") + 7);
+        /*String DescriptionT = ScanResult.substring(ScanResult.indexOf("Amount ") + 7);
         DescriptionT = DescriptionT.substring(0, DescriptionT.indexOf(" Tax "));
         String[] DescriptionSplit = DescriptionT.split(" \\$");
         String Description1Name = DescriptionSplit[0];
         String Description1Price = DescriptionSplit[1];
         String Description1Amount = DescriptionSplit[2];
+        */
+        String DescriptionInfo = ScanResult.substring(ScanResult.indexOf("Amount ") + 7);
+        DescriptionInfo = DescriptionInfo.substring(0, DescriptionInfo.indexOf(" Tax "));
+        System.out.println(DescriptionInfo);
+        int count = DescriptionInfo.split("\\$",-1).length-1;
+        String Test = String.valueOf(count);
+
+
 
         //Tax, subtotal, shipping & handling, Total Due
         String Tax =  ScanResult.substring(ScanResult.indexOf("Tax ") + 4);
@@ -111,7 +118,7 @@ public class ScanResultActivity extends AppCompatActivity {
         Subtotal.setText(SubTotal);
         ShipHand.setText(ShippingHandling);
         Total.setText(total);
-        //Extra.setText(Description1Name);
+        Extra.setText(Test);
 
 
     }

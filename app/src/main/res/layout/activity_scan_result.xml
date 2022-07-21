@@ -271,7 +271,7 @@
                 android:editable="true" />
 
             <TextView
-                android:id="@+id/Extra"
+                android:id="@+id/textViewExtra"
                 android:layout_width="300dp"
                 android:layout_height="24dp"
                 android:layout_marginLeft="35dp"
@@ -283,7 +283,7 @@
                 android:textSize="16dp" />
 
             <EditText
-                android:id="@+id/GST"
+                android:id="@+id/Extra"
                 android:layout_width="343dp"
                 android:layout_height="56dp"
                 android:layout_marginLeft="35dp"
