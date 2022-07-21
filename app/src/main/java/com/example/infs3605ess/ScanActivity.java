@@ -19,6 +19,7 @@ import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+
 import com.google.android.gms.vision.Frame;
 import com.google.android.gms.vision.text.TextBlock;
 import com.google.android.gms.vision.text.TextRecognizer;
@@ -30,11 +31,15 @@ public class ScanActivity extends AppCompatActivity {
     private static final int IMAGE_CAPTURE_CODE = 1001;
     private TextView output;
     //private EditText input;
-    private Button extract,choose,scanfromcamera;
+    private Button extract,choose,scanfromcamera, test;
     private ImageView image;
     private Bitmap bitmap;
     private Uri image_uri;
 
+    private void switchActivities() {
+        Intent switchActivityIntent = new Intent(this, DescriptionActivity.class);
+        startActivity(switchActivityIntent);
+    }
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -48,6 +53,20 @@ public class ScanActivity extends AppCompatActivity {
         image=findViewById(R.id.imageView);
         choose=findViewById(R.id.btt_choose);
         scanfromcamera=findViewById(R.id.scanfromcamera);
+        test = findViewById(R.id.Test);
+
+        test.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                switchActivities();
+            }
+        });
+
+
+
+
+
+
 
         scanfromcamera.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -55,6 +74,8 @@ public class ScanActivity extends AppCompatActivity {
                 openCamera();
             }
         });
+
+
 
         extract.setOnClickListener(new View.OnClickListener() {
             @Override

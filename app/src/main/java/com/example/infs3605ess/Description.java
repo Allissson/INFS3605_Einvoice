@@ -1,12 +1,12 @@
-package com.example.infs3605ess.ui;
+package com.example.infs3605ess;
 
 public class Description {
     private String name;
     private int quantity;
-    private String price;
-    private String total;
+    private int price;
+    private int total;
 
-    Description(String mName,int mQuantity, String mPrice, String mTotal){
+    Description(String mName,int mQuantity, int mPrice, int mTotal){
         this.name = mName;
         this.quantity = mQuantity;
         this.price = mPrice;
@@ -20,7 +20,6 @@ public class Description {
         this.name = name;
     }
 
-
     public int getQuantity() {
         return quantity;
     }
@@ -29,19 +28,19 @@ public class Description {
         this.quantity = quantity;
     }
 
-    public String getPrice() {
+    public int getPrice() {
         return price;
     }
 
-    public void setPrice(String price) {
+    public void setPrice(int price) {
         this.price = price;
     }
 
-    public String getTotal() {
+    public int getTotal() {
         return total;
     }
 
-    public void setTotal(String total) {
+    public void setTotal(int total) {
         this.total = total;
     }
 
