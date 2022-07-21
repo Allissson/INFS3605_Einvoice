@@ -57,20 +57,14 @@ public class DescriptionActivity extends AppCompatActivity {
                  price = price.replace(",","");
                  price = price.substring(0, price.length() - 3);
 
-                 System.out.println(price);
 
                  total = total.replace("$","");
                  total = total.replace(",","");
                  total = total.substring(0, total.length() - 3);
 
-                 System.out.println(total);
-
                  d.setTotal(Integer.parseInt(total));
                  d.setPrice(Integer.parseInt(price));
                  mDescription.add(d);
-             }
-             for(int b=0;b<mDescription.size();b++){
-                 System.out.println(mDescription.get(b).getName());
              }
 
 
