@@ -4,14 +4,29 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
 
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.ArrayList;
+import java.util.Date;
+import java.util.List;
+
 public class ScanResultActivity extends AppCompatActivity {
+    private static final String TAG = "Scan Result Activity";
     private String message,DescriptionInfo;
     private TextView Issuer, Country, State, City, Street, InvoiceNum, InvoiceDate, DueDate, Subtotal, ShipHand, Total, Extra;
     private Button Description;
+    private DatabaseReference uDb;
+    private Date dInvoiceDate, dDueDate;
+    private List<Description> mDescription = new ArrayList<>();
 
 
     @Override
@@ -62,7 +77,7 @@ public class ScanResultActivity extends AppCompatActivity {
 
 
         //Number, date, due date
-        String invoicenumber = (ScanResult.substring(ScanResult.indexOf("Invoice No:") + 12)).substring(0, 5);
+        String invoicenumber = (ScanResult.substring(ScanResult.indexOf("com.example.infs3605ess.Invoice No:") + 12)).substring(0, 5);
         String invoicedate = (ScanResult.substring(ScanResult.indexOf("Date: ") + 6)).substring(0, 11);
         String duedate = (ScanResult.substring(ScanResult.indexOf("Due Date: ") + 10)).substring(0, 11);
 
@@ -133,12 +148,75 @@ public class ScanResultActivity extends AppCompatActivity {
             }
         });
 
+        // upload data to database
+
+        uDb= FirebaseDatabase.getInstance().getReference().child("User");
+        // change date from string to Date
+        SimpleDateFormat formatter=new SimpleDateFormat("dd-MMM-yyyy");
+
+        try {
+            dInvoiceDate = formatter.parse(invoicedate);
+        } catch (ParseException e) {
+            e.printStackTrace();
+        }
+        try {
+            dDueDate = formatter.parse(duedate);
+        } catch (ParseException e) {
+            e.printStackTrace();
+        }
+
+        double dSub = convert(SubTotal);
+        double dShip = convert(ShippingHandling);
+        double dTotal = convert(total);
+        double dExtra = convert(Test);
+
+        // split description
+
+        String[] messageSplit = DescriptionInfo.split(" ");
+        int i = messageSplit.length;
+        System.out.println(String.valueOf(i));
+
+
+        for(int a=0;a<i;a=a+4){
+            Description d = new Description();
+            Log.d(TAG, messageSplit[a]);
+            d.setName(messageSplit[a]);
+            d.setQuantity(Integer.parseInt(messageSplit[a+1]));
+            Log.d(TAG, messageSplit[a+1]);
+            String price = messageSplit[a+2];
+            String destotal = messageSplit[a+3];
+            price = price.replace("$","");
+            price = price.replace(",","");
+            price = price.substring(0, price.length() - 3);
+
+
+            destotal = destotal.replace("$","");
+            destotal = destotal.replace(",","");
+            destotal = destotal.substring(0, destotal.length() - 3);
+
+            d.setTotal(Integer.parseInt(destotal));
+            d.setPrice(Integer.parseInt(price));
+            mDescription.add(d);
+        }
+
+        Invoice invoice =new Invoice(Name,country,state,city,street,invoicenumber,dInvoiceDate,dDueDate,dSub,dShip,dTotal,dExtra,mDescription);
+        uDb.child(FirebaseAuth.getInstance().getCurrentUser().getUid()).child(invoicenumber).setValue(invoice);
+
+
     }
 
     private void switchActivities() {
         Intent i = new Intent(this, DescriptionActivity.class);
         i.putExtra("key",DescriptionInfo);
         startActivity(i);
+    }
+
+    private double convert (String number){
+        number = number.replace("s","");
+        number= number.replace("$","");
+        number = number.replace(",","");
+        double resNum = Double.parseDouble(number);
+        return resNum;
     }
 
 
