@@ -5,6 +5,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.Filter;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
@@ -13,6 +14,8 @@ import androidx.recyclerview.widget.RecyclerView;
 import org.w3c.dom.Text;
 
 import java.util.ArrayList;
+import java.util.Collections;
+import java.util.Comparator;
 
 public class UrgentPayAdapter extends RecyclerView.Adapter<UrgentPayAdapter.UrgentPayViewHolder> {
 
@@ -32,6 +35,8 @@ public class UrgentPayAdapter extends RecyclerView.Adapter<UrgentPayAdapter.Urge
         return urgentPayViewHolder;
     }
 
+
+
     public interface RecyclerViewClickListener {
         void onClick(View view, Invoice invoice);
     }
@@ -40,7 +45,7 @@ public class UrgentPayAdapter extends RecyclerView.Adapter<UrgentPayAdapter.Urge
     public void onBindViewHolder(@NonNull UrgentPayAdapter.UrgentPayViewHolder holder, int position) {
         holder.urgentIssuer.setText(mInvoice.get(position).getIssuer());
         String amount = String.format("%.2f",mInvoice.get(position).getTotal());
-        holder.urgentAmount.setText(amount);
+        holder.urgentAmount.setText("$ "+ amount);
         holder.urgentNumber.setText(mInvoice.get(position).getInvoiceNum());
         holder.pay.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -53,7 +58,7 @@ public class UrgentPayAdapter extends RecyclerView.Adapter<UrgentPayAdapter.Urge
 
     @Override
     public int getItemCount() {
-        return 0;
+        return mInvoice.size();
     }
 
     public class UrgentPayViewHolder extends RecyclerView.ViewHolder{
@@ -74,4 +79,16 @@ public class UrgentPayAdapter extends RecyclerView.Adapter<UrgentPayAdapter.Urge
 
         }
     }
+
+//    public void sort(final int sortMethod) {
+//        if (mInvoice.size() > 0) {
+//            Collections.sort(mInvoice, new Comparator<Invoice>() {
+//                @Override
+//                public int compare(Invoice o1, Invoice o2) {
+//                    return o1.getDueDate().compareTo(o1.getDueDate());
+//                }
+//            });
+//        }
+//        notifyDataSetChanged();
+//    }
 }
