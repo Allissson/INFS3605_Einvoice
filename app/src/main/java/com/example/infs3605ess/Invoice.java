@@ -1,11 +1,38 @@
 package com.example.infs3605ess;
 
+import android.graphics.Bitmap;
+
 import java.util.Date;
 import java.util.List;
 
 public class Invoice {
 
-    public String issuer, country, state, city, street, invoiceNum;
+    public String issuer;
+    public String country;
+    public String state;
+    public String city;
+    public String street;
+    public String invoiceNum;
+
+    public Bitmap getBankslip() {
+        return bankslip;
+    }
+
+    public void setBankslip(Bitmap bankslip) {
+        this.bankslip = bankslip;
+    }
+
+    public Bitmap bankslip;
+
+    public String getStatus() {
+        return status;
+    }
+
+    public void setStatus(String status) {
+        this.status = status;
+    }
+
+    public String status;
 
     public Invoice(){
 
@@ -118,7 +145,7 @@ public class Invoice {
     public Date invoiceDate, dueDate;
     public double subTotal, shipHand, total, extra;
 
-    public Invoice(String issuer, String country, String state, String city, String street, String invoiceNum, Date invoiceDate, Date dueDate, double subTotal, double shipHand, double total, double extra, List<Description> descriptionList) {
+    public Invoice(String issuer, String country, String state, String city, String street, String invoiceNum, Date invoiceDate, Date dueDate, double subTotal, double shipHand, double total, double extra, List<Description> descriptionList,String status) {
         this.issuer = issuer;
         this.country = country;
         this.state = state;
@@ -132,6 +159,25 @@ public class Invoice {
         this.total = total;
         this.extra = extra;
         this.descriptionList = descriptionList;
+        this.status=status;
+    }
+
+    public Invoice(String issuer, String country, String state, String city, String street, String invoiceNum, Date invoiceDate, Date dueDate, double subTotal, double shipHand, double total, double extra, List<Description> descriptionList,String status,Bitmap bankslip) {
+        this.issuer = issuer;
+        this.country = country;
+        this.state = state;
+        this.city = city;
+        this.street = street;
+        this.invoiceNum = invoiceNum;
+        this.invoiceDate = invoiceDate;
+        this.dueDate = dueDate;
+        this.subTotal = subTotal;
+        this.shipHand = shipHand;
+        this.total = total;
+        this.extra = extra;
+        this.descriptionList = descriptionList;
+        this.status=status;
+        this.bankslip=bankslip;
     }
 
     public List<Description> descriptionList;
