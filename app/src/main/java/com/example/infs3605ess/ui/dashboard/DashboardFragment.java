@@ -120,6 +120,7 @@ public class DashboardFragment extends Fragment {
                     if(invoice.getStatus().equals("unpaid") && days>5){
                         urgentInvoice.add(invoice);
                     }
+                    //urgentInvoice.add(invoice);
 
                 }
                 if(urgentInvoice.isEmpty()){

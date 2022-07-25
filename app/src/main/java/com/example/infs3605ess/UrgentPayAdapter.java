@@ -1,6 +1,7 @@
 package com.example.infs3605ess;
 
 import android.content.Context;
+import android.content.Intent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -50,7 +51,11 @@ public class UrgentPayAdapter extends RecyclerView.Adapter<UrgentPayAdapter.Urge
         holder.pay.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+
                 System.out.println("Pay button had been clicked!");
+                Intent intent =  new Intent(mContext,PaySuccessActivity.class);
+                intent.putExtra("Invoice Number",mInvoice.get(position).getInvoiceNum());
+                mContext.startActivity(intent);
             }
         });
 
