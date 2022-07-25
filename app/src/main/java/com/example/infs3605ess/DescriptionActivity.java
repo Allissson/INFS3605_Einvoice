@@ -19,7 +19,7 @@ import java.util.Random;
 
 public class DescriptionActivity extends AppCompatActivity {
     private static final String TAG = "Description Activity";
-    private String message;
+        private String message;
         private List<Description> mDescription = new ArrayList<>();
         private DescriptionAdapter mAdapter;
         private RecyclerView mRecyclerView;

@@ -6,297 +6,313 @@
     android:layout_height="match_parent"
     tools:context=".ScanResultActivity">
 
-    <ScrollView
+    <LinearLayout
+        android:id="@+id/linearLayout"
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_height="match_parent"
+        android:orientation="vertical">
 
-        <LinearLayout
-            android:layout_width="match_parent"
+
+        <TextView
+            android:id="@+id/textView18"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:orientation="vertical" >
+            android:layout_marginStart="35dp"
+            android:layout_marginLeft="35dp"
+            android:layout_marginTop="60dp"
+            android:text="Scan Result"
+            android:textColor="#575DFB"
+            android:textFontWeight="700"
+            android:textSize="32dp" />
 
-            <TextView
-                android:id="@+id/textView18"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="35dp"
-                android:layout_marginLeft="35dp"
-                android:layout_marginTop="60dp"
-                android:text="Scan Result"
-                android:textColor="#575DFB"
-                android:textFontWeight="700"
-                android:textSize="32dp" />
+        <TextView
+            android:id="@+id/textView19"
+            android:layout_width="286dp"
+            android:layout_height="44dp"
+            android:layout_marginLeft="35dp"
+            android:layout_marginTop="5dp"
+            android:fontFamily="@font/inter"
+            android:text="Check Scanned Details!"
+            android:textColor="#000000"
+            android:textFontWeight="400"
+            android:textSize="16dp" />
 
-            <TextView
-                android:id="@+id/textView19"
-                android:layout_width="286dp"
-                android:layout_height="44dp"
-                android:layout_marginTop="5dp"
-                android:layout_marginLeft="35dp"
-                android:fontFamily="@font/inter"
-                android:text="Check Scanned Details!"
-                android:textColor="#000000"
-                android:textFontWeight="400"
-                android:textSize="16dp" />
+        <ScrollView
+            android:id="@+id/scrollView2"
+            android:layout_width="match_parent"
+            android:layout_height="330dp">
 
-            <TextView
-                android:id="@+id/textViewName"
-                android:layout_width="300dp"
-                android:layout_height="24dp"
-                android:layout_marginLeft="35dp"
-                android:layout_marginTop="15dp"
-                android:fontFamily="@font/inter"
-                android:text="Issuer:"
-                android:textColor="#000000"
-                android:textFontWeight="400"
-                android:textSize="16dp" />
-
-            <EditText
-                android:id="@+id/Issuer"
-                android:layout_width="343dp"
-                android:layout_height="56dp"
-                android:layout_marginLeft="35dp"
-                android:layout_marginTop="5dp"
-                android:background="@drawable/login_border"
-                android:editable="true" />
-
-            <TextView
-                android:id="@+id/textView30"
-                android:layout_width="300dp"
-                android:layout_height="24dp"
-                android:layout_marginLeft="35dp"
-                android:layout_marginTop="15dp"
-                android:fontFamily="@font/inter"
-                android:text="Country:"
-                android:textColor="#000000"
-                android:textFontWeight="400"
-                android:textSize="16dp" />
-
-            <EditText
-                android:id="@+id/Country"
-                android:layout_width="343dp"
-                android:layout_height="56dp"
-                android:layout_marginLeft="35dp"
-                android:layout_marginTop="5dp"
-                android:background="@drawable/login_border"
-                android:editable="true" />
-
-            <TextView
-                android:id="@+id/textView29"
-                android:layout_width="300dp"
-                android:layout_height="24dp"
-                android:layout_marginLeft="35dp"
-                android:layout_marginTop="15dp"
-                android:fontFamily="@font/inter"
-                android:text="State:"
-                android:textColor="#000000"
-                android:textFontWeight="400"
-                android:textSize="16dp" />
-
-            <EditText
-                android:id="@+id/State"
-                android:layout_width="343dp"
-                android:layout_height="56dp"
-                android:layout_marginLeft="35dp"
-                android:layout_marginTop="5dp"
-                android:background="@drawable/login_border"
-                android:editable="true" />
-
-            <TextView
-                android:id="@+id/textView28"
-                android:layout_width="300dp"
-                android:layout_height="24dp"
-                android:layout_marginLeft="35dp"
-                android:layout_marginTop="15dp"
-                android:fontFamily="@font/inter"
-                android:text="City:"
-                android:textColor="#000000"
-                android:textFontWeight="400"
-                android:textSize="16dp" />
-
-            <EditText
-                android:id="@+id/City"
-                android:layout_width="343dp"
-                android:layout_height="56dp"
-                android:layout_marginLeft="35dp"
-                android:layout_marginTop="5dp"
-                android:background="@drawable/login_border"
-                android:editable="true" />
-
-            <TextView
-                android:id="@+id/textView21"
-                android:layout_width="300dp"
-                android:layout_height="24dp"
-                android:layout_marginLeft="35dp"
-                android:layout_marginTop="15dp"
-                android:fontFamily="@font/inter"
-                android:text="Street:"
-                android:textColor="#000000"
-                android:textFontWeight="400"
-                android:textSize="16dp" />
-
-            <EditText
-                android:id="@+id/Street"
-                android:layout_width="343dp"
-                android:layout_height="56dp"
-                android:layout_marginLeft="35dp"
-                android:layout_marginTop="5dp"
-                android:background="@drawable/login_border"
-                android:editable="true" />
-
-            <TextView
-                android:id="@+id/textView20"
-                android:layout_width="300dp"
-                android:layout_height="24dp"
-                android:layout_marginTop="15dp"
-                android:layout_marginLeft="35dp"
-                android:fontFamily="@font/inter"
-                android:text="Invoice Number:"
-                android:textColor="#000000"
-                android:textFontWeight="400"
-                android:textSize="16dp" />
-
-            <EditText
-                android:id="@+id/InvoiceNum"
-                android:layout_width="343dp"
-                android:layout_height="56dp"
-                android:layout_marginTop="5dp"
-                android:layout_marginLeft="35dp"
-                android:background="@drawable/login_border"
-                android:editable="true" />
-
-            <TextView
-                android:id="@+id/textView22"
-                android:layout_width="300dp"
-                android:layout_height="24dp"
-                android:layout_marginTop="5dp"
-                android:layout_marginLeft="35dp"
-                android:fontFamily="@font/inter"
-                android:text="Invoice Date:"
-                android:textColor="#000000"
-                android:textFontWeight="400"
-                android:textSize="16dp" />
-
-            <EditText
-                android:id="@+id/InvoiceDate"
-                android:layout_width="343dp"
-                android:layout_height="56dp"
-                android:layout_marginTop="5dp"
-                android:layout_marginLeft="35dp"
-                android:background="@drawable/login_border"
-                android:editable="true" />
-
-            <TextView
-                android:id="@+id/textView23"
-                android:layout_width="300dp"
-                android:layout_height="24dp"
-                android:layout_marginTop="5dp"
-                android:layout_marginLeft="35dp"
-                android:fontFamily="@font/inter"
-                android:text="Due Date:"
-                android:textColor="#000000"
-                android:textFontWeight="400"
-                android:textSize="16dp" />
-
-            <EditText
-                android:id="@+id/DueDate"
-                android:layout_width="343dp"
-                android:layout_height="56dp"
-                android:layout_marginLeft="35dp"
-                android:layout_marginTop="5dp"
-                android:background="@drawable/login_border"
-                android:editable="true" />
-
-            <TextView
-                android:id="@+id/textView24"
-                android:layout_width="300dp"
-                android:layout_height="24dp"
-                android:layout_marginTop="5dp"
-                android:layout_marginLeft="35dp"
-                android:fontFamily="@font/inter"
-                android:text="Subtotal:"
-                android:textColor="#000000"
-                android:textFontWeight="400"
-                android:textSize="16dp" />
-
-            <EditText
-                android:id="@+id/Subtotal"
-                android:layout_width="343dp"
-                android:layout_height="56dp"
-                android:layout_marginLeft="35dp"
-                android:layout_marginTop="5dp"
-                android:background="@drawable/login_border"
-                android:editable="true" />
-
-            <TextView
-                android:id="@+id/textView25"
-                android:layout_width="300dp"
-                android:layout_height="24dp"
-                android:layout_marginTop="5dp"
-                android:layout_marginLeft="35dp"
-                android:fontFamily="@font/inter"
-                android:text="Shipping/Handling:"
-                android:textColor="#000000"
-                android:textFontWeight="400"
-                android:textSize="16dp" />
-
-            <EditText
-                android:id="@+id/ShipHand"
-                android:layout_width="343dp"
-                android:layout_height="56dp"
-                android:layout_marginLeft="35dp"
-                android:layout_marginTop="5dp"
-                android:background="@drawable/login_border"
-                android:editable="true" />
-
-            <TextView
-                android:id="@+id/textView27"
-                android:layout_width="300dp"
-                android:layout_height="24dp"
-                android:layout_marginTop="5dp"
-                android:layout_marginLeft="35dp"
-                android:fontFamily="@font/inter"
-                android:text="Total Amount:"
-                android:textColor="#000000"
-                android:textFontWeight="400"
-                android:textSize="16dp" />
-
-            <EditText
-                android:id="@+id/Total"
-                android:layout_width="343dp"
-                android:layout_height="56dp"
-                android:layout_marginLeft="35dp"
-                android:layout_marginTop="5dp"
-                android:background="@drawable/login_border"
-                android:editable="true" />
-
-            <TextView
-                android:id="@+id/textViewExtra"
-                android:layout_width="300dp"
-                android:layout_height="24dp"
-                android:layout_marginLeft="35dp"
-                android:layout_marginTop="5dp"
-                android:fontFamily="@font/inter"
-                android:text="TestEXTRA"
-                android:textColor="#000000"
-                android:textFontWeight="400"
-                android:textSize="16dp" />
-
-            <EditText
-                android:id="@+id/Extra"
-                android:layout_width="343dp"
-                android:layout_height="56dp"
-                android:layout_marginLeft="35dp"
-                android:layout_marginTop="5dp"
-                android:background="@drawable/login_border"
-                android:editable="true" />
-
-            <Button
-                android:id="@+id/Description"
+            <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="Description" />
-        </LinearLayout>
-    </ScrollView>
+                android:orientation="vertical">
+
+                <TextView
+                    android:id="@+id/textViewName"
+                    android:layout_width="300dp"
+                    android:layout_height="24dp"
+                    android:layout_marginLeft="35dp"
+                    android:layout_marginTop="15dp"
+                    android:fontFamily="@font/inter"
+                    android:text="Issuer:"
+                    android:textColor="#000000"
+                    android:textFontWeight="400"
+                    android:textSize="16dp" />
+
+                <EditText
+                    android:id="@+id/Issuer"
+                    android:layout_width="343dp"
+                    android:layout_height="56dp"
+                    android:layout_marginLeft="35dp"
+                    android:layout_marginTop="5dp"
+                    android:background="@drawable/login_border"
+                    android:editable="true" />
+
+                <TextView
+                    android:id="@+id/textView30"
+                    android:layout_width="300dp"
+                    android:layout_height="24dp"
+                    android:layout_marginLeft="35dp"
+                    android:layout_marginTop="15dp"
+                    android:fontFamily="@font/inter"
+                    android:text="Country:"
+                    android:textColor="#000000"
+                    android:textFontWeight="400"
+                    android:textSize="16dp" />
+
+                <EditText
+                    android:id="@+id/Country"
+                    android:layout_width="343dp"
+                    android:layout_height="56dp"
+                    android:layout_marginLeft="35dp"
+                    android:layout_marginTop="5dp"
+                    android:background="@drawable/login_border"
+                    android:editable="true" />
+
+                <TextView
+                    android:id="@+id/textView29"
+                    android:layout_width="300dp"
+                    android:layout_height="24dp"
+                    android:layout_marginLeft="35dp"
+                    android:layout_marginTop="15dp"
+                    android:fontFamily="@font/inter"
+                    android:text="State:"
+                    android:textColor="#000000"
+                    android:textFontWeight="400"
+                    android:textSize="16dp" />
+
+                <EditText
+                    android:id="@+id/State"
+                    android:layout_width="343dp"
+                    android:layout_height="56dp"
+                    android:layout_marginLeft="35dp"
+                    android:layout_marginTop="5dp"
+                    android:background="@drawable/login_border"
+                    android:editable="true" />
+
+                <TextView
+                    android:id="@+id/textView28"
+                    android:layout_width="300dp"
+                    android:layout_height="24dp"
+                    android:layout_marginLeft="35dp"
+                    android:layout_marginTop="15dp"
+                    android:fontFamily="@font/inter"
+                    android:text="City:"
+                    android:textColor="#000000"
+                    android:textFontWeight="400"
+                    android:textSize="16dp" />
+
+                <EditText
+                    android:id="@+id/City"
+                    android:layout_width="343dp"
+                    android:layout_height="56dp"
+                    android:layout_marginLeft="35dp"
+                    android:layout_marginTop="5dp"
+                    android:background="@drawable/login_border"
+                    android:editable="true" />
+
+                <TextView
+                    android:id="@+id/textView21"
+                    android:layout_width="300dp"
+                    android:layout_height="24dp"
+                    android:layout_marginLeft="35dp"
+                    android:layout_marginTop="15dp"
+                    android:fontFamily="@font/inter"
+                    android:text="Street:"
+                    android:textColor="#000000"
+                    android:textFontWeight="400"
+                    android:textSize="16dp" />
+
+                <EditText
+                    android:id="@+id/Street"
+                    android:layout_width="343dp"
+                    android:layout_height="56dp"
+                    android:layout_marginLeft="35dp"
+                    android:layout_marginTop="5dp"
+                    android:background="@drawable/login_border"
+                    android:editable="true" />
+
+                <TextView
+                    android:id="@+id/textView20"
+                    android:layout_width="300dp"
+                    android:layout_height="24dp"
+                    android:layout_marginLeft="35dp"
+                    android:layout_marginTop="15dp"
+                    android:fontFamily="@font/inter"
+                    android:text="Invoice Number:"
+                    android:textColor="#000000"
+                    android:textFontWeight="400"
+                    android:textSize="16dp" />
+
+                <EditText
+                    android:id="@+id/InvoiceNum"
+                    android:layout_width="343dp"
+                    android:layout_height="56dp"
+                    android:layout_marginLeft="35dp"
+                    android:layout_marginTop="5dp"
+                    android:background="@drawable/login_border"
+                    android:editable="true" />
+
+                <TextView
+                    android:id="@+id/textView22"
+                    android:layout_width="300dp"
+                    android:layout_height="24dp"
+                    android:layout_marginLeft="35dp"
+                    android:layout_marginTop="5dp"
+                    android:fontFamily="@font/inter"
+                    android:text="Invoice Date:"
+                    android:textColor="#000000"
+                    android:textFontWeight="400"
+                    android:textSize="16dp" />
+
+                <EditText
+                    android:id="@+id/InvoiceDate"
+                    android:layout_width="343dp"
+                    android:layout_height="56dp"
+                    android:layout_marginLeft="35dp"
+                    android:layout_marginTop="5dp"
+                    android:background="@drawable/login_border"
+                    android:editable="true" />
+
+                <TextView
+                    android:id="@+id/textView23"
+                    android:layout_width="300dp"
+                    android:layout_height="24dp"
+                    android:layout_marginLeft="35dp"
+                    android:layout_marginTop="5dp"
+                    android:fontFamily="@font/inter"
+                    android:text="Due Date:"
+                    android:textColor="#000000"
+                    android:textFontWeight="400"
+                    android:textSize="16dp" />
+
+                <EditText
+                    android:id="@+id/DueDate"
+                    android:layout_width="343dp"
+                    android:layout_height="56dp"
+                    android:layout_marginLeft="35dp"
+                    android:layout_marginTop="5dp"
+                    android:background="@drawable/login_border"
+                    android:editable="true" />
+
+                <TextView
+                    android:id="@+id/textView24"
+                    android:layout_width="300dp"
+                    android:layout_height="24dp"
+                    android:layout_marginLeft="35dp"
+                    android:layout_marginTop="5dp"
+                    android:fontFamily="@font/inter"
+                    android:text="Subtotal:"
+                    android:textColor="#000000"
+                    android:textFontWeight="400"
+                    android:textSize="16dp" />
+
+                <EditText
+                    android:id="@+id/Subtotal"
+                    android:layout_width="343dp"
+                    android:layout_height="56dp"
+                    android:layout_marginLeft="35dp"
+                    android:layout_marginTop="5dp"
+                    android:background="@drawable/login_border"
+                    android:editable="true" />
+
+                <TextView
+                    android:id="@+id/textView25"
+                    android:layout_width="300dp"
+                    android:layout_height="24dp"
+                    android:layout_marginLeft="35dp"
+                    android:layout_marginTop="5dp"
+                    android:fontFamily="@font/inter"
+                    android:text="Shipping/Handling:"
+                    android:textColor="#000000"
+                    android:textFontWeight="400"
+                    android:textSize="16dp" />
+
+                <EditText
+                    android:id="@+id/ShipHand"
+                    android:layout_width="343dp"
+                    android:layout_height="56dp"
+                    android:layout_marginLeft="35dp"
+                    android:layout_marginTop="5dp"
+                    android:background="@drawable/login_border"
+                    android:editable="true" />
+
+                <TextView
+                    android:id="@+id/textView27"
+                    android:layout_width="300dp"
+                    android:layout_height="24dp"
+                    android:layout_marginLeft="35dp"
+                    android:layout_marginTop="5dp"
+                    android:fontFamily="@font/inter"
+                    android:text="Total Amount:"
+                    android:textColor="#000000"
+                    android:textFontWeight="400"
+                    android:textSize="16dp" />
+
+                <EditText
+                    android:id="@+id/Total"
+                    android:layout_width="343dp"
+                    android:layout_height="56dp"
+                    android:layout_marginLeft="35dp"
+                    android:layout_marginTop="5dp"
+                    android:background="@drawable/login_border"
+                    android:editable="true" />
+
+                <TextView
+                    android:id="@+id/textViewExtra"
+                    android:layout_width="300dp"
+                    android:layout_height="24dp"
+                    android:layout_marginLeft="35dp"
+                    android:layout_marginTop="5dp"
+                    android:fontFamily="@font/inter"
+                    android:text="TestEXTRA"
+                    android:textColor="#000000"
+                    android:textFontWeight="400"
+                    android:textSize="16dp" />
+
+                <EditText
+                    android:id="@+id/Extra"
+                    android:layout_width="343dp"
+                    android:layout_height="56dp"
+                    android:layout_marginLeft="35dp"
+                    android:layout_marginTop="5dp"
+                    android:background="@drawable/login_border"
+                    android:editable="true" />
+
+                <Button
+                    android:id="@+id/Description"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Description" />
+            </LinearLayout>
+        </ScrollView>
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/recycleView"
+            android:layout_width="match_parent"
+            android:layout_marginBottom="0dp"
+            android:layout_height="wrap_content" />
+
+    </LinearLayout>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

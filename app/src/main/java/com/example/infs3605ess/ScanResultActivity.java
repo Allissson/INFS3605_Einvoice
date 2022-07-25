@@ -1,6 +1,8 @@
 package com.example.infs3605ess;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -8,6 +10,7 @@ import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.DatabaseReference;
@@ -27,6 +30,8 @@ public class ScanResultActivity extends AppCompatActivity {
     private DatabaseReference uDb;
     private Date dInvoiceDate, dDueDate;
     private List<Description> mDescription = new ArrayList<>();
+    private DescriptionAdapter mAdapter;
+    private RecyclerView mRecyclerView;
 
 
     @Override
@@ -48,10 +53,64 @@ public class ScanResultActivity extends AppCompatActivity {
         Total=findViewById(R.id.Total);
         Description=findViewById(R.id.Description);
 
+        mRecyclerView = findViewById(R.id.recycleView);
+
+
         message=getIntent().getStringExtra("output");
 
         //Get Scan result
         String ScanResult = message;
+
+
+        mRecyclerView.setHasFixedSize(true);
+        RecyclerView.LayoutManager layoutManager = new LinearLayoutManager(getApplicationContext());
+        mRecyclerView.setLayoutManager(layoutManager);
+
+
+
+        DescriptionInfo = ScanResult.substring(ScanResult.indexOf("Amount ") + 7);
+        DescriptionInfo = DescriptionInfo.substring(0, DescriptionInfo.indexOf(" Tax "));
+
+        String[] messageSplit = DescriptionInfo.split(" ");
+        int i = messageSplit.length;
+        System.out.println(String.valueOf(i));
+
+        for(int a=0;a<i;a=a+4){
+            Description d = new Description();
+            Log.d(TAG, messageSplit[a]);
+            d.setName(messageSplit[a]);
+            d.setQuantity(Integer.parseInt(messageSplit[a+1]));
+            Log.d(TAG, messageSplit[a+1]);
+            String price = messageSplit[a+2];
+            String destotal = messageSplit[a+3];
+            price = price.replace("$","");
+            price = price.replace(",","");
+            price = price.substring(0, price.length() - 3);
+
+
+            destotal = destotal.replace("$","");
+            destotal = destotal.replace(",","");
+            destotal = destotal.substring(0, destotal.length() - 3);
+
+            d.setTotal(Integer.parseInt(destotal));
+            d.setPrice(Integer.parseInt(price));
+            mDescription.add(d);
+        }
+
+        DescriptionAdapter.ClickListener listener = new DescriptionAdapter.ClickListener() {
+            @Override
+            public void onProductClick(View view, int DescriptionID) {
+                //Model model=(Model)adapter.getItem(position);
+                Description description = mDescription.get(DescriptionID);
+                // Display details for the selected RecyclerView item (product on the list)
+                /////Toast.makeText(getApplicationContext(), description.getName()+"\nPrice = $"+description.getPrice(), Toast.LENGTH_SHORT).show();
+            }
+        };
+
+        mAdapter = new DescriptionAdapter(mDescription, listener);
+        mRecyclerView.setAdapter(mAdapter);
+
+
 
         //Get variables
 
@@ -172,7 +231,7 @@ public class ScanResultActivity extends AppCompatActivity {
 
         // split description
 
-        String[] messageSplit = DescriptionInfo.split(" ");
+        /*String[] messageSplit = DescriptionInfo.split(" ");
         int i = messageSplit.length;
         System.out.println(String.valueOf(i));
 
@@ -198,6 +257,8 @@ public class ScanResultActivity extends AppCompatActivity {
             d.setPrice(Integer.parseInt(price));
             mDescription.add(d);
         }
+
+         */
 
         Invoice invoice =new Invoice(Name,country,state,city,street,invoicenumber,dInvoiceDate,dDueDate,dSub,dShip,dTotal,dExtra,mDescription,"unpaid");
         uDb.child(FirebaseAuth.getInstance().getCurrentUser().getUid()).child("Invoice").child(invoicenumber).setValue(invoice);
