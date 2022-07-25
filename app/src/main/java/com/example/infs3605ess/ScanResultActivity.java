@@ -1,5 +1,6 @@
 package com.example.infs3605ess;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
@@ -12,7 +13,10 @@ import android.widget.Button;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 
@@ -32,6 +36,10 @@ public class ScanResultActivity extends AppCompatActivity {
     private List<Description> mDescription = new ArrayList<>();
     private DescriptionAdapter mAdapter;
     private RecyclerView mRecyclerView;
+
+    private Button testSave;
+    private int bonus =0;
+
 
 
     @Override
@@ -54,6 +62,9 @@ public class ScanResultActivity extends AppCompatActivity {
         Description=findViewById(R.id.Description);
 
         mRecyclerView = findViewById(R.id.recycleView);
+
+        testSave=findViewById(R.id.testSave);
+
 
 
         message=getIntent().getStringExtra("output");
@@ -262,6 +273,39 @@ public class ScanResultActivity extends AppCompatActivity {
 
         Invoice invoice =new Invoice(Name,country,state,city,street,invoicenumber,dInvoiceDate,dDueDate,dSub,dShip,dTotal,dExtra,mDescription,"unpaid");
         uDb.child(FirebaseAuth.getInstance().getCurrentUser().getUid()).child("Invoice").child(invoicenumber).setValue(invoice);
+
+        // Save Bonus
+        //int bonus = Integer.parseInt(String.valueOf(uDb.child(FirebaseAuth.getInstance().getCurrentUser().getUid()).child("Bonus").get().getResult().getValue()));
+        //System.out.println(bonus);
+
+        uDb.child(FirebaseAuth.getInstance().getCurrentUser().getUid()).child("Bonus").get().addOnCompleteListener(new OnCompleteListener<DataSnapshot>() {
+            @Override
+            public void onComplete(@NonNull Task<DataSnapshot> task) {
+                if (!task.isSuccessful()) {
+                    Log.e("firebase", "Error getting data", task.getException());
+                }
+                else {
+                    Log.d("firebase", String.valueOf(task.getResult().getValue()));
+                    String sbonus=String.valueOf(task.getResult().getValue());
+                    System.out.println(sbonus.length());
+                    //bonus = Integer.parseInt(String.valueOf(task.getResult().getValue()));
+                    if(sbonus.equals("null")){
+                        bonus = 0;
+                    }
+                    else{
+                        bonus = Integer.parseInt(sbonus);
+                    }
+
+                }
+            }
+        });
+        testSave.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+
+                uDb.child(FirebaseAuth.getInstance().getCurrentUser().getUid()).child("Bonus").setValue(bonus+1);
+            }
+        });
 
 
     }
