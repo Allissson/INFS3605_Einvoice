@@ -199,8 +199,8 @@ public class ScanResultActivity extends AppCompatActivity {
             mDescription.add(d);
         }
 
-        Invoice invoice =new Invoice(Name,country,state,city,street,invoicenumber,dInvoiceDate,dDueDate,dSub,dShip,dTotal,dExtra,mDescription);
-        uDb.child(FirebaseAuth.getInstance().getCurrentUser().getUid()).child(invoicenumber).setValue(invoice);
+        Invoice invoice =new Invoice(Name,country,state,city,street,invoicenumber,dInvoiceDate,dDueDate,dSub,dShip,dTotal,dExtra,mDescription,"unpaid");
+        uDb.child(FirebaseAuth.getInstance().getCurrentUser().getUid()).child("Invoice").child(invoicenumber).setValue(invoice);
 
 
     }
