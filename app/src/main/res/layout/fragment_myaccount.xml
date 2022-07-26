@@ -23,12 +23,15 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="12dp"
         android:layout_marginLeft="12dp"
+        android:layout_marginTop="10dp"
+        android:fontFamily="@font/inter"
         android:text="TextView"
-        app:layout_constraintStart_toEndOf="@+id/imageView4"
-        app:layout_constraintTop_toTopOf="@+id/imageView4"
-        android:textFontWeight="400"
+        android:textFontWeight="800"
         android:textSize="20dp"
-        android:fontFamily="@font/inter"/>
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/imageView4"
+        app:layout_constraintTop_toBottomOf="@+id/textView31"
+        />
 
     <Button
         android:id="@+id/btt_logout"
@@ -51,4 +54,43 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         tools:progress="40" />
+
+    <TextView
+        android:id="@+id/textView31"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="12dp"
+        android:layout_marginLeft="12dp"
+        android:layout_marginBottom="5dp"
+        android:text="Welcome Back!"
+        android:textSize="24dp"
+        app:layout_constraintBottom_toBottomOf="@+id/imageView4"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/imageView4"
+        app:layout_constraintTop_toTopOf="@+id/imageView4"
+        android:fontFamily="@font/inter"
+        />
+
+    <ImageView
+        android:id="@+id/imageView2"
+        android:layout_width="157dp"
+        android:layout_height="196dp"
+        android:layout_marginTop="14dp"
+        android:src="@drawable/tree"
+        app:layout_constraintEnd_toEndOf="@+id/id_progress"
+        app:layout_constraintStart_toStartOf="@+id/id_progress"
+        app:layout_constraintTop_toTopOf="@+id/id_progress" />
+
+    <TextView
+        android:id="@+id/points"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="160dp"
+        android:fontFamily="@font/inter"
+        android:text="TextView"
+        android:textSize="18dp"
+        app:layout_constraintEnd_toEndOf="@+id/id_progress"
+        app:layout_constraintStart_toStartOf="@+id/id_progress"
+        app:layout_constraintTop_toTopOf="@+id/imageView2" />
+
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -10,5 +10,6 @@
     <color name="purple">#575DFB</color>
     <color name="transparent">#00FFFFFF</color>
     <color name="red">#F15353</color>
-
+    <color name="app_blue">#8193CC</color>
+    <color name="app_red">#C38092</color>
 </resources>

@@ -9,66 +9,103 @@
 
     <ImageView
         android:id="@+id/imageView"
-        android:layout_width="333dp"
+        android:layout_width="match_parent"
         android:layout_height="413dp"
         android:layout_marginStart="16dp"
         android:layout_marginLeft="16dp"
-        android:layout_marginTop="80dp"
+        android:layout_marginTop="100dp"
         android:layout_marginEnd="16dp"
         android:layout_marginRight="16dp"
-        android:layout_marginBottom="160dp"
-        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.488"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.0"
         app:srcCompat="@drawable/ic_launcher_foreground" />
 
-    <Button
+    <androidx.appcompat.widget.AppCompatButton
         android:id="@+id/extract"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="110dp"
+        android:layout_height="35dp"
         android:layout_marginTop="25dp"
         android:layout_marginEnd="26dp"
         android:layout_marginRight="26dp"
-        android:text="Extract"
+        android:background="@drawable/shape_btn_red"
+        android:text="EXTRACT"
+        android:textColor="@color/white"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
-    <TextView
-        android:id="@+id/output"
-        android:layout_width="225dp"
-        android:layout_height="91dp"
-        android:text="TextView"
-        android:visibility="invisible"
-        tools:layout_editor_absoluteX="16dp"
-        tools:layout_editor_absoluteY="8dp" />
 
-    <Button
-        android:id="@+id/btt_choose"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="60dp"
-        android:text="Choose From Album"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.497"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="@+id/scanfromcamera" />
-
-    <Button
+    <RelativeLayout
         android:id="@+id/scanfromcamera"
-        android:layout_width="193dp"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="15dp"
-        android:text="Scan from Camera"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/imageView" />
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:layout_marginLeft="16dp"
+        android:layout_marginRight="16dp"
+        android:layout_marginBottom="20dp"
+        android:background="@drawable/shape_btn_blue"
+        app:layout_constraintBottom_toTopOf="@id/btt_choose"
+        app:layout_constraintEnd_toEndOf="parent" >
 
-    <Button
-        android:id="@+id/Test"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Test" />
+        <LinearLayout
+            android:layout_centerInParent="true"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content">
+
+            <ImageView
+                android:layout_width="28dp"
+                android:layout_height="25dp"
+                android:layout_gravity="center_vertical"
+                android:layout_marginTop="2dp"
+                android:src="@mipmap/ic_camera" />
+
+            <TextView
+                android:text="Choose from camera"
+                android:layout_gravity="center_vertical"
+                android:layout_marginLeft="8dp"
+                android:textColor="@color/white"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"/>
+
+        </LinearLayout>
+
+
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:id="@+id/btt_choose"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:layout_marginLeft="16dp"
+        android:layout_marginRight="16dp"
+        android:layout_marginBottom="20dp"
+        android:background="@drawable/shape_btn_red"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent" >
+
+        <LinearLayout
+            android:gravity="center_vertical"
+            android:layout_centerInParent="true"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content">
+
+            <ImageView
+                android:layout_width="35dp"
+                android:layout_height="47dp"
+                android:layout_gravity="center_vertical"
+                android:layout_marginTop="2dp"
+                android:src="@mipmap/ic_photo" />
+
+            <TextView
+                android:text="Choose from album"
+                android:layout_marginLeft="8dp"
+                android:textColor="@color/white"
+                android:layout_gravity="center_vertical"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"/>
+
+        </LinearLayout>
+
+
+    </RelativeLayout>
+
 </androidx.constraintlayout.widget.ConstraintLayout>

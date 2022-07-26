@@ -36,7 +36,7 @@ public class AccountFragment extends Fragment {
 
     private static final String TAG ="Account Fragment" ;
     private AccountViewModel accountViewModel;
-    private TextView message;
+    private TextView message,points;
     private FirebaseAuth mFirebaseAuth;
     private DatabaseReference mDb;
     private String userId,userName;
@@ -71,11 +71,11 @@ public class AccountFragment extends Fragment {
             }
         });
 
-        mDb.child("User").child(userId).addValueEventListener(new ValueEventListener() {
+        mDb.child("User").child(userId).child("userName").addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
-                User user = snapshot.getValue(User.class);
-                userName = user.getUserName();
+                //User user = snapshot.getValue(User.class);
+                userName = snapshot.getValue().toString();
             }
 
             @Override
@@ -84,7 +84,22 @@ public class AccountFragment extends Fragment {
             }
 
         });
-        message.setText(userName);
+        mDb.child("User").child(FirebaseAuth.getInstance().getCurrentUser().getUid()).child("userName").get().addOnCompleteListener(new OnCompleteListener<DataSnapshot>() {
+            @Override
+            public void onComplete(@NonNull Task<DataSnapshot> task) {
+                if (!task.isSuccessful()) {
+                    Log.e("firebase", "Error getting data", task.getException());
+                }
+                else {
+                    Log.d("firebase", String.valueOf(task.getResult().getValue()));
+                    userName=String.valueOf(task.getResult().getValue());
+                    message.setText(userName);
+                }
+            }
+        });
+
+
+
 
         // progress show
 
@@ -110,8 +125,13 @@ public class AccountFragment extends Fragment {
             }
         });
         progr=bonus/200;
+        System.out.println(progr);
         progressBar=view.findViewById(R.id.id_progress);
         progressBar.setProgress(progr);
+
+        // points show
+        points=view.findViewById(R.id.points);
+        points.setText(bonus+"/200");
     };
     private void logout(){
         mFirebaseAuth.signOut();
