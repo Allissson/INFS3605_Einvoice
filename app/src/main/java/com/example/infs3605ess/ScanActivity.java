@@ -55,12 +55,12 @@ public class ScanActivity extends AppCompatActivity {
         scanfromcamera=findViewById(R.id.scanfromcamera);
         //test = findViewById(R.id.Test);
 
-        test.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                switchActivities();
-            }
-        });
+//        test.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View view) {
+//                switchActivities();
+//            }
+//        });
 
 
 
