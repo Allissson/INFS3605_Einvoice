@@ -21,6 +21,26 @@
         app:layout_constraintTop_toTopOf="parent"
         app:srcCompat="@drawable/ic_launcher_foreground" />
 
+    <ImageView
+        android:layout_width="28dp"
+        android:layout_height="25dp"
+        android:layout_gravity="center_vertical"
+        android:src="@mipmap/ic_camera"
+        app:layout_constraintStart_toStartOf="@+id/scanfromcamera"
+        app:layout_constraintTop_toTopOf="@+id/scanfromcamera" />
+
+    <androidx.appcompat.widget.AppCompatButton
+        android:id="@+id/scanfromcamera"
+        android:layout_width="379dp"
+        android:layout_height="55dp"
+        android:layout_marginTop="50dp"
+        android:background="@drawable/shape_btn_blue"
+        android:text="Scan"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/imageView" />
+
+
     <androidx.appcompat.widget.AppCompatButton
         android:id="@+id/extract"
         android:layout_width="110dp"
@@ -35,77 +55,16 @@
         app:layout_constraintTop_toTopOf="parent" />
 
 
-    <RelativeLayout
-        android:id="@+id/scanfromcamera"
-        android:layout_width="match_parent"
-        android:layout_height="50dp"
-        android:layout_marginLeft="16dp"
-        android:layout_marginRight="16dp"
-        android:layout_marginBottom="20dp"
-        android:background="@drawable/shape_btn_blue"
-        app:layout_constraintBottom_toTopOf="@id/btt_choose"
-        app:layout_constraintEnd_toEndOf="parent" >
-
-        <LinearLayout
-            android:layout_centerInParent="true"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content">
-
-            <ImageView
-                android:layout_width="28dp"
-                android:layout_height="25dp"
-                android:layout_gravity="center_vertical"
-                android:layout_marginTop="2dp"
-                android:src="@mipmap/ic_camera" />
-
-            <TextView
-                android:text="Choose from camera"
-                android:layout_gravity="center_vertical"
-                android:layout_marginLeft="8dp"
-                android:textColor="@color/white"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"/>
-
-        </LinearLayout>
-
-
-    </RelativeLayout>
-
-    <RelativeLayout
+    <androidx.appcompat.widget.AppCompatButton
         android:id="@+id/btt_choose"
-        android:layout_width="match_parent"
-        android:layout_height="50dp"
-        android:layout_marginLeft="16dp"
-        android:layout_marginRight="16dp"
-        android:layout_marginBottom="20dp"
+        android:layout_width="379dp"
+        android:layout_height="55dp"
+        android:layout_marginTop="30dp"
         android:background="@drawable/shape_btn_red"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent" >
+        android:text="Choose from Gallery"
+        app:layout_constraintEnd_toEndOf="@+id/scanfromcamera"
+        app:layout_constraintStart_toStartOf="@+id/scanfromcamera"
+        app:layout_constraintTop_toBottomOf="@+id/scanfromcamera" />
 
-        <LinearLayout
-            android:gravity="center_vertical"
-            android:layout_centerInParent="true"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content">
-
-            <ImageView
-                android:layout_width="35dp"
-                android:layout_height="47dp"
-                android:layout_gravity="center_vertical"
-                android:layout_marginTop="2dp"
-                android:src="@mipmap/ic_photo" />
-
-            <TextView
-                android:text="Choose from album"
-                android:layout_marginLeft="8dp"
-                android:textColor="@color/white"
-                android:layout_gravity="center_vertical"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"/>
-
-        </LinearLayout>
-
-
-    </RelativeLayout>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

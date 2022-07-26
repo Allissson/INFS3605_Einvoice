@@ -10,8 +10,8 @@
         android:id="@+id/imageView4"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="30dp"
-        android:layout_marginLeft="30dp"
+        android:layout_marginStart="40dp"
+        android:layout_marginLeft="40dp"
         android:layout_marginTop="30dp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
@@ -47,12 +47,12 @@
         android:id="@+id/id_progress"
         android:layout_width="277dp"
         android:layout_height="261dp"
-        android:layout_marginTop="200dp"
+        android:layout_marginTop="20dp"
         android:indeterminateOnly="false"
         android:progressDrawable="@drawable/progress_circle"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/leave1"
         tools:progress="40" />
 
     <TextView
@@ -92,5 +92,48 @@
         app:layout_constraintEnd_toEndOf="@+id/id_progress"
         app:layout_constraintStart_toStartOf="@+id/id_progress"
         app:layout_constraintTop_toTopOf="@+id/imageView2" />
+
+    <ImageView
+        android:id="@+id/leave1"
+        android:layout_width="41dp"
+        android:layout_height="44dp"
+        android:layout_marginStart="20dp"
+        android:layout_marginLeft="20dp"
+        android:src="@drawable/leave_greey"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/imageView4" />
+
+    <ImageView
+        android:id="@+id/leave2"
+        android:layout_width="41dp"
+        android:layout_height="44dp"
+        android:layout_marginStart="5dp"
+        android:layout_marginLeft="5dp"
+        android:src="@drawable/leave_greey"
+        app:layout_constraintBottom_toBottomOf="@+id/leave1"
+        app:layout_constraintStart_toEndOf="@+id/leave1"
+        app:layout_constraintTop_toTopOf="@+id/leave1" />
+
+    <ImageView
+        android:id="@+id/leave3"
+        android:layout_width="41dp"
+        android:layout_height="44dp"
+        android:layout_marginStart="5dp"
+        android:layout_marginLeft="5dp"
+        android:src="@drawable/leave_greey"
+        app:layout_constraintBottom_toBottomOf="@+id/leave2"
+        app:layout_constraintStart_toEndOf="@+id/leave2"
+        app:layout_constraintTop_toTopOf="@+id/leave2" />
+
+    <ImageView
+        android:id="@+id/leave4"
+        android:layout_width="41dp"
+        android:layout_height="44dp"
+        android:layout_marginStart="5dp"
+        android:layout_marginLeft="5dp"
+        android:src="@drawable/leave_greey"
+        app:layout_constraintBottom_toBottomOf="@+id/leave3"
+        app:layout_constraintStart_toEndOf="@+id/leave3"
+        app:layout_constraintTop_toTopOf="@+id/leave3" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

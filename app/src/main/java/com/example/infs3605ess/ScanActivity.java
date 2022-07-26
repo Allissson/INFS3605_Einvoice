@@ -48,12 +48,12 @@ public class ScanActivity extends AppCompatActivity {
         ActivityCompat.requestPermissions(this,new String[]{Manifest.permission.READ_EXTERNAL_STORAGE, Manifest.permission.WRITE_EXTERNAL_STORAGE,Manifest.permission.CAMERA},
                 PackageManager.PERMISSION_GRANTED);
 
-        output=findViewById(R.id.output);
+        //output=findViewById(R.id.output);
         extract=findViewById(R.id.extract);
         image=findViewById(R.id.imageView);
         choose=findViewById(R.id.btt_choose);
         scanfromcamera=findViewById(R.id.scanfromcamera);
-        test = findViewById(R.id.Test);
+        //test = findViewById(R.id.Test);
 
         test.setOnClickListener(new View.OnClickListener() {
             @Override

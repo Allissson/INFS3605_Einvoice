@@ -1,12 +1,14 @@
 package com.example.infs3605ess.ui.account;
 
 import android.content.Intent;
+import android.graphics.drawable.Drawable;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.ImageView;
 import android.widget.ProgressBar;
 import android.widget.TextView;
 
@@ -44,6 +46,8 @@ public class AccountFragment extends Fragment {
     private int progr = 0;
     private int bonus=0;
     private ProgressBar progressBar;
+    private ImageView leaf1,leaf2,leaf3,leaf4;
+    private int leafNo=0;
 
     public View onCreateView(@NonNull LayoutInflater inflater,
                              ViewGroup container, Bundle savedInstanceState) {
@@ -124,7 +128,21 @@ public class AccountFragment extends Fragment {
                 }
             }
         });
-        progr=bonus/200;
+        // check if user achieve the goal
+        if(bonus==800){
+            // pop up screen
+            System.out.println("Achieve!");
+            // reset the bonus
+            mDb.child(FirebaseAuth.getInstance().getCurrentUser().getUid()).child("Bonus").setValue(0);
+        }
+        if(bonus>200){
+            leafNo = (int)Math.floor(bonus/200);
+            progr = bonus - leafNo*200;
+        }
+        else{
+            progr=bonus/200;
+        }
+
         System.out.println(progr);
         progressBar=view.findViewById(R.id.id_progress);
         progressBar.setProgress(progr);
@@ -132,6 +150,36 @@ public class AccountFragment extends Fragment {
         // points show
         points=view.findViewById(R.id.points);
         points.setText(bonus+"/200");
+
+        // set leaf
+        leaf1=view.findViewById(R.id.leave1);
+        leaf2=view.findViewById(R.id.leave2);
+        leaf3=view.findViewById(R.id.leave3);
+        leaf4=view.findViewById(R.id.leave4);
+
+        String uri = "@drawable/myresource";  // where myresource (without the extension) is the file
+
+        int imageResource = getResources().getIdentifier("@drawable/leave_green", null, getActivity().getPackageName());
+        Drawable res = getResources().getDrawable(imageResource);
+
+        if(leafNo==1){
+            leaf1.setImageDrawable(res);
+        }
+        else if(leafNo==2){
+            leaf1.setImageDrawable(res);
+            leaf2.setImageDrawable(res);
+        }
+        else if (leafNo==3) {
+            leaf1.setImageDrawable(res);
+            leaf2.setImageDrawable(res);
+            leaf3.setImageDrawable(res);
+        }
+        else if(leafNo==4){
+            leaf1.setImageDrawable(res);
+            leaf2.setImageDrawable(res);
+            leaf3.setImageDrawable(res);
+            leaf4.setImageDrawable(res);
+        }
     };
     private void logout(){
         mFirebaseAuth.signOut();
