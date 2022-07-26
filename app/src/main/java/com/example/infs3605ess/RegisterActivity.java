@@ -87,7 +87,7 @@ public class RegisterActivity extends AppCompat {
                     @Override
                     public void onComplete(@NonNull Task<AuthResult> task) {
                         if(task.isSuccessful()){
-                            User user = new User(companyName,userName,email);
+                            User user = new User(companyName,userName,email,0);
                             FirebaseDatabase.getInstance().getReference("User")
                                     .child(FirebaseAuth.getInstance().getCurrentUser().getUid())
                                     .setValue(user).addOnCompleteListener(new OnCompleteListener<Void>() {

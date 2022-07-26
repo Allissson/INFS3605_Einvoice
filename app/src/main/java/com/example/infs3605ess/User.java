@@ -5,6 +5,8 @@ import android.text.style.IconMarginSpan;
 public class User {
 
     public String companyName, userName,email;
+    public int bonus;
+
     public User(){
 
     }
@@ -33,9 +35,10 @@ public class User {
         this.email = email;
     }
 
-    public User(String companyName, String userName, String email){
+    public User(String companyName, String userName, String email,int bonus){
         this.email=email;
         this.companyName= companyName;
         this.userName=userName;
+        this.bonus=bonus;
     }
 }
