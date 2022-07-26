@@ -26,7 +26,7 @@
             android:layout_marginStart="35dp"
             android:layout_marginLeft="35dp"
             android:layout_marginTop="60dp"
-            android:text="Scan Result"
+            android:text="@string/activity_scan_result_1"
             android:textColor="#575DFB"
             android:textFontWeight="700"
             android:textSize="32dp" />
@@ -38,7 +38,7 @@
             android:layout_marginLeft="35dp"
             android:layout_marginTop="5dp"
             android:fontFamily="@font/inter"
-            android:text="Check Scanned Details!"
+            android:text="@string/activity_scan_result_2"
             android:textColor="#000000"
             android:textFontWeight="400"
             android:textSize="16dp" />
@@ -60,7 +60,7 @@
                     android:layout_marginLeft="35dp"
                     android:layout_marginTop="15dp"
                     android:fontFamily="@font/inter"
-                    android:text="Issuer:"
+                    android:text="@string/activity_scan_result_3"
                     android:textColor="#000000"
                     android:textFontWeight="400"
                     android:textSize="16dp" />
@@ -81,7 +81,7 @@
                     android:layout_marginLeft="35dp"
                     android:layout_marginTop="15dp"
                     android:fontFamily="@font/inter"
-                    android:text="Country:"
+                    android:text="@string/activity_scan_result_4"
                     android:textColor="#000000"
                     android:textFontWeight="400"
                     android:textSize="16dp" />
@@ -102,7 +102,7 @@
                     android:layout_marginLeft="35dp"
                     android:layout_marginTop="15dp"
                     android:fontFamily="@font/inter"
-                    android:text="State:"
+                    android:text="@string/activity_scan_result_5"
                     android:textColor="#000000"
                     android:textFontWeight="400"
                     android:textSize="16dp" />
@@ -123,7 +123,7 @@
                     android:layout_marginLeft="35dp"
                     android:layout_marginTop="15dp"
                     android:fontFamily="@font/inter"
-                    android:text="City:"
+                    android:text="@string/activity_scan_result_6"
                     android:textColor="#000000"
                     android:textFontWeight="400"
                     android:textSize="16dp" />
@@ -144,7 +144,7 @@
                     android:layout_marginLeft="35dp"
                     android:layout_marginTop="15dp"
                     android:fontFamily="@font/inter"
-                    android:text="Street:"
+                    android:text="@string/activity_scan_result_7"
                     android:textColor="#000000"
                     android:textFontWeight="400"
                     android:textSize="16dp" />
@@ -165,7 +165,7 @@
                     android:layout_marginLeft="35dp"
                     android:layout_marginTop="15dp"
                     android:fontFamily="@font/inter"
-                    android:text="Invoice Number:"
+                    android:text="@string/activity_scan_result_8"
                     android:textColor="#000000"
                     android:textFontWeight="400"
                     android:textSize="16dp" />
@@ -186,7 +186,7 @@
                     android:layout_marginLeft="35dp"
                     android:layout_marginTop="5dp"
                     android:fontFamily="@font/inter"
-                    android:text="Invoice Date:"
+                    android:text="@string/activity_scan_result_9"
                     android:textColor="#000000"
                     android:textFontWeight="400"
                     android:textSize="16dp" />
@@ -207,7 +207,7 @@
                     android:layout_marginLeft="35dp"
                     android:layout_marginTop="5dp"
                     android:fontFamily="@font/inter"
-                    android:text="Due Date:"
+                    android:text="@string/activity_scan_result_10"
                     android:textColor="#000000"
                     android:textFontWeight="400"
                     android:textSize="16dp" />
@@ -228,7 +228,7 @@
                     android:layout_marginLeft="35dp"
                     android:layout_marginTop="5dp"
                     android:fontFamily="@font/inter"
-                    android:text="Subtotal:"
+                    android:text="@string/activity_scan_result_11"
                     android:textColor="#000000"
                     android:textFontWeight="400"
                     android:textSize="16dp" />
@@ -249,7 +249,7 @@
                     android:layout_marginLeft="35dp"
                     android:layout_marginTop="5dp"
                     android:fontFamily="@font/inter"
-                    android:text="Shipping/Handling:"
+                    android:text="@string/activity_scan_result_12"
                     android:textColor="#000000"
                     android:textFontWeight="400"
                     android:textSize="16dp" />
@@ -270,7 +270,7 @@
                     android:layout_marginLeft="35dp"
                     android:layout_marginTop="5dp"
                     android:fontFamily="@font/inter"
-                    android:text="Total Amount:"
+                    android:text="@string/activity_scan_result_13"
                     android:textColor="#000000"
                     android:textFontWeight="400"
                     android:textSize="16dp" />

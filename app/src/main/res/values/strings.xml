@@ -1,9 +1,68 @@
 <resources>
     <string name="app_name">INFS 3605 ESS</string>
     <string name="title_activity_home">MainActivity</string>
-    <string name="title_home">Home</string>
     <string name="title_dashboard">Dashboard</string>
     <string name="title_notifications">Notifications</string>
+
+    <string name="title_home">Home</string>
     <string name="title_account">My Account</string>
     <string name="title_invoices">Invoices</string>
+
+    <string name="activity_forgot_password_1">Forgot Password?</string>
+    <string name="activity_forgot_password_2">Recover your password if you have forgot it!</string>
+    <string name="activity_forgot_password_3">Email</string>
+    <string name="activity_forgot_password_4">Submit</string>
+    <string name="activity_main_1">Log In</string>
+    <string name="activity_main_2">Login now to track all your expenses and income at a place!</string>
+    <string name="activity_main_3">Email</string>
+    <string name="activity_main_4">Password</string>
+    <string name="activity_main_5">Forget Password</string>
+    <string name="activity_main_6">Login</string>
+    <string name="activity_main_7">Continue with Google</string>
+    <string name="activity_main_8">Don’t have an account?</string>
+    <string name="activity_main_9">Register</string>
+    <string name="activity_pay_success_1">Status Updated!</string>
+    <string name="activity_pay_success_2">Upload Bank Slip</string>
+    <string name="activity_pay_success_3">Share with Email</string>
+    <string name="activity_pay_success_4">Back</string>
+    <string name="activity_register_1">Register</string>
+    <string name="activity_register_2">Create an account to access all the  features of E-Invoice</string>
+    <string name="activity_register_3">Company Name</string>
+    <string name="activity_register_4">Email</string>
+    <string name="activity_register_5">Your Name</string>
+    <string name="activity_register_6">Your Password</string>
+    <string name="activity_register_7">Register</string>
+    <string name="activity_register_8">Already have an account?</string>
+    <string name="activity_register_9">Login</string>
+    <string name="activity_scan_1">EXTRACT</string>
+    <string name="activity_scan_2">Scan</string>
+    <string name="activity_scan_3">Choose from Gallery</string>
+    <string name="activity_scan_result_1">Scan Result</string>
+    <string name="activity_scan_result_2">Check Scanned Details!</string>
+    <string name="activity_scan_result_3">Issuer</string>
+    <string name="activity_scan_result_4">Country</string>
+    <string name="activity_scan_result_5">State</string>
+    <string name="activity_scan_result_6">City</string>
+    <string name="activity_scan_result_7">Street</string>
+    <string name="activity_scan_result_8">Invoice Number</string>
+    <string name="activity_scan_result_9">Invoice Date</string>
+    <string name="activity_scan_result_10">Due Date</string>
+    <string name="activity_scan_result_11">Subtotal</string>
+    <string name="activity_scan_result_12">Shipping/Handling</string>
+    <string name="activity_scan_result_13">Total Amount</string>
+    <string name="fragment_dashboard_1">Scan Function</string>
+    <string name="fragment_dashboard_2">Scan paper invoice to generate electronic invoice</string>
+    <string name="fragment_dashboard_3">Your don\'t have invoice near the due date!</string>
+
+
+
+
+
+
+
+
+
+
+
+
 </resources>

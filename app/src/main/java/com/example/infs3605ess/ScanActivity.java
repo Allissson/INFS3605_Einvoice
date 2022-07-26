@@ -26,7 +26,7 @@ import com.google.android.gms.vision.text.TextRecognizer;
 
 import java.io.IOException;
 
-public class ScanActivity extends AppCompatActivity {
+public class ScanActivity extends AppCompat {
 
     private static final int IMAGE_CAPTURE_CODE = 1001;
     private TextView output;

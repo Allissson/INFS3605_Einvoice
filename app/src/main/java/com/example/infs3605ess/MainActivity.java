@@ -35,7 +35,7 @@ import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.auth.GoogleAuthProvider;
 
 
-public class MainActivity extends AppCompatActivity {
+public class MainActivity extends AppCompat {
     private static final String TAG ="Main activity" ;
     private FirebaseAuth mAuth;
     private EditText emailText, passwordText;

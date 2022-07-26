@@ -35,7 +35,7 @@
         android:layout_height="55dp"
         android:layout_marginTop="50dp"
         android:background="@drawable/shape_btn_blue"
-        android:text="Scan"
+        android:text="@string/activity_scan_2"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/imageView" />
@@ -49,7 +49,7 @@
         android:layout_marginEnd="26dp"
         android:layout_marginRight="26dp"
         android:background="@drawable/shape_btn_red"
-        android:text="EXTRACT"
+        android:text="@string/activity_scan_1"
         android:textColor="@color/white"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
@@ -59,10 +59,12 @@
         android:id="@+id/btt_choose"
         android:layout_width="379dp"
         android:layout_height="55dp"
-        android:layout_marginTop="30dp"
+        android:layout_marginTop="28dp"
         android:background="@drawable/shape_btn_red"
-        android:text="Choose from Gallery"
+
+        android:text="@string/activity_scan_3"
         app:layout_constraintEnd_toEndOf="@+id/scanfromcamera"
+        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="@+id/scanfromcamera"
         app:layout_constraintTop_toBottomOf="@+id/scanfromcamera" />
 

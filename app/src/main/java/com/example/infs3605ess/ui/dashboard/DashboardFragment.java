@@ -8,6 +8,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.ProgressBar;
+import android.widget.Switch;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
@@ -18,8 +19,10 @@ import androidx.lifecycle.ViewModelProvider;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.example.infs3605ess.AppCompat;
 import com.example.infs3605ess.Description;
 import com.example.infs3605ess.Invoice;
+import com.example.infs3605ess.LanguageManager;
 import com.example.infs3605ess.R;
 import com.example.infs3605ess.ScanActivity;
 import com.example.infs3605ess.UrgentPayAdapter;
@@ -42,7 +45,7 @@ public class DashboardFragment extends Fragment {
 
     private static final String TAG = "Dashboard Fragment";
     private DashboardViewModel dashboardViewModel;
-    private Button scan;
+    private Button scan, zh, en;
 
 
     private RecyclerView mRecyclerView;
@@ -51,6 +54,7 @@ public class DashboardFragment extends Fragment {
     private ArrayList<Invoice> urgentInvoice = new ArrayList<Invoice>();
     private TextView noInvoiceHint;
     private ProgressBar progressBar;
+
 
     public View onCreateView(@NonNull LayoutInflater inflater,
                              ViewGroup container, Bundle savedInstanceState) {
@@ -71,8 +75,12 @@ public class DashboardFragment extends Fragment {
 
     public void onViewCreated(@NonNull View view, Bundle savedInstanceState) {
 
+        zh = view.findViewById(R.id.LanguageChinese);
+        en =view.findViewById(R.id.LanguageEnglish);
         progressBar=view.findViewById(R.id.progressBar2);
         noInvoiceHint=view.findViewById(R.id.noInvoiceHint);
+
+        LanguageManager lang = new LanguageManager(this.getActivity());
 
 
         // set up urgent pay recycler view
@@ -147,6 +155,21 @@ public class DashboardFragment extends Fragment {
                                 });
 
 
+        zh.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                lang.updateResource("zh");
+                getActivity().recreate();
+            }
+        });
+
+        en.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                lang.updateResource("en");
+                getActivity().recreate();
+            }
+        });
 
 
 //        // test recycler view

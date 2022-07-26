@@ -26,7 +26,7 @@ import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
-public class ScanResultActivity extends AppCompatActivity {
+public class ScanResultActivity extends AppCompat {
     private static final String TAG = "Scan Result Activity";
     private String message,DescriptionInfo;
     private TextView Issuer, Country, State, City, Street, InvoiceNum, InvoiceDate, DueDate, Subtotal, ShipHand, Total, Extra;

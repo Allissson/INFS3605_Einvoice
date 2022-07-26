@@ -20,7 +20,7 @@ import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.FirebaseDatabase;
 
-public class RegisterActivity extends AppCompatActivity {
+public class RegisterActivity extends AppCompat {
     private static final String TAG = "Register Activity";
     private FirebaseAuth mAuth;
     private EditText companyNameText, userNameText, emailText,passwordText;

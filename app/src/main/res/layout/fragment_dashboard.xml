@@ -24,7 +24,7 @@
         android:layout_width="342dp"
         android:layout_height="26dp"
         android:layout_marginTop="20dp"
-        android:text="Scan paper invoice to generate electronic invoice"
+        android:text="@string/fragment_dashboard_2"
         app:layout_constraintStart_toStartOf="@+id/imageView9"
         app:layout_constraintTop_toBottomOf="@+id/imageView9" />
 
@@ -34,7 +34,7 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="30dp"
         android:layout_marginLeft="30dp"
-        android:text="Scan Function"
+        android:text="@string/fragment_dashboard_1"
         app:layout_constraintBottom_toBottomOf="@+id/imageView9"
         app:layout_constraintStart_toEndOf="@+id/imageView9"
         app:layout_constraintTop_toTopOf="@+id/imageView9" />
@@ -53,7 +53,7 @@
         android:layout_height="127dp"
         android:layout_marginTop="15dp"
         android:fontFamily="@font/inter"
-        android:text="Your don't have invoice near the due date!"
+        android:text="@string/fragment_dashboard_3"
         android:textSize="12pt"
         android:visibility="invisible"
         app:layout_constraintEnd_toEndOf="parent"
@@ -69,4 +69,21 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="@+id/urgentRecyclerView" />
+
+    <Button
+        android:id="@+id/LanguageChinese"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="中文"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <Button
+        android:id="@+id/LanguageEnglish"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text=" 英文"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/LanguageChinese" />
+
 </androidx.constraintlayout.widget.ConstraintLayout>
