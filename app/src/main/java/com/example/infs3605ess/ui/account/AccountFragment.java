@@ -7,6 +7,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.ProgressBar;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
@@ -20,6 +21,8 @@ import com.example.infs3605ess.R;
 import com.example.infs3605ess.ScanActivity;
 import com.example.infs3605ess.User;
 import com.example.infs3605ess.ui.dashboard.DashboardViewModel;
+import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
@@ -38,6 +41,9 @@ public class AccountFragment extends Fragment {
     private DatabaseReference mDb;
     private String userId,userName;
     private Button logout;
+    private int progr = 0;
+    private int bonus=0;
+    private ProgressBar progressBar;
 
     public View onCreateView(@NonNull LayoutInflater inflater,
                              ViewGroup container, Bundle savedInstanceState) {
@@ -79,6 +85,33 @@ public class AccountFragment extends Fragment {
 
         });
         message.setText(userName);
+
+        // progress show
+
+        mDb.child("User").child(FirebaseAuth.getInstance().getCurrentUser().getUid()).child("Bonus").get().addOnCompleteListener(new OnCompleteListener<DataSnapshot>() {
+            @Override
+            public void onComplete(@NonNull Task<DataSnapshot> task) {
+                if (!task.isSuccessful()) {
+                    Log.e("firebase", "Error getting data", task.getException());
+                }
+                else {
+                    Log.d("firebase", String.valueOf(task.getResult().getValue()));
+                    String sbonus=String.valueOf(task.getResult().getValue());
+                    System.out.println(sbonus.length());
+                    //bonus = Integer.parseInt(String.valueOf(task.getResult().getValue()));
+                    if(sbonus.equals("null")){
+                        bonus = 0;
+                    }
+                    else{
+                        bonus = Integer.parseInt(sbonus);
+                    }
+
+                }
+            }
+        });
+        progr=bonus/200;
+        progressBar=view.findViewById(R.id.id_progress);
+        progressBar.setProgress(progr);
     };
     private void logout(){
         mFirebaseAuth.signOut();

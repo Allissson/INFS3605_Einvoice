@@ -170,7 +170,7 @@ public class MainActivity extends AppCompatActivity {
                             @Override
                             public void onComplete(@NonNull Task<AuthResult> task) {
                                 if(task.isComplete()){
-                                    Intent intent = new Intent(getApplicationContext(),DashboardActivity.class);
+                                    Intent intent = new Intent(getApplicationContext(),HomeActivity.class);
                                     startActivity(intent);
 
                                 }
