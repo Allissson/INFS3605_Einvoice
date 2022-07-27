@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <color name="purple_200">#FFBB86FC</color>
-    <color name="purple_500">#FF6200EE</color>
-    <color name="purple_700">#FF3700B3</color>
+    <color name="purple_500">#3BC5BC</color>
+    <color name="purple_700">#40B2BF</color>
     <color name="teal_200">#FF03DAC5</color>
     <color name="teal_700">#FF018786</color>
     <color name="black">#FF000000</color>
@@ -12,4 +12,8 @@
     <color name="red">#F15353</color>
     <color name="app_blue">#8193CC</color>
     <color name="app_red">#C38092</color>
+    <color name="yellow">#F9F871</color>
+    <color name="light_green">#BDF183</color>
+    <color name="medium_green">#88E69A</color>
+    <color name="dark_green">#59D7AF</color>
 </resources>
