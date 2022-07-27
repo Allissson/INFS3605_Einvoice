@@ -1,6 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <string name="app_name">INFS 3605 ESS</string>
+
+    <string name="language_en">英文</string>
+    <string name="language_zh">中文</string>
+
     <string name="title_activity_home">MainActivity</string>
     <string name="title_dashboard">主页</string>
     <string name="title_notifications">Notifications</string>

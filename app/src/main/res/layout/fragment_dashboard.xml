@@ -74,7 +74,7 @@
         android:id="@+id/LanguageChinese"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="中文"
+        android:text="@string/language_zh"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
@@ -82,7 +82,7 @@
         android:id="@+id/LanguageEnglish"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text=" 英文"
+        android:text="@string/language_en"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/LanguageChinese" />
 
