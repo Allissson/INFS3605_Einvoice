@@ -4,7 +4,9 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    android:background="@drawable/dashboard_boarder"
+    >
 
     <TextView
         android:id="@+id/urgentAmount"
@@ -15,20 +17,19 @@
         android:text="TextView"
         android:textColor="#F15353"
         android:textSize="18dp"
-        app:layout_constraintEnd_toEndOf="@+id/urgentPay"
-        app:layout_constraintStart_toStartOf="@+id/urgentPay"
-        app:layout_constraintTop_toTopOf="@+id/urgentIssuer" />
+        app:layout_constraintStart_toStartOf="@+id/urgentNumber"
+        app:layout_constraintTop_toBottomOf="@+id/urgentNumber" />
 
     <Button
         android:id="@+id/urgentPay"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="10dp"
+        android:layout_marginTop="3dp"
         android:layout_marginEnd="40dp"
         android:layout_marginRight="40dp"
         android:text="Pay"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/urgentAmount" />
+        app:layout_constraintTop_toBottomOf="@+id/urgentdueDate" />
 
     <TextView
         android:id="@+id/urgentIssuer"
@@ -40,6 +41,7 @@
         android:fontFamily="@font/inter"
         android:text="TextView"
         android:textSize="24dp"
+        android:textStyle="bold"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
@@ -47,11 +49,22 @@
         android:id="@+id/urgentNumber"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="20dp"
+        android:layout_marginTop="2dp"
         android:fontFamily="@font/inter"
         android:text="TextView"
-        android:textSize="16dp"
+        android:textColor="#A19C9C"
+        android:textSize="10dp"
         app:layout_constraintStart_toStartOf="@+id/urgentIssuer"
         app:layout_constraintTop_toBottomOf="@+id/urgentIssuer" />
+
+    <TextView
+        android:id="@+id/urgentdueDate"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:text="TextView"
+        app:layout_constraintEnd_toEndOf="@+id/urgentPay"
+        app:layout_constraintStart_toStartOf="@+id/urgentPay"
+        app:layout_constraintTop_toTopOf="@+id/urgentIssuer" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

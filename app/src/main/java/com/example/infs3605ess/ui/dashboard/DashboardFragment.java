@@ -1,11 +1,13 @@
 package com.example.infs3605ess.ui.dashboard;
 
+import android.animation.Animator;
 import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.animation.Animation;
 import android.widget.Button;
 import android.widget.ProgressBar;
 import android.widget.Switch;
@@ -13,12 +15,14 @@ import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
+import androidx.annotation.RawRes;
 import androidx.fragment.app.Fragment;
 import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProvider;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.airbnb.lottie.LottieAnimationView;
 import com.example.infs3605ess.AppCompat;
 import com.example.infs3605ess.Description;
 import com.example.infs3605ess.Invoice;
@@ -26,6 +30,8 @@ import com.example.infs3605ess.LanguageManager;
 import com.example.infs3605ess.R;
 import com.example.infs3605ess.ScanActivity;
 import com.example.infs3605ess.UrgentPayAdapter;
+import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
@@ -52,8 +58,11 @@ public class DashboardFragment extends Fragment {
     private UrgentPayAdapter mAdapter;
     private DatabaseReference uDb;
     private ArrayList<Invoice> urgentInvoice = new ArrayList<Invoice>();
-    private TextView noInvoiceHint;
+    private TextView noInvoiceHint,name;
     private ProgressBar progressBar;
+    private LottieAnimationView lottieAnimationView,tick;
+    private long duration=0;
+    private String userName;
 
 
     public View onCreateView(@NonNull LayoutInflater inflater,
@@ -80,6 +89,7 @@ public class DashboardFragment extends Fragment {
         noInvoiceHint=view.findViewById(R.id.noInvoiceHint);
 
         LanguageManager lang = new LanguageManager(this.getActivity());
+        tick = view.findViewById(R.id.dashboard_tick);
 
 
         // set up urgent pay recycler view
@@ -135,6 +145,10 @@ public class DashboardFragment extends Fragment {
                 }
                 if(urgentInvoice.isEmpty()){
                     noInvoiceHint.setVisibility(View.VISIBLE);
+                    tick.setVisibility(View.VISIBLE);
+                    //tick.setAnimation(R.raw.tick);
+                    tick.playAnimation();
+
                 }
                 progressBar.setVisibility(View.GONE);
                 mAdapter.notifyDataSetChanged();
@@ -145,6 +159,20 @@ public class DashboardFragment extends Fragment {
 
             }
         });
+        //name=view.findViewById(R.id.dashboard_name);
+//        uDb = FirebaseDatabase.getInstance().getReference();
+//        uDb.child("User").child(FirebaseAuth.getInstance().getCurrentUser().getUid()).child("userName").get().addOnCompleteListener(new OnCompleteListener<DataSnapshot>() {
+//            @Override
+//            public void onComplete(@NonNull Task<DataSnapshot> task) {
+//                if (!task.isSuccessful()) {
+//                    Log.e("firebase", "Error getting data", task.getException());
+//                } else {
+//                    Log.d("firebase", String.valueOf(task.getResult().getValue()));
+//                    userName = String.valueOf(task.getResult().getValue());
+//                    name.setText(userName);
+//                }
+//            }
+//        });
 
         // scan function
         scan=view.findViewById(R.id.btt_scan);
@@ -171,10 +199,57 @@ public class DashboardFragment extends Fragment {
 //        Invoice test = new Invoice("123","123","123","123","123","123",dInvoiceDate,dInvoiceDate,123.1,123.1,123.123,123.1,des,"Unpaid");
 //        urgentInvoice.add(test);
 
+        // animation
+        lottieAnimationView =view.findViewById(R.id.lottieAnimationView2);
+        lottieAnimationView.setAnimation(R.raw.dashboard_scan);
+        lottieAnimationView.playAnimation();
 
+        lottieAnimationView.addAnimatorListener(new Animator.AnimatorListener() {
+            @Override
+            public void onAnimationStart(Animator animation) {
+                Log.d("Animation:","start");
+                duration=animation.getDuration();
+            }
 
+            @Override
+            public void onAnimationEnd(Animator animation) {
+                Log.d("Animation:","end");
 
+                if(duration==2702){
+                    lottieAnimationView.setAnimation(R.raw.tree);
+                    lottieAnimationView.playAnimation();
+                }
+                else if(duration==3336){
+                    lottieAnimationView.setAnimation(R.raw.dashboard_scan);
+                    lottieAnimationView.playAnimation();
+                }
+
+            }
+
+            @Override
+            public void onAnimationCancel(Animator animation) {
+                Log.d("Animation:","cancel");
+            }
+
+            @Override
+            public void onAnimationRepeat(Animator animation) {
+                Log.d("Animation:","repeat");
+            }
+        });
 
 
         };
+
+//    private void startAnimation(){
+//        lottieAnimationView =view.f
+//    }
+//    func startAnimation1() {
+//        animationLottieView.animation = Animation.named("Slidetwop1")
+//        animationLottieView.play { (finished) in
+//            // completion handler
+//            self.animationLottieView.animation = Animation.named("Slidetwop2")
+//            self.animationLottieView.play { (finishedAnimation) in
+//                self.startAnimation()}
+//        }
+//    }
     }

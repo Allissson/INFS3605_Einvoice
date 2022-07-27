@@ -1,5 +1,6 @@
 package com.example.infs3605ess;
 
+import android.annotation.SuppressLint;
 import android.content.Context;
 import android.content.Intent;
 import android.view.LayoutInflater;
@@ -14,6 +15,7 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import org.w3c.dom.Text;
 
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Comparator;
@@ -43,11 +45,14 @@ public class UrgentPayAdapter extends RecyclerView.Adapter<UrgentPayAdapter.Urge
     }
 
     @Override
-    public void onBindViewHolder(@NonNull UrgentPayAdapter.UrgentPayViewHolder holder, int position) {
+    public void onBindViewHolder(@NonNull UrgentPayAdapter.UrgentPayViewHolder holder, @SuppressLint("RecyclerView") int position) {
         holder.urgentIssuer.setText(mInvoice.get(position).getIssuer());
         String amount = String.format("%.2f",mInvoice.get(position).getTotal());
         holder.urgentAmount.setText("$ "+ amount);
         holder.urgentNumber.setText(mInvoice.get(position).getInvoiceNum());
+        SimpleDateFormat sdf1 = new SimpleDateFormat("dd-MMM-yyyy");
+        String strDate1 = sdf1.format(mInvoice.get(position).getDueDate());
+        holder.urgentDueDate.setText(strDate1);
         holder.pay.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -68,7 +73,7 @@ public class UrgentPayAdapter extends RecyclerView.Adapter<UrgentPayAdapter.Urge
 
     public class UrgentPayViewHolder extends RecyclerView.ViewHolder{
         public final View mView;
-        public final TextView urgentNumber, urgentAmount, urgentIssuer;
+        public final TextView urgentNumber, urgentAmount, urgentIssuer,urgentDueDate;
         public final Button pay;
         public RecyclerViewClickListener bListener;
 
@@ -80,6 +85,7 @@ public class UrgentPayAdapter extends RecyclerView.Adapter<UrgentPayAdapter.Urge
             urgentNumber=(TextView)itemView.findViewById(R.id.urgentNumber);
             urgentAmount=(TextView) itemView.findViewById(R.id.urgentAmount);
             urgentIssuer=(TextView)itemView.findViewById(R.id.urgentIssuer);
+            urgentDueDate=(TextView)itemView.findViewById(R.id.urgentdueDate);
             pay=(Button)itemView.findViewById(R.id.urgentPay);
 
         }

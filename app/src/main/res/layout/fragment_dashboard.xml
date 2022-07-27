@@ -6,59 +6,52 @@
     android:layout_height="match_parent"
     tools:context=".ui.dashboard.DashboardFragment">
 
-
+    <com.airbnb.lottie.LottieAnimationView
+        android:id="@+id/lottieAnimationView2"
+        android:layout_width="192dp"
+        android:layout_height="181dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:lottie_autoPlay="true"
+        app:lottie_rawRes="@raw/dashboard_scan" />
 
     <ImageView
-        android:id="@+id/imageView9"
-        android:layout_width="75dp"
-        android:layout_height="65dp"
-        android:layout_marginStart="30dp"
-        android:layout_marginLeft="30dp"
-        android:src="@drawable/camera"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
-
-    <TextView
-        android:id="@+id/textView3"
-        android:layout_width="342dp"
-        android:layout_height="26dp"
-        android:layout_marginTop="20dp"
-        android:text="@string/fragment_dashboard_2"
-        app:layout_constraintStart_toStartOf="@+id/imageView9"
-        app:layout_constraintTop_toBottomOf="@+id/imageView9" />
-
-    <Button
-        android:id="@+id/btt_scan"
+        android:id="@+id/imageView2"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="30dp"
-        android:layout_marginLeft="30dp"
-        android:text="@string/fragment_dashboard_1"
-        app:layout_constraintBottom_toBottomOf="@+id/imageView9"
-        app:layout_constraintStart_toEndOf="@+id/imageView9"
-        app:layout_constraintTop_toTopOf="@+id/imageView9" />
-
-    <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/urgentRecyclerView"
-        android:layout_width="412dp"
-        android:layout_height="231dp"
+        android:layout_marginBottom="-170dp"
+        android:src="@drawable/dashboard_bg"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent" />
 
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/urgentRecyclerView"
+        android:layout_width="394dp"
+        android:layout_height="230dp"
+        android:layout_marginStart="10dp"
+        android:layout_marginLeft="10dp"
+        android:layout_marginEnd="10dp"
+        android:layout_marginRight="10dp"
+        android:layout_marginBottom="16dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="@+id/imageView2"
+        app:layout_constraintHorizontal_bias="0.666"
+        app:layout_constraintStart_toStartOf="@+id/imageView2" />
+
     <TextView
         android:id="@+id/noInvoiceHint"
-        android:layout_width="293dp"
-        android:layout_height="127dp"
-        android:layout_marginTop="15dp"
+        android:layout_width="283dp"
+        android:layout_height="53dp"
+        android:layout_marginTop="-20dp"
         android:fontFamily="@font/inter"
+        android:gravity="center"
         android:text="@string/fragment_dashboard_3"
-        android:textSize="12pt"
+        android:textSize="18sp"
         android:visibility="invisible"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="@+id/urgentRecyclerView" />
+        app:layout_constraintTop_toBottomOf="@+id/dashboard_tick" />
 
     <ProgressBar
         android:id="@+id/progressBar2"
@@ -69,5 +62,53 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="@+id/urgentRecyclerView" />
+
+    <TextView
+        android:id="@+id/textView33"
+        android:layout_width="182dp"
+        android:layout_height="121dp"
+        android:layout_marginEnd="9dp"
+        android:layout_marginRight="9dp"
+        android:fontFamily="@font/inter"
+        android:gravity="center"
+        android:text="@string/dashboard_start2"
+        android:textFontWeight="500"
+        android:textSize="22sp"
+        app:layout_constraintEnd_toStartOf="@+id/lottieAnimationView2"
+        app:layout_constraintStart_toStartOf="parent"
+        tools:layout_editor_absoluteY="29dp" />
+
+    <Button
+        android:id="@+id/btt_scan"
+        android:layout_width="193dp"
+        android:layout_height="47dp"
+        android:layout_marginTop="3dp"
+        android:text="@string/fragment_dashboard_1"
+        app:layout_constraintEnd_toStartOf="@+id/lottieAnimationView2"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textView33" />
+
+    <TextView
+        android:id="@+id/textView2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="4dp"
+        android:text="@string/dashboard_start3"
+        android:textSize="20sp"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toTopOf="@+id/urgentRecyclerView"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <com.airbnb.lottie.LottieAnimationView
+        android:id="@+id/dashboard_tick"
+        android:layout_width="156dp"
+        android:layout_height="121dp"
+        android:layout_marginTop="12dp"
+        android:visibility="invisible"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textView2"
+        app:lottie_rawRes="@raw/tick" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

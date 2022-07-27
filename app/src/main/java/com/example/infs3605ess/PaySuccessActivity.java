@@ -2,7 +2,9 @@ package com.example.infs3605ess;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Intent;
 import android.os.Bundle;
+import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
 
@@ -30,6 +32,16 @@ public class PaySuccessActivity extends AppCompat {
         emailShare=findViewById(R.id.emailShare);
         back=findViewById(R.id.back);
         invoiceNumber.setText(invoiceNo);
+        back.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                jumptoHome();
+            }
+        });
 
+    }
+    public void jumptoHome(){
+        Intent intent = new Intent(this,HomeActivity.class);
+        startActivity(intent);
     }
 }

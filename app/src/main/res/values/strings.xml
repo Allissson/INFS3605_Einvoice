@@ -25,7 +25,7 @@
     <string name="activity_main_7">Continue with Google</string>
     <string name="activity_main_8">Don’t have an account?</string>
     <string name="activity_main_9">Register</string>
-    <string name="activity_pay_success_1">Status Updated!</string>
+    <string name="activity_pay_success_1">You are one step closer to planting your own tree!</string>
     <string name="activity_pay_success_2">Upload Bank Slip</string>
     <string name="activity_pay_success_3">Share with Email</string>
     <string name="activity_pay_success_4">Back</string>
@@ -41,7 +41,7 @@
     <string name="activity_scan_1">EXTRACT</string>
     <string name="activity_scan_2">Scan</string>
     <string name="activity_scan_3">Choose from Gallery</string>
-    <string name="activity_scan_result_1">Scan Result</string>
+    <string name="activity_scan_result_1">Scan</string>
     <string name="activity_scan_result_2">Check Scanned Details!</string>
     <string name="activity_scan_result_3">Issuer</string>
     <string name="activity_scan_result_4">Country</string>
@@ -54,7 +54,7 @@
     <string name="activity_scan_result_11">Subtotal</string>
     <string name="activity_scan_result_12">Shipping/Handling</string>
     <string name="activity_scan_result_13">Total Amount</string>
-    <string name="fragment_dashboard_1">Scan Function</string>
+    <string name="fragment_dashboard_1">Scan</string>
     <string name="fragment_dashboard_2">Scan paper invoice to generate electronic invoice</string>
     <string name="fragment_dashboard_3">Your don\'t have invoice near the due date!</string>
     <string name="change_language_title">Select Your Language</string>
@@ -62,6 +62,9 @@
     <string name="profile_logout">Log Out</string>
     <string name="profile_changeLanguage">Change Language</string>
     <string name="profile_why">What is PLANT BOOM?</string>
+    <string name="dashboard_start">Hi, </string>
+    <string name="dashboard_start2">Start Scanning your invoice to thrive your tree!</string>
+    <string name="dashboard_start3">Unpaid Invoices Near the Due Date</string>
 
 
 

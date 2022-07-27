@@ -8,10 +8,11 @@
 
     <TextView
         android:id="@+id/textView26"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="353dp"
+        android:layout_height="96dp"
         android:layout_marginTop="20dp"
         android:fontFamily="@font/inter"
+        android:gravity="center"
         android:text="@string/activity_pay_success_1"
         android:textSize="30dp"
         app:layout_constraintEnd_toEndOf="parent"
