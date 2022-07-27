@@ -65,16 +65,14 @@
     <string name="dashboard_start">Hi, </string>
     <string name="dashboard_start2">Start Scanning your invoice to thrive your tree!</string>
     <string name="dashboard_start3">Unpaid Invoices Near the Due Date</string>
-
-
-
-
-
-
-
-
-
-
+    <string name="intro_name"> Bonus Tree </string>
+    <string name="intro_first">We are now proudly introducing our Bonus Tree project to
+        you! We sincerely cooperate with Venatata making the world
+ a better place with your help!</string>
+    <string name="intro_second">Every 200 E-invoices you upload to our server will be recorded and converted into ONE leaf.When you collect 5 leaves, we and Vennatata will
+plant an actual tree in the forest! </string>
+    <string name="intro_third">The world will get better while we helping you to boost you company efficiency.You are not just SAVING the tree\'s life by using E-invoice, but you are also CREATING more lives!
+    </string>
 
 
 </resources>

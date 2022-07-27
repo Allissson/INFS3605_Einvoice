@@ -26,6 +26,8 @@ import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProvider;
 
 import com.airbnb.lottie.LottieAnimationView;
+import com.example.infs3605ess.IntroFirstActivity;
+import com.example.infs3605ess.IntroSecActivity;
 import com.example.infs3605ess.LanguageManager;
 import com.example.infs3605ess.MainActivity;
 import com.example.infs3605ess.R;
@@ -93,6 +95,15 @@ public class AccountFragment extends Fragment {
         message = view.findViewById(R.id.account_text);
         userId = mFirebaseAuth.getCurrentUser().getUid();
         Log.d(TAG, userId);
+
+        // why button
+        why.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(getActivity(), IntroFirstActivity.class);
+                startActivity(intent);
+            }
+        });
 
         // log out
         ilogout.setOnClickListener(new View.OnClickListener() {

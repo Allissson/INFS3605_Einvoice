@@ -14,7 +14,10 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.INFS3605ESS">
-        <activity android:name=".PaySuccessActivity"></activity>
+        <activity android:name=".IntroThirdActivity"></activity>
+        <activity android:name=".IntroSecActivity" />
+        <activity android:name=".IntroFirstActivity" />
+        <activity android:name=".PaySuccessActivity" />
         <activity android:name=".ScanResultActivity" />
         <activity
             android:name=".HomeActivity"
@@ -23,10 +26,9 @@
         <activity android:name=".ForgotPasswordActivity" />
         <activity android:name=".RegisterActivity" />
         <activity android:name=".DescriptionActivity" />
-        <activity android:name=".MainActivity"
+        <activity
+            android:name=".MainActivity"
             android:exported="true">
-
-
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
