@@ -72,26 +72,26 @@
         </LinearLayout>
 
         <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
             android:layout_alignParentRight="true"
             android:layout_centerVertical="true"
-            android:layout_width="wrap_content"
-            android:orientation="vertical"
             android:gravity="center_horizontal"
-            android:layout_height="wrap_content">
+            android:orientation="vertical">
 
             <TextView
                 android:id="@+id/tv_time"
                 android:layout_width="wrap_content"
-                android:layout_height="wrap_content"/>
+                android:layout_height="wrap_content" />
 
             <androidx.appcompat.widget.AppCompatButton
                 android:id="@+id/btn_view"
                 android:layout_width="wrap_content"
-                android:layout_marginTop="2dp"
                 android:layout_height="wrap_content"
-                android:textColor="@color/white"
+                android:layout_marginTop="2dp"
                 android:background="@drawable/shape_btn_blue"
-                android:text="VIEW" />
+                android:text="VIEW"
+                android:textColor="@color/white" />
 
         </LinearLayout>
 

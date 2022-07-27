@@ -37,8 +37,6 @@ public class ScanResultActivity extends AppCompat {
     private List<Description> mDescription = new ArrayList<>();
     private DescriptionAdapter mAdapter;
     private RecyclerView mRecyclerView;
-
-    private Button testSave;
     private int bonus =0;
 
 
@@ -64,7 +62,6 @@ public class ScanResultActivity extends AppCompat {
 
         mRecyclerView = findViewById(R.id.recycleView);
 
-        testSave = findViewById(R.id.testSave);
 
 
         message = getIntent().getStringExtra("output");
@@ -289,13 +286,14 @@ System.out.println(invoicedate);
                 }
             }
         });
+        /*
         testSave.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
 
                 uDb.child(FirebaseAuth.getInstance().getCurrentUser().getUid()).child("Bonus").setValue(bonus+1);
             }
-        });
+        });*/
 
 
     }
