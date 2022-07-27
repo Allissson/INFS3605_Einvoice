@@ -147,7 +147,7 @@ public class ScanResultActivity extends AppCompat {
 
 
         //Number, date, due date
-        String invoicenumber = (ScanResult.substring(ScanResult.indexOf("com.example.infs3605ess.Invoice No:") + 12)).substring(0, 5);
+        String invoicenumber = (ScanResult.substring(ScanResult.indexOf("Invoice No: ") + 12)).substring(0, 5);
         String invoicedate = (ScanResult.substring(ScanResult.indexOf("Date: ") + 6)).substring(0, 11);
         String duedate = (ScanResult.substring(ScanResult.indexOf("Due Date: ") + 10)).substring(0, 11);
 
