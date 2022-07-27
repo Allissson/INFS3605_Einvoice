@@ -106,11 +106,14 @@ public class DashboardFragment extends Fragment {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
                 Date date = new Date();
+                System.out.println(date);
+
 //                SimpleDateFormat dateFormat= new SimpleDateFormat("yyyy-MM-dd :hh:mm:ss");
 //                String current = dateFormat.format(date);
 //                System.out.println(date);
 
                 for (DataSnapshot snapshot1 : snapshot.getChildren()) {
+
                     Invoice invoice = snapshot1.getValue(Invoice.class);
 //                    Log.d(TAG,invoice.getStatus());
 //                    Log.d(TAG,invoice.getDueDate().toString());
@@ -154,7 +157,7 @@ public class DashboardFragment extends Fragment {
                                     }
                                 });
 
-
+        // change language
         zh.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {

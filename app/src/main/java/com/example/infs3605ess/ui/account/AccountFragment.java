@@ -21,6 +21,7 @@ import androidx.fragment.app.Fragment;
 import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProvider;
 
+import com.airbnb.lottie.LottieAnimationView;
 import com.example.infs3605ess.MainActivity;
 import com.example.infs3605ess.R;
 import com.example.infs3605ess.ScanActivity;
@@ -53,7 +54,8 @@ public class AccountFragment extends Fragment {
     private int leafNo = 0;
     private ProgressBar TempDialog;
     private CountDownTimer countDownTimer;
-    private View darkview;
+    //private View darkview;
+    private LottieAnimationView lottieAnimationView;
 
     int i = 0;
 
@@ -114,6 +116,8 @@ public class AccountFragment extends Fragment {
         });
 
 
+
+
         // progress show
 
         mDb.child("User").child(FirebaseAuth.getInstance().getCurrentUser().getUid()).child("Bonus").get().addOnCompleteListener(new OnCompleteListener<DataSnapshot>() {
@@ -165,6 +169,7 @@ public class AccountFragment extends Fragment {
                 if (bonus > 200) {
                     leafNo = (int) Math.floor(bonus / 200);
                     progr = bonus - leafNo * 200;
+                    bonus= bonus - leafNo * 200;
                 } else {
                     Log.d(TAG, "bonus less than 200");
                     System.out.println(Double.parseDouble(String.valueOf(bonus)) / 200.0);
@@ -205,6 +210,9 @@ public class AccountFragment extends Fragment {
                     leaf3.setImageDrawable(res);
                     leaf4.setImageDrawable(res);
                 }
+                // set up animation
+                lottieAnimationView=view.findViewById(R.id.lottieAnimationView);
+                lottieAnimationView.playAnimation();
 
             }
         }.start();
