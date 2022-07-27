@@ -9,8 +9,8 @@
 
     <ImageView
         android:id="@+id/imageView"
-        android:layout_width="367dp"
-        android:layout_height="399dp"
+        android:layout_width="325dp"
+        android:layout_height="351dp"
         android:layout_marginStart="16dp"
         android:layout_marginLeft="16dp"
         android:layout_marginTop="100dp"
@@ -19,7 +19,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:srcCompat="@drawable/ic_launcher_foreground" />
+        app:srcCompat="@drawable/ess_logo" />
 
     <ImageView
         android:layout_width="28dp"
@@ -33,7 +33,7 @@
         android:id="@+id/scanfromcamera"
         android:layout_width="379dp"
         android:layout_height="55dp"
-        android:layout_marginTop="5dp"
+        android:layout_marginTop="10dp"
         android:background="@drawable/shape_btn_blue"
         android:text="@string/activity_scan_2"
         app:layout_constraintEnd_toEndOf="parent"

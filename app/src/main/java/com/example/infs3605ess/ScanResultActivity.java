@@ -39,13 +39,15 @@ public class ScanResultActivity extends AppCompat {
     private RecyclerView mRecyclerView;
     private int bonus =0;
 
+    private Button save;
+
 
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_scan_result);
-
+        save=findViewById(R.id.save);
         Issuer = findViewById(R.id.Issuer);
         Country = findViewById(R.id.Country);
         State = findViewById(R.id.State);
@@ -229,9 +231,9 @@ System.out.println(invoicedate);
 
         // split description
 
-        /*String[] messageSplit = DescriptionInfo.split(" ");
-        int i = messageSplit.length;
-        System.out.println(String.valueOf(i));
+//        String[] messageSplit = DescriptionInfo.split(" ");
+//        int i = messageSplit.length;
+//        System.out.println(String.valueOf(i));
 
 
         for(int a=0;a<i;a=a+4){
@@ -256,8 +258,10 @@ System.out.println(invoicedate);
             mDescription.add(d);
         }
 
-         */
 
+
+
+        // set value to firebase
         Invoice invoice =new Invoice(Name,country,state,city,street,invoicenumber,dInvoiceDate,dDueDate,dSub,dShip,dTotal,dExtra,mDescription,"unpaid");
         uDb.child(FirebaseAuth.getInstance().getCurrentUser().getUid()).child("Invoice").child(invoicenumber).setValue(invoice);
 
@@ -286,14 +290,14 @@ System.out.println(invoicedate);
                 }
             }
         });
-        /*
-        testSave.setOnClickListener(new View.OnClickListener() {
+
+        save.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
 
                 uDb.child(FirebaseAuth.getInstance().getCurrentUser().getUid()).child("Bonus").setValue(bonus+1);
             }
-        });*/
+        });
 
 
     }

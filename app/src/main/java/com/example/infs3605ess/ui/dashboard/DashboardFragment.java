@@ -124,20 +124,23 @@ public class DashboardFragment extends Fragment {
                 for (DataSnapshot snapshot1 : snapshot.getChildren()) {
 
                     Invoice invoice = snapshot1.getValue(Invoice.class);
+                    System.out.println(invoice.getDueDate());
 //                    Log.d(TAG,invoice.getStatus());
 //                    Log.d(TAG,invoice.getDueDate().toString());
 //                    System.out.println(String.valueOf(invoice.getDueDate().before(date))+ String.valueOf(invoice.getStatus().equals("unpaid")));
-                    // check overdue invoice
-                    if(invoice.getStatus().equals("unpaid") && invoice.getDueDate().before(date)){
+//                    // check overdue invoice
+                    if(invoice.getStatus().equals("unpaid") && invoice.getDueDate().after(date)){
                         Log.d(TAG,"unpaid change");
                         uDb.child(invoice.getInvoiceNum()).child("status").setValue("Overdue");
                     }
                     // compare the time difference
                     long due = invoice.getDueDate().getTime();
                     long now = date.getTime();
-                    int days = (int) ((due-now) / (1000 * 60 * 60 * 24));
+                    int days = (int) ((now-due) / (1000 * 60 * 60 * 24));
+                    System.out.println(invoice.getInvoiceNum()+invoice.getStatus().equals("unpaid"));
+                    System.out.println(days);
                     // add urgent invoice to the list
-                    if(invoice.getStatus().equals("unpaid") && days>5){
+                    if(invoice.getStatus().equals("unpaid") && days<5){
                         urgentInvoice.add(invoice);
                     }
                     //urgentInvoice.add(invoice);
@@ -148,6 +151,7 @@ public class DashboardFragment extends Fragment {
                     tick.setVisibility(View.VISIBLE);
                     //tick.setAnimation(R.raw.tick);
                     tick.playAnimation();
+                    mRecyclerView.setVisibility(View.INVISIBLE);
 
                 }
                 progressBar.setVisibility(View.GONE);
