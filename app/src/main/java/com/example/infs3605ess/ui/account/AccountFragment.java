@@ -1,17 +1,21 @@
 package com.example.infs3605ess.ui.account;
 
+import android.app.AlertDialog;
 import android.app.ProgressDialog;
 import android.content.Intent;
 import android.graphics.drawable.Drawable;
 import android.os.Bundle;
 import android.os.CountDownTimer;
+import android.text.Layout;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.view.WindowManager;
 import android.widget.Button;
+import android.widget.ImageButton;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.ProgressBar;
 import android.widget.TextView;
 
@@ -22,6 +26,7 @@ import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProvider;
 
 import com.airbnb.lottie.LottieAnimationView;
+import com.example.infs3605ess.LanguageManager;
 import com.example.infs3605ess.MainActivity;
 import com.example.infs3605ess.R;
 import com.example.infs3605ess.ScanActivity;
@@ -46,7 +51,7 @@ public class AccountFragment extends Fragment {
     private FirebaseAuth mFirebaseAuth;
     private DatabaseReference mDb;
     private String userId, userName;
-    private Button logout;
+    private Button close;
     private double progr = 0;
     private int bonus=0;
     private ProgressBar progressBar;
@@ -54,6 +59,10 @@ public class AccountFragment extends Fragment {
     private int leafNo = 0;
     private ProgressBar TempDialog;
     private CountDownTimer countDownTimer;
+    private ImageView cn,eg;
+    private LinearLayout translate,why,ilogout;
+    private AlertDialog.Builder dialogBuilder;
+    private AlertDialog alertDialog;
     //private View darkview;
     private LottieAnimationView lottieAnimationView;
 
@@ -76,16 +85,28 @@ public class AccountFragment extends Fragment {
 
 
         mFirebaseAuth = FirebaseAuth.getInstance();
-        logout = view.findViewById(R.id.btt_logout);
+        ilogout=view.findViewById(R.id.logOut);
+        translate=view.findViewById(R.id.changelan);
+        why=view.findViewById(R.id.why);
         mDb = FirebaseDatabase.getInstance().getReference();
         Log.d(TAG, "mDb connection");
         message = view.findViewById(R.id.account_text);
         userId = mFirebaseAuth.getCurrentUser().getUid();
         Log.d(TAG, userId);
-        logout.setOnClickListener(new View.OnClickListener() {
+
+        // log out
+        ilogout.setOnClickListener(new View.OnClickListener() {
             @Override
-            public void onClick(View view) {
+            public void onClick(View v) {
                 logout();
+            }
+        });
+
+        // translate
+        translate.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                crateNewChooseDialog();
             }
         });
 
@@ -236,6 +257,42 @@ public class AccountFragment extends Fragment {
             getActivity().getWindow().addFlags(WindowManager.LayoutParams.FLAG_DIM_BEHIND);
         }
         getActivity().getWindow().setAttributes(attributes);
+
+
+    }
+
+    private void crateNewChooseDialog(){
+        LanguageManager lang = new LanguageManager(this.getActivity());
+        dialogBuilder =  new AlertDialog.Builder(getActivity());
+        final View choosePopupView = getLayoutInflater().inflate(R.layout.popup_translate,null);
+        cn=(ImageView) choosePopupView.findViewById(R.id.Chinese);
+        eg=(ImageView) choosePopupView.findViewById(R.id.English);
+        close=(Button)choosePopupView.findViewById(R.id.profile_close);
+        dialogBuilder.setView(choosePopupView);
+        alertDialog = dialogBuilder.create();
+        alertDialog.show();
+        cn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                lang.updateResource("zh");
+                getActivity().recreate();
+                alertDialog.dismiss();
+            }
+        });
+        eg.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                lang.updateResource("en");
+                getActivity().recreate();
+                alertDialog.dismiss();
+            }
+        });
+        close.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                alertDialog.dismiss();
+            }
+        });
 
 
     }

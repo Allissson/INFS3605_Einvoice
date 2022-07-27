@@ -45,7 +45,7 @@ public class DashboardFragment extends Fragment {
 
     private static final String TAG = "Dashboard Fragment";
     private DashboardViewModel dashboardViewModel;
-    private Button scan, zh, en;
+    private Button scan, zh, en,close;
 
 
     private RecyclerView mRecyclerView;
@@ -75,8 +75,7 @@ public class DashboardFragment extends Fragment {
 
     public void onViewCreated(@NonNull View view, Bundle savedInstanceState) {
 
-        zh = view.findViewById(R.id.LanguageChinese);
-        en =view.findViewById(R.id.LanguageEnglish);
+
         progressBar=view.findViewById(R.id.progressBar2);
         noInvoiceHint=view.findViewById(R.id.noInvoiceHint);
 
@@ -157,22 +156,6 @@ public class DashboardFragment extends Fragment {
                                     }
                                 });
 
-        // change language
-        zh.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                lang.updateResource("zh");
-                getActivity().recreate();
-            }
-        });
-
-        en.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                lang.updateResource("en");
-                getActivity().recreate();
-            }
-        });
 
 
 //        // test recycler view

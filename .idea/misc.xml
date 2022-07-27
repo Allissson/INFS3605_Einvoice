@@ -23,9 +23,12 @@
         <entry key="..\:/Users/ASUS/Documents/GitHub/INFS3605_Einvoice/app/src/main/res/menu/menu_description.xml" value="0.3758974358974359" />
         <entry key="..\:/Users/ASUS/Documents/GitHub/INFS3605_Einvoice/app/src/main/res/menu/menu_main.xml" value="0.31875" />
         <entry key="..\:/Users/ASUS/Documents/GitHub/INFS3605_Einvoice/app/src/main/res/menu/menu_scan.xml" value="0.27708333333333335" />
+        <entry key="app/src/main/res/drawable/btt_profile.xml" value="0.253" />
         <entry key="app/src/main/res/drawable/login_border.xml" value="0.306" />
         <entry key="app/src/main/res/drawable/progress_circle.xml" value="0.328" />
         <entry key="app/src/main/res/drawable/shape_btn_blue.xml" value="0.411" />
+        <entry key="app/src/main/res/drawable/shape_btn_red.xml" value="0.3225" />
+        <entry key="app/src/main/res/drawable/shape_white_bg.xml" value="0.3225" />
         <entry key="app/src/main/res/layout/activity_dashboard.xml" value="0.19610507246376813" />
         <entry key="app/src/main/res/layout/activity_forgot_password.xml" value="0.19610507246376813" />
         <entry key="app/src/main/res/layout/activity_home.xml" value="0.3098958333333333" />
@@ -35,12 +38,13 @@
         <entry key="app/src/main/res/layout/activity_scan.xml" value="0.29968325849892435" />
         <entry key="app/src/main/res/layout/activity_scan_result.xml" value="0.4822916666666667" />
         <entry key="app/src/main/res/layout/description_recycler_view.xml" value="0.4822916666666667" />
-        <entry key="app/src/main/res/layout/fragment_dashboard.xml" value="0.3098958333333333" />
+        <entry key="app/src/main/res/layout/fragment_dashboard.xml" value="0.165" />
         <entry key="app/src/main/res/layout/fragment_invoices.xml" value="0.3098958333333333" />
-        <entry key="app/src/main/res/layout/fragment_myaccount.xml" value="0.3098958333333333" />
+        <entry key="app/src/main/res/layout/fragment_myaccount.xml" value="0.25" />
         <entry key="app/src/main/res/layout/item_invoice.xml" value="0.4822916666666667" />
         <entry key="app/src/main/res/layout/item_row.xml" value="0.4822916666666667" />
         <entry key="app/src/main/res/layout/item_urgentpay.xml" value="0.4822916666666667" />
+        <entry key="app/src/main/res/layout/popup_translate.xml" value="0.4276041666666667" />
         <entry key="app/src/main/res/layout/scan_result.xml" value="0.3098958333333333" />
         <entry key="app/src/main/res/layout/test.xml" value="0.19610507246376813" />
         <entry key="app/src/main/res/menu/bottom_nav_menu.xml" value="0.4822916666666667" />
