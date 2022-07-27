@@ -271,7 +271,7 @@ public class ScanResultActivity extends AppCompat {
 
          */
 
-       /* Invoice invoice =new Invoice(Name,country,state,city,street,invoicenumber,dInvoiceDate,dDueDate,dSub,dShip,dTotal,dExtra,mDescription,"unpaid");
+        Invoice invoice =new Invoice(Name,country,state,city,street,invoicenumber,dInvoiceDate,dDueDate,dSub,dShip,dTotal,dExtra,mDescription,"unpaid");
         uDb.child(FirebaseAuth.getInstance().getCurrentUser().getUid()).child("Invoice").child(invoicenumber).setValue(invoice);
 
         // Save Bonus
@@ -308,7 +308,7 @@ public class ScanResultActivity extends AppCompat {
         });
 
 
-    }*/
+    }
 
     private void switchActivities() {
         Intent i = new Intent(this, DescriptionActivity.class);
