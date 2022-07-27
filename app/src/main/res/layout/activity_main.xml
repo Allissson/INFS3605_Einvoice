@@ -13,7 +13,7 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="35dp"
         android:layout_marginLeft="35dp"
-        android:layout_marginTop="60dp"
+        android:layout_marginTop="20dp"
         android:text="@string/activity_main_1"
         android:textColor="#575DFB"
         android:textFontWeight="700"
