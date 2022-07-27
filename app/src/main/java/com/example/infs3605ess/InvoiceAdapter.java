@@ -1,5 +1,6 @@
 package com.example.infs3605ess;
 
+import android.content.Context;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -16,11 +17,13 @@ import java.util.Comparator;
 import java.util.List;
 
 public class InvoiceAdapter extends RecyclerView.Adapter<InvoiceAdapter.MyViewHolder>  implements  Filterable{
+
     private List<Invoice> mInvoice;
     private List<Invoice> mInvoiceFiltered;
     private InvoiceAdapter.ClickListener mListener;
 
     public InvoiceAdapter(List<Invoice> invoice, InvoiceAdapter.ClickListener listener){
+
         this.mInvoice = invoice;
         this.mInvoiceFiltered = invoice;
         this.mListener = listener;
@@ -66,20 +69,20 @@ public class InvoiceAdapter extends RecyclerView.Adapter<InvoiceAdapter.MyViewHo
     @NonNull
     @Override
     public InvoiceAdapter.MyViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-        View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.item_row, parent, false);
+        View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.item_invoice, parent, false);
         return new InvoiceAdapter.MyViewHolder(view, mListener);
     }
 
     // Bind the data to the TextView elements in each row
     @Override
     public void onBindViewHolder(@NonNull InvoiceAdapter.MyViewHolder holder, int position) {
-        final Invoice invoice = mInvoice.get(position);
+        final Invoice invoice = mInvoiceFiltered.get(position);
         int InvoiceID = position;
-        //holder.title.setText(invoice.getInvoiceNum());
-        //holder.status.setText(invoice.getStatus());
-       // holder.amount.setText("Total: $"+String.valueOf(invoice.getTotal()));
+        holder.title.setText(invoice.getInvoiceNum());
+        holder.status.setText(invoice.getStatus());
+        holder.amount.setText("Total: $"+String.valueOf(invoice.getTotal()));
 
-        //holder.itemView.setTag(InvoiceID);
+        holder.itemView.setTag(InvoiceID);
     }
 
     // Total number of rows in the list

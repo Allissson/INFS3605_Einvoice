@@ -57,6 +57,7 @@ public class InvoicesFragment extends Fragment {
         RecyclerView.LayoutManager layoutManager = new LinearLayoutManager(this.getActivity().getApplicationContext());
         mRecyclerView.setLayoutManager(layoutManager);
 
+
         InvoiceAdapter.ClickListener listener = new InvoiceAdapter.ClickListener() {
             @Override
             public void onInvoiceClick(View view, int InvoiceID) {
@@ -67,6 +68,8 @@ public class InvoicesFragment extends Fragment {
                 Toast.makeText(getActivity().getApplicationContext(), invoice.getIssuer()+"\nPrice = $"+invoice.getTotal(), Toast.LENGTH_SHORT).show();
             }
         };
+        mAdapter = new InvoiceAdapter( mInvoice, listener);
+        mRecyclerView.setAdapter(mAdapter);
 
         uDb= FirebaseDatabase.getInstance().getReference().child("User").child(FirebaseAuth.getInstance().getCurrentUser().getUid()).child("Invoice");
         uDb.addValueEventListener(new ValueEventListener() {
@@ -75,15 +78,17 @@ public class InvoicesFragment extends Fragment {
                 for (DataSnapshot snapshot1 : snapshot.getChildren()) {
                     Invoice invoice = snapshot1.getValue(Invoice.class);
                     mInvoice.add(invoice);
+                    System.out.println("TestP: " + mInvoice.size());
                 }
                 mAdapter.notifyDataSetChanged();
+
             }
             @Override
             public void onCancelled(@NonNull DatabaseError error) {
             }
         });
-        System.out.println(mInvoice.size());
-        mAdapter = new InvoiceAdapter(mInvoice, listener);
-        mRecyclerView.setAdapter(mAdapter);
+
+        System.out.println("Test: " + mInvoice.size());
+
     }
 }
