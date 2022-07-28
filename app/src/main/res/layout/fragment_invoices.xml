@@ -8,7 +8,7 @@
     tools:context=".ui.invoices.InvoicesFragment">
 
     <com.google.android.material.tabs.TabLayout
-        android:id="@+id/tab"
+        android:id="@+id/StatusTab"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
@@ -16,26 +16,29 @@
         android:layout_height="wrap_content">
 
         <com.google.android.material.tabs.TabItem
-            android:text="PAID"
+            android:id="@+id/Paid"
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content"/>
+            android:layout_height="wrap_content"
+            android:text="@string/fragment_invoices_1" />
 
         <com.google.android.material.tabs.TabItem
-            android:text="UNPAID"
+            android:id="@+id/Unpaid"
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content"/>
+            android:layout_height="wrap_content"
+            android:text="@string/fragment_invoices_2" />
 
         <com.google.android.material.tabs.TabItem
-            android:text="OVERDUE"
+            android:id="@+id/Overdue"
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content"/>
+            android:layout_height="wrap_content"
+            android:text="@string/fragment_invoices_3" />
 
 
     </com.google.android.material.tabs.TabLayout>
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/recycler_view"
-        app:layout_constraintTop_toBottomOf="@id/tab"
+        app:layout_constraintTop_toBottomOf="@id/StatusTab"
         android:layout_width="match_parent"
         android:background="#F8F9FE"
         android:layout_height="wrap_content"/>

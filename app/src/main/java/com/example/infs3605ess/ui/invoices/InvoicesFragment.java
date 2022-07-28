@@ -1,5 +1,6 @@
 package com.example.infs3605ess.ui.invoices;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -17,7 +18,10 @@ import com.example.infs3605ess.DescriptionAdapter;
 import com.example.infs3605ess.Invoice;
 import com.example.infs3605ess.InvoiceAdapter;
 import com.example.infs3605ess.R;
+import com.example.infs3605ess.ScanActivity;
 import com.example.infs3605ess.ui.dashboard.DashboardViewModel;
+import com.google.android.material.tabs.TabItem;
+import com.google.android.material.tabs.TabLayout;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
@@ -34,10 +38,13 @@ import java.util.Locale;
 public class InvoicesFragment extends Fragment {
 
     private static final String TAG = "Invoices Fragment";
+    private List<Invoice> Invoice = new ArrayList<>();
     private List<Invoice> mInvoice = new ArrayList<>();
     private InvoiceAdapter mAdapter;
     private RecyclerView mRecyclerView;
     private DatabaseReference uDb;
+    private TabItem paid, unpaid, overdue;
+    private TabLayout StatusTabs;
 
     private InvoicesViewModel invoicesViewModel;
 
@@ -56,6 +63,9 @@ public class InvoicesFragment extends Fragment {
         mRecyclerView.setHasFixedSize(true);
         RecyclerView.LayoutManager layoutManager = new LinearLayoutManager(this.getActivity().getApplicationContext());
         mRecyclerView.setLayoutManager(layoutManager);
+        paid = view.findViewById(R.id.Paid);
+        unpaid = view.findViewById(R.id.Unpaid);
+        overdue = view.findViewById(R.id.Overdue);
 
 
         InvoiceAdapter.ClickListener listener = new InvoiceAdapter.ClickListener() {
@@ -77,16 +87,114 @@ public class InvoicesFragment extends Fragment {
             public void onDataChange(@NonNull DataSnapshot snapshot) {
                 for (DataSnapshot snapshot1 : snapshot.getChildren()) {
                     Invoice invoice = snapshot1.getValue(Invoice.class);
-                    mInvoice.add(invoice);
-                    System.out.println("TestP: " + mInvoice.size());
+                    //mInvoice.add(invoice);
+                    Invoice.add(invoice);
+                    System.out.println("TestP: " + Invoice.size());
                 }
-                mAdapter.notifyDataSetChanged();
+                //mAdapter.notifyDataSetChanged();
 
             }
             @Override
             public void onCancelled(@NonNull DatabaseError error) {
             }
         });
+
+        paid = view.findViewById(R.id.Paid);
+        unpaid = view.findViewById(R.id.Unpaid);
+        overdue = view.findViewById(R.id.Overdue);
+
+        StatusTabs = view.findViewById(R.id.StatusTab);
+        String unpaid = "unpaid";
+        StatusTabs.addOnTabSelectedListener(new TabLayout.OnTabSelectedListener() {
+            @Override
+            public void onTabSelected(TabLayout.Tab tab) {
+                switch(tab.getPosition()) {
+                    case 0:
+                        mInvoice.clear();
+                        for(int i=0; i < Invoice.size(); i++){
+                            if(Invoice.get(i).getStatus() == "Paid"){
+                                mInvoice.add(Invoice.get(i));
+                            }
+                        }
+                        System.out.println(mInvoice.size());
+                        mAdapter.notifyDataSetChanged();
+                        break;
+                    case 1:
+                        mInvoice.clear();
+                    //   for(int i = 0; i < Invoice.size(); i++){
+                        //if((Invoice.get(i)).getStatus() == "unpaid"){
+                       //         mInvoice.add(Invoice.get(i));
+//
+                     //       }
+                   //     }
+                        mInvoice.add(Invoice.get(0));
+                        mAdapter.notifyDataSetChanged();
+                        break;
+                    case 2:
+                        mInvoice.clear();
+                        for(int i=0; i < Invoice.size(); i++){
+                            if(Invoice.get(i).getStatus() == "Overdue"){
+                                mInvoice.add(Invoice.get(i));
+                            }
+                        }
+                        mAdapter.notifyDataSetChanged();
+                        break;
+                }
+            }
+
+            @Override
+            public void onTabUnselected(TabLayout.Tab tab) {
+
+            }
+
+            @Override
+            public void onTabReselected(TabLayout.Tab tab) {
+
+            }
+        });
+
+        /*
+        unpaid.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                mInvoice.clear();
+                for(int i=1; i <= Invoice.size(); i++){
+                    if(Invoice.get(i).getStatus() == "unpaid"){
+                        mInvoice.add(Invoice.get(i));
+                    }
+                }
+                mAdapter.notifyDataSetChanged();
+            }
+        });
+
+        overdue.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                mInvoice.clear();
+                for(int i=1; i <= Invoice.size(); i++){
+                    if(Invoice.get(i).getStatus() == "Overdue"){
+                        mInvoice.add(Invoice.get(i));
+                    }
+                }
+                mAdapter.notifyDataSetChanged();
+            }
+        });
+
+        paid.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                mInvoice.clear();
+                for(int i=1; i <= Invoice.size(); i++){
+                    if(Invoice.get(i).getStatus() == "Paid"){
+                        mInvoice.add(Invoice.get(i));
+                    }
+                }
+                mAdapter.notifyDataSetChanged();
+            }
+        });
+        */
+
+
 
         System.out.println("Test: " + mInvoice.size());
 

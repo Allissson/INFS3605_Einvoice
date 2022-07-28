@@ -12,6 +12,10 @@
     <string name="title_account">My Account</string>
     <string name="title_invoices">Invoices</string>
 
+    <string name="fragment_invoices_1">Paid</string>
+    <string name="fragment_invoices_2">Unpaid</string>
+    <string name="fragment_invoices_3">Overdue</string>
+
     <string name="activity_forgot_password_1">Forgot Password?</string>
     <string name="activity_forgot_password_2">Recover your password if you have forgot it!</string>
     <string name="activity_forgot_password_3">Email</string>

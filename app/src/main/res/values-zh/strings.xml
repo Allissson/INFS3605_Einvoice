@@ -13,6 +13,10 @@
     <string name="title_account">我的账户</string>
     <string name="title_invoices">我的单据</string>
 
+    <string name="fragment_invoices_1">已支付</string>
+    <string name="fragment_invoices_2">未支付</string>
+    <string name="fragment_invoices_3">已逾期</string>
+
     <string name="activity_forgot_password_1">忘记密码了?</string>
     <string name="activity_forgot_password_2">在这里找回您的密码!</string>
     <string name="activity_forgot_password_3">邮箱</string>
