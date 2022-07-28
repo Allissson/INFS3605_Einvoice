@@ -2,6 +2,7 @@ package com.example.infs3605ess.ui.invoices;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -112,7 +113,7 @@ public class InvoicesFragment extends Fragment {
                     case 0:
                         mInvoice.clear();
                         for(int i=0; i < Invoice.size(); i++){
-                            if(Invoice.get(i).getStatus() == "Paid"){
+                            if(Invoice.get(i).getStatus().equals("Paid")){
                                 mInvoice.add(Invoice.get(i));
                             }
                         }
@@ -121,19 +122,20 @@ public class InvoicesFragment extends Fragment {
                         break;
                     case 1:
                         mInvoice.clear();
-                    //   for(int i = 0; i < Invoice.size(); i++){
-                        //if((Invoice.get(i)).getStatus() == "unpaid"){
-                       //         mInvoice.add(Invoice.get(i));
-//
-                     //       }
-                   //     }
+                       for(int i = 0; i < Invoice.size(); i++){
+                        if((Invoice.get(i)).getStatus().equals("unpaid")){
+                                mInvoice.add(Invoice.get(i));
+
+                            }
+                        }
                         mInvoice.add(Invoice.get(0));
                         mAdapter.notifyDataSetChanged();
                         break;
                     case 2:
                         mInvoice.clear();
+                        System.out.println("Overdue before for"+Invoice.size());
                         for(int i=0; i < Invoice.size(); i++){
-                            if(Invoice.get(i).getStatus() == "Overdue"){
+                            if(Invoice.get(i).getStatus().equals("Overdue") ){
                                 mInvoice.add(Invoice.get(i));
                             }
                         }
