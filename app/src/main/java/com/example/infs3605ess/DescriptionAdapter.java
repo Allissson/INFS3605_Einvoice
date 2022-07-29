@@ -77,9 +77,9 @@ public DescriptionAdapter(List<Description> description, ClickListener listener)
         final Description description = mDescriptionFiltered.get(position);
         int DescriptionID = position;
         holder.name.setText(description.getName());
-        holder.price.setText("Price: $"+String.valueOf(description.getPrice()));
-        holder.quantity.setText("Quantity: "+String.valueOf(description.getQuantity()));
-        holder.total.setText("Total: $"+String.valueOf(description.getTotal()));
+        holder.price.setText(String.valueOf(description.getPrice()));
+        holder.quantity.setText(String.valueOf(description.getQuantity()));
+        holder.total.setText(String.valueOf(description.getTotal()));
         holder.itemView.setTag(DescriptionID);
     }
 
