@@ -120,7 +120,7 @@ public class ScanActivity extends AppCompat {
                 alter("There is no text in the image! Try again");
             }
             else{
-                Intent intent = new Intent(this, ScanResultActivity.class);
+                Intent intent = new Intent(this, ScanResultViewActivity.class);
                 intent.putExtra("output",outputText);
                 startActivity(intent);
             }
