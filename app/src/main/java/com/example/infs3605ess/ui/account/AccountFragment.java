@@ -26,6 +26,7 @@ import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProvider;
 
 import com.airbnb.lottie.LottieAnimationView;
+import com.example.infs3605ess.HomeActivity;
 import com.example.infs3605ess.IntroFirstActivity;
 import com.example.infs3605ess.IntroSecActivity;
 import com.example.infs3605ess.LanguageManager;
@@ -49,11 +50,11 @@ public class AccountFragment extends Fragment {
 
     private static final String TAG = "Account Fragment";
     private AccountViewModel accountViewModel;
-    private TextView message, points;
+    private TextView message, points,hint;
     private FirebaseAuth mFirebaseAuth;
-    private DatabaseReference mDb;
+    private DatabaseReference mDb,uDb;
     private String userId, userName;
-    private Button close;
+    private Button close,start_new,upload;
     private double progr = 0;
     private int bonus=0;
     private ProgressBar progressBar;
@@ -85,9 +86,10 @@ public class AccountFragment extends Fragment {
     public void onViewCreated(@NonNull View view, Bundle savedInstanceState) {
 
 
-
+        start_new=view.findViewById(R.id.start_new);
         mFirebaseAuth = FirebaseAuth.getInstance();
         ilogout=view.findViewById(R.id.logOut);
+        upload=view.findViewById(R.id.profile_upload);
         translate=view.findViewById(R.id.changelan);
         why=view.findViewById(R.id.why);
         mDb = FirebaseDatabase.getInstance().getReference();
@@ -95,6 +97,16 @@ public class AccountFragment extends Fragment {
         message = view.findViewById(R.id.account_text);
         userId = mFirebaseAuth.getCurrentUser().getUid();
         Log.d(TAG, userId);
+        hint = view.findViewById(R.id.profile_hint);
+
+        // upload Button
+        upload.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(getActivity(),ScanActivity.class);
+                startActivity(intent);
+            }
+        });
 
         // why button
         why.setOnClickListener(new View.OnClickListener() {
@@ -192,11 +204,17 @@ public class AccountFragment extends Fragment {
 //                darkview.setVisibility(View.GONE);
                 setBgAlpha(1);
                 // check if user achieve the goal
-                if (bonus == 800) {
+                if (bonus >= 800) {
                     // pop up screen
                     System.out.println("Achieve!");
                     // reset the bonus
-                    mDb.child(FirebaseAuth.getInstance().getCurrentUser().getUid()).child("Bonus").setValue(0);
+//                    mDb.child(FirebaseAuth.getInstance().getCurrentUser().getUid()).child("Bonus").setValue(bonus-800).addOnCompleteListener(new OnCompleteListener<Void>() {
+//                        @Override
+//                        public void onComplete(@NonNull Task<Void> task) {
+//
+//                        }
+//                    });
+                    congDialog();
                 }
                 if (bonus > 200) {
                     leafNo = (int) Math.floor(bonus / 200);
@@ -226,21 +244,24 @@ public class AccountFragment extends Fragment {
 
                 int imageResource = getResources().getIdentifier("@drawable/leave_green", null, getActivity().getPackageName());
                 Drawable res = getResources().getDrawable(imageResource);
-
+                hint.setText(R.string.profile_one_leaf);
                 if (leafNo == 1) {
                     leaf1.setImageDrawable(res);
                 } else if (leafNo == 2) {
                     leaf1.setImageDrawable(res);
                     leaf2.setImageDrawable(res);
+                    hint.setText(R.string.profile_one_leaf);
                 } else if (leafNo == 3) {
                     leaf1.setImageDrawable(res);
                     leaf2.setImageDrawable(res);
                     leaf3.setImageDrawable(res);
+                    hint.setText(R.string.profile_three_leaf);
                 } else if (leafNo == 4) {
                     leaf1.setImageDrawable(res);
                     leaf2.setImageDrawable(res);
                     leaf3.setImageDrawable(res);
                     leaf4.setImageDrawable(res);
+
                 }
                 // set up animation
                 lottieAnimationView=view.findViewById(R.id.lottieAnimationView);
@@ -306,6 +327,31 @@ public class AccountFragment extends Fragment {
         });
 
 
+    }
+
+    private void congDialog(){
+        dialogBuilder =  new AlertDialog.Builder(getActivity());
+        final View congPopupView = getLayoutInflater().inflate(R.layout.popup_congra,null);
+        start_new=(Button) congPopupView.findViewById(R.id.start_new);
+        dialogBuilder.setView(congPopupView);
+        alertDialog=dialogBuilder.create();
+        alertDialog.show();
+        start_new.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                uDb = FirebaseDatabase.getInstance().getReference();
+                System.out.println(bonus);
+                System.out.println(bonus-800);
+                uDb.child("User").child(FirebaseAuth.getInstance().getCurrentUser().getUid()).child("Bonus").setValue(bonus).addOnCompleteListener(new OnCompleteListener<Void>() {
+                    @Override
+                    public void onComplete(@NonNull Task<Void> task) {
+                        Intent intent = new Intent(getActivity(), HomeActivity.class);
+                        startActivity(intent);
+                    }
+                });
+
+            }
+        });
     }
 }
 

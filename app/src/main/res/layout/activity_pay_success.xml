@@ -14,21 +14,21 @@
         android:fontFamily="@font/inter"
         android:gravity="center"
         android:text="@string/activity_pay_success_1"
-        android:textSize="30dp"
+        android:textSize="23dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/successInvoiceNum" />
 
     <com.airbnb.lottie.LottieAnimationView
         android:id="@+id/lottieAnimationView"
-        android:layout_width="312dp"
-        android:layout_height="296dp"
+        android:layout_width="259dp"
+        android:layout_height="234dp"
         android:layout_marginTop="15dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:lottie_rawRes="@raw/tick"
-        app:lottie_autoPlay="true"/>
+        app:lottie_autoPlay="true"
+        app:lottie_rawRes="@raw/tick" />
 
     <TextView
         android:id="@+id/successInvoiceNum"
@@ -44,32 +44,11 @@
         app:layout_constraintTop_toBottomOf="@+id/lottieAnimationView" />
 
     <Button
-        android:id="@+id/bankSlipUpload"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="20dp"
-        android:text="@string/activity_pay_success_2"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView26" />
-
-    <Button
-        android:id="@+id/emailShare"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="20dp"
-        android:text="@string/activity_pay_success_3"
-        app:layout_constraintEnd_toEndOf="@+id/bankSlipUpload"
-        app:layout_constraintStart_toStartOf="@+id/bankSlipUpload"
-        app:layout_constraintTop_toBottomOf="@+id/bankSlipUpload" />
-
-    <Button
         android:id="@+id/back"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="20dp"
+        android:layout_marginTop="5dp"
         android:text="@string/activity_pay_success_4"
-        app:layout_constraintEnd_toEndOf="@+id/emailShare"
-        app:layout_constraintStart_toStartOf="@+id/emailShare"
-        app:layout_constraintTop_toBottomOf="@+id/emailShare" />
+        app:layout_constraintTop_toBottomOf="@+id/textView26"
+        tools:layout_editor_absoluteX="161dp" />
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -28,10 +28,9 @@ public class PaySuccessActivity extends AppCompat {
         uDb= FirebaseDatabase.getInstance().getReference().child("User").child(FirebaseAuth.getInstance().getCurrentUser().getUid()).child("Invoice").child(invoiceNo);
         uDb.child("status").setValue("Paid");
         invoiceNumber=findViewById(R.id.successInvoiceNum);
-        bankSlip = findViewById(R.id.bankSlipUpload);
-        emailShare=findViewById(R.id.emailShare);
+
         back=findViewById(R.id.back);
-        invoiceNumber.setText(invoiceNo);
+        invoiceNumber.setText(R.string.paysuccess+":"+invoiceNo);
         back.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {

@@ -13,6 +13,7 @@
     <string name="title_account">我的账户</string>
     <string name="title_invoices">我的单据</string>
 
+
     <string name="fragment_invoices_1">已支付</string>
     <string name="fragment_invoices_2">未支付</string>
     <string name="fragment_invoices_3">已逾期</string>
@@ -30,7 +31,7 @@
     <string name="activity_main_7">以谷歌账户继续</string>
     <string name="activity_main_8">新用户?</string>
     <string name="activity_main_9">注册</string>
-    <string name="activity_pay_success_1">你离种下属于你的树又近了一步!</string>
+    <string name="activity_pay_success_1">您的发票状态已转为已付款，您可以稍后在已付款发票列表中找到它</string>
     <string name="activity_pay_success_2">上传银行单据</string>
     <string name="activity_pay_success_3">通过邮件分享</string>
     <string name="activity_pay_success_4">返回</string>
@@ -62,17 +63,27 @@
     <string name="fragment_dashboard_1">扫描功能</string>
     <string name="fragment_dashboard_2">扫描纸质单据来生成电子单据</string>
     <string name="fragment_dashboard_3">您最近没有需要支付的单据！</string>
+    <string name="fragment_dashboard_4">临期账单</string>
+    <string name="fragment_dashboard_5">付款</string>
     <string name="change_language_title">选择您的语言</string>
     <string name="profile_welcome">欢迎回来</string>
     <string name="profile_logout">登出</string>
     <string name="profile_changeLanguage">更改语言</string>
-    <string name="profile_why">什么是PLANT BOOM?</string>
+    <string name="profile_why">什么是E-Tree?</string>
     <string name="dashboard_start">Hi, </string>
     <string name="dashboard_start2">开始扫描您的发票，让您的树茁壮成长！</string>
     <string name="dashboard_start3">临近截止日期的发票</string>
-    <string name="intro_name"> Bonus Tree </string>
+    <string name="intro_name"> E-Tree </string>
     <string name="intro_first">现在我们很自豪地向您介绍我们的E-Tree项目!我们真诚与Venatata合作，让世界在您的帮助下变得更美好!</string>
     <string name="intro_second">您上传到我们服务器上的每200张电子发票将被记录并转换一片树叶，当你收集到5片树叶时，我们和Vennatata将在森林中种植一棵真正的树! </string>
     <string name="intro_third">您在提高公司效率的同时，世界将变得更好。通过使用电子发票和我们的应用，您不仅挽救了树木的生命，而且还创造了更多的生命!</string>
+    <string name="profile_one_leaf">您的树宝宝需要更多的营养，上传更多的电子发票吧！</string>
+    <string name="profile_three_leaf">您离种下您的树只有一步之遥了！</string>
+    <string name="cong">恭喜您！</string>
+    <string name="cong_1">您专属的树苗已经被种下，您的城市和这个世界将因为您变得更好</string>
+    <string name="cong_notice">们将于20个工作日通过邮件联系您。您将会收到一封包含您的树苗的照片和一份电子证明以表彰您对于地球环境作出的努力!</string>
+    <string name="cong_next">开始种您的下一颗树</string>
+    <string name="profile_upload">开始上传</string>
+    <string name="paysuccess">发票号</string>
 
 </resources>
