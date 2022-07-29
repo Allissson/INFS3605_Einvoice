@@ -30,6 +30,7 @@ import com.example.infs3605ess.Invoice;
 import com.example.infs3605ess.LanguageManager;
 import com.example.infs3605ess.R;
 import com.example.infs3605ess.ScanActivity;
+import com.example.infs3605ess.ScanResultViewActivity;
 import com.example.infs3605ess.UrgentPayAdapter;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
@@ -52,7 +53,7 @@ public class DashboardFragment extends Fragment {
 
     private static final String TAG = "Dashboard Fragment";
     private DashboardViewModel dashboardViewModel;
-    private Button zh, en,close;
+    private Button zh, en,close, buttontest;
 
 
     private RecyclerView mRecyclerView;
@@ -96,7 +97,14 @@ public class DashboardFragment extends Fragment {
 
         lscan=view.findViewById(R.id.scan);
 
-
+        buttontest = view.findViewById(R.id.buttontest);
+        buttontest.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(getActivity(), ScanResultViewActivity.class);
+                startActivity(intent);
+            }
+        });
         // set up urgent pay recycler view
         // Log.d(TAG,String.valueOf(urgentInvoice.isEmpty()));
         mRecyclerView = view.findViewById(R.id.urgentRecyclerView);
