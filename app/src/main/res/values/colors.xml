@@ -14,6 +14,10 @@
     <color name="app_red">#C38092</color>
     <color name="yellow">#F9F871</color>
     <color name="light_green">#BDF183</color>
-    <color name="medium_green">#88E69A</color>
+    <color name="medium_green">#37DBA2</color>
     <color name="dark_green">#59D7AF</color>
+    <color name="blue">#37BADB</color>
+    <color name="app_green">#E8FCB7</color>
+    <color name="app_light_green">#E0FDBF</color>
+
 </resources>

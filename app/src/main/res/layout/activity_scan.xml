@@ -29,16 +29,36 @@
         app:layout_constraintStart_toStartOf="@+id/scanfromcamera"
         app:layout_constraintTop_toTopOf="@+id/scanfromcamera" />
 
-    <androidx.appcompat.widget.AppCompatButton
-        android:id="@+id/scanfromcamera"
+    <LinearLayout
+        android:id="@+id/scan_camera"
         android:layout_width="379dp"
         android:layout_height="55dp"
-        android:layout_marginTop="10dp"
         android:background="@drawable/shape_btn_blue"
-        android:text="@string/activity_scan_2"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/imageView" />
+        android:orientation="horizontal"
+        app:layout_constraintEnd_toEndOf="@+id/imageView"
+        app:layout_constraintStart_toStartOf="@+id/imageView"
+        app:layout_constraintTop_toBottomOf="@+id/imageView">
+
+        <ImageView
+            android:id="@+id/imageView9"
+            android:layout_width="134dp"
+            android:layout_height="match_parent"
+            android:layout_gravity="right|end"
+            android:padding="5dp"
+            android:src="@drawable/baseline_document_scanner_24" />
+
+        <TextView
+            android:id="@+id/textView39"
+            android:layout_width="124dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:gravity="center_vertical"
+            android:text="@string/activity_scan_2"
+            android:textAllCaps="false"
+            android:textColor="#FBFBFB"
+            android:textSize="22sp"
+            android:textStyle="bold" />
+    </LinearLayout>
 
 
     <androidx.appcompat.widget.AppCompatButton
@@ -61,12 +81,56 @@
         android:layout_height="55dp"
         android:layout_marginTop="28dp"
         android:background="@drawable/shape_btn_red"
-
+        android:visibility="invisible"
         android:text="@string/activity_scan_3"
         app:layout_constraintEnd_toEndOf="@+id/scanfromcamera"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="@+id/scanfromcamera"
         app:layout_constraintTop_toBottomOf="@+id/scanfromcamera" />
+
+    <androidx.appcompat.widget.AppCompatButton
+        android:id="@+id/scanfromcamera"
+        android:layout_width="379dp"
+        android:layout_height="55dp"
+        android:layout_marginTop="10dp"
+        android:background="@drawable/shape_btn_blue"
+        android:text="@string/activity_scan_2"
+        android:visibility="invisible"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/imageView" />
+
+    <LinearLayout
+        android:id="@+id/choose_gallery"
+        android:layout_width="379dp"
+        android:layout_height="55dp"
+        android:layout_marginTop="15dp"
+        android:background="@drawable/shape_btn_dark_blue"
+        android:orientation="horizontal"
+        app:layout_constraintEnd_toEndOf="@+id/scan_camera"
+        app:layout_constraintStart_toStartOf="@+id/scan_camera"
+        app:layout_constraintTop_toBottomOf="@+id/scan_camera">
+
+        <ImageView
+            android:id="@+id/imageView9"
+            android:layout_width="134dp"
+            android:layout_height="match_parent"
+            android:layout_gravity="right|end"
+            android:padding="5dp"
+            android:src="@drawable/baseline_photo_library_24" />
+
+        <TextView
+            android:id="@+id/textView39"
+            android:layout_width="124dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:gravity="center_vertical"
+            android:text="@string/activity_scan_3"
+            android:textAllCaps="false"
+            android:textColor="#FBFBFB"
+            android:textSize="22sp"
+            android:textStyle="bold" />
+    </LinearLayout>
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -17,6 +17,7 @@ import android.util.SparseArray;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 
 
@@ -35,6 +36,7 @@ public class ScanActivity extends AppCompat {
     private ImageView image;
     private Bitmap bitmap;
     private Uri image_uri;
+    private LinearLayout scan,choosefrom;
 
     private void switchActivities() {
         Intent switchActivityIntent = new Intent(this, DescriptionActivity.class);
@@ -53,6 +55,9 @@ public class ScanActivity extends AppCompat {
         image=findViewById(R.id.imageView);
         choose=findViewById(R.id.btt_choose);
         scanfromcamera=findViewById(R.id.scanfromcamera);
+
+        choosefrom=findViewById(R.id.choose_gallery);
+        scan=findViewById(R.id.scan_camera);
         //test = findViewById(R.id.Test);
 
 //        test.setOnClickListener(new View.OnClickListener() {
@@ -68,7 +73,7 @@ public class ScanActivity extends AppCompat {
 
 
 
-        scanfromcamera.setOnClickListener(new View.OnClickListener() {
+        scan.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 openCamera();
@@ -84,7 +89,7 @@ public class ScanActivity extends AppCompat {
             }
         });
 
-        choose.setOnClickListener(new View.OnClickListener() {
+        choosefrom.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                     Intent intent = new Intent(Intent.ACTION_PICK);

@@ -9,6 +9,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.view.animation.Animation;
 import android.widget.Button;
+import android.widget.LinearLayout;
 import android.widget.ProgressBar;
 import android.widget.Switch;
 import android.widget.TextView;
@@ -51,7 +52,7 @@ public class DashboardFragment extends Fragment {
 
     private static final String TAG = "Dashboard Fragment";
     private DashboardViewModel dashboardViewModel;
-    private Button scan, zh, en,close;
+    private Button zh, en,close;
 
 
     private RecyclerView mRecyclerView;
@@ -63,6 +64,8 @@ public class DashboardFragment extends Fragment {
     private LottieAnimationView lottieAnimationView,tick;
     private long duration=0;
     private String userName;
+
+    private LinearLayout lscan;
 
 
     public View onCreateView(@NonNull LayoutInflater inflater,
@@ -90,6 +93,8 @@ public class DashboardFragment extends Fragment {
 
         LanguageManager lang = new LanguageManager(this.getActivity());
         tick = view.findViewById(R.id.dashboard_tick);
+
+        lscan=view.findViewById(R.id.scan);
 
 
         // set up urgent pay recycler view
@@ -179,8 +184,8 @@ public class DashboardFragment extends Fragment {
 //        });
 
         // scan function
-        scan=view.findViewById(R.id.btt_scan);
-        scan.setOnClickListener(new View.OnClickListener() {
+        //scan=view.findViewById(R.id.btt_scan);
+        lscan.setOnClickListener(new View.OnClickListener() {
                                     @Override
                                     public void onClick(View view) {
                                         Intent intent = new Intent(getActivity(), ScanActivity.class);

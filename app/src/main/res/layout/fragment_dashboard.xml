@@ -19,12 +19,11 @@
         android:id="@+id/imageView2"
         android:layout_width="431dp"
         android:layout_height="748dp"
-        android:layout_marginTop="8dp"
+        android:layout_marginTop="16dp"
         android:src="@drawable/dashboard_bg2"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.47"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/btt_scan" />
+        app:layout_constraintTop_toBottomOf="@+id/scan" />
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/urgentRecyclerView"
@@ -79,16 +78,6 @@
         app:layout_constraintStart_toStartOf="parent"
         tools:layout_editor_absoluteY="29dp" />
 
-    <Button
-        android:id="@+id/btt_scan"
-        android:layout_width="193dp"
-        android:layout_height="47dp"
-        android:layout_marginTop="3dp"
-        android:text="@string/fragment_dashboard_1"
-        app:layout_constraintEnd_toStartOf="@+id/lottieAnimationView2"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView33" />
-
     <TextView
         android:id="@+id/textView2"
         android:layout_width="wrap_content"
@@ -111,5 +100,36 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textView2"
         app:lottie_rawRes="@raw/tick" />
+
+    <LinearLayout
+        android:id="@+id/scan"
+        android:layout_width="193dp"
+        android:layout_height="47dp"
+        android:background="@drawable/shape_btn_blue"
+        android:orientation="horizontal"
+        app:layout_constraintEnd_toEndOf="@+id/lottieAnimationView2"
+        app:layout_constraintEnd_toStartOf="@+id/lottieAnimationView2"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textView33">
+
+        <ImageView
+            android:id="@+id/imageView9"
+            android:layout_width="88dp"
+            android:layout_height="match_parent"
+            android:padding="5dp"
+            android:src="@drawable/baseline_document_scanner_24" />
+
+        <TextView
+            android:id="@+id/textView39"
+            android:layout_width="124dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:gravity="center_vertical"
+            android:text="@string/fragment_dashboard_1"
+            android:textAllCaps="false"
+            android:textColor="#FBFBFB"
+            android:textSize="23sp"
+            android:textStyle="bold" />
+    </LinearLayout>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

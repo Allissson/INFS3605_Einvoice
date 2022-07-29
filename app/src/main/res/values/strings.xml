@@ -44,7 +44,7 @@
     <string name="activity_register_8">Already have an account?</string>
     <string name="activity_register_9">Login</string>
     <string name="activity_scan_1">EXTRACT</string>
-    <string name="activity_scan_2">Scan</string>
+    <string name="activity_scan_2">Scan from Camera</string>
     <string name="activity_scan_3">Choose from Gallery</string>
     <string name="activity_scan_result_1">Scan</string>
     <string name="activity_scan_result_2">Check Scanned Details!</string>

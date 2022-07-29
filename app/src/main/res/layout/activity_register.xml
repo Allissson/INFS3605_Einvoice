@@ -6,6 +6,17 @@
     android:layout_height="match_parent"
     tools:context=".RegisterActivity">
 
+    <ImageView
+        android:id="@+id/imageView7"
+        android:layout_width="121dp"
+        android:layout_height="72dp"
+        android:layout_marginEnd="24dp"
+        android:layout_marginRight="24dp"
+        app:layout_constraintBottom_toBottomOf="@+id/textView7"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/textView7"
+        app:srcCompat="@drawable/ess_logo" />
+
     <TextView
         android:id="@+id/textView12"
         android:layout_width="200dp"
@@ -89,7 +100,7 @@
         android:layout_marginLeft="35dp"
         android:layout_marginTop="20dp"
         android:text="@string/activity_register_1"
-        android:textColor="#575DFB"
+        android:textColor="@color/blue"
         android:textFontWeight="700"
         android:textSize="32dp"
         app:layout_constraintStart_toStartOf="parent"
@@ -101,7 +112,7 @@
         android:layout_height="wrap_content"
         android:background="@color/transparent"
         android:text="@string/activity_register_9"
-        android:textColor="@color/purple"
+        android:textColor="@color/blue"
         android:textFontWeight="700"
         android:textSize="16dp"
         app:layout_constraintBottom_toBottomOf="@+id/textView6"
@@ -142,7 +153,7 @@
         android:layout_height="56dp"
         android:layout_marginTop="5dp"
         android:background="@drawable/login_border"
-        android:hint="  ●●●●●●"
+        android:hint="   *****"
         android:inputType="textPassword"
         app:layout_constraintStart_toStartOf="@+id/textView11"
         app:layout_constraintTop_toBottomOf="@+id/textView11" />
