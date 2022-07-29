@@ -85,5 +85,9 @@
     <string name="cong_next">开始种您的下一颗树</string>
     <string name="profile_upload">开始上传</string>
     <string name="paysuccess">发票号</string>
+    <string name="invoice_view_name">产品名</string>
+    <string name="invoice_view_qty">数量</string>
+    <string name="invoice_view_up">单价</string>
+    <string name="invoice_view_tp">总价</string>
 
 </resources>
