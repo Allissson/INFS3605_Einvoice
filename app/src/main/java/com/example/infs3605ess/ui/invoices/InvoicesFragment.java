@@ -37,7 +37,7 @@ import java.util.Date;
 import java.util.List;
 import java.util.Locale;
 
-public class InvoicesFragment extends Fragment  {
+public class InvoicesFragment extends Fragment {
 
     private static final String TAG = "Invoices Fragment";
     private List<Invoice> Invoice = new ArrayList<>();

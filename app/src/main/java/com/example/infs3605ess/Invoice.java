@@ -4,6 +4,7 @@ import android.graphics.Bitmap;
 import android.os.Parcel;
 import android.os.Parcelable;
 
+import java.io.Serializable;
 import java.util.Date;
 import java.util.List;
 
@@ -29,6 +30,7 @@ public class Invoice implements Parcelable {
         shipHand = in.readDouble();
         total = in.readDouble();
         extra = in.readDouble();
+
     }
 
     public static final Creator<Invoice> CREATOR = new Creator<Invoice>() {

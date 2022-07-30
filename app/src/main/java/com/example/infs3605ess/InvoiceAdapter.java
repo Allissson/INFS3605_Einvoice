@@ -95,10 +95,27 @@ public class InvoiceAdapter extends RecyclerView.Adapter<InvoiceAdapter.MyViewHo
             public void onClick(View view) {
                 Intent intent = new Intent(view.getContext(), InvoiceView.class);
                 intent.putExtra("View",  mInvoiceFiltered.get(InvoiceID));
-                Bundle args = new Bundle();
-                args.putSerializable("ARRAYLIST",(Serializable)mInvoiceFiltered.get(InvoiceID).getDescriptionList());
-                intent.putExtra("BUNDLE",args);
-                //intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+
+                List<String> Name = new ArrayList<>();
+                List<Integer> Quantity = new ArrayList<>();
+                List<Double> Price = new ArrayList<>();
+                List<Double> Total = new ArrayList<>();
+                int i = mInvoiceFiltered.get(InvoiceID).getDescriptionList().size();
+                for(int a = 0; a<i; a++){
+                    Description d = new Description();
+                    String name = mInvoiceFiltered.get(InvoiceID).getDescriptionList().get(a).getName();
+                    int quantity = mInvoiceFiltered.get(InvoiceID).getDescriptionList().get(a).getQuantity();
+                    double price = mInvoiceFiltered.get(InvoiceID).getDescriptionList().get(a).getPrice();
+                    double total = mInvoiceFiltered.get(InvoiceID).getDescriptionList().get(a).getTotal();
+                    Name.add(name);
+                    Quantity.add(quantity);
+                    Price.add(price);
+                    Total.add(total);
+                }
+                intent.putExtra("NAME", (Serializable) Name);
+                intent.putExtra("QUANTITY", (Serializable) Quantity);
+                intent.putExtra("PRICE", (Serializable) Price);
+                intent.putExtra("TOTAL", (Serializable) Total);
                 view.getContext().startActivity(intent);
             }
         });

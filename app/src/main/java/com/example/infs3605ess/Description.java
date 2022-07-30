@@ -1,6 +1,8 @@
 package com.example.infs3605ess;
 
-public class Description {
+import java.io.Serializable;
+
+public class Description implements Serializable {
     private String name;
     private int quantity;
     private double price;

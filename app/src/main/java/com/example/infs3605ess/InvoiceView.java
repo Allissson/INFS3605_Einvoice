@@ -22,7 +22,11 @@ public class InvoiceView extends AppCompat implements Serializable {
     private TextView InvoiceNo, InvoiceDate, Issuer, Address, PriceTotal, DueDate, Tax, SubTotal, ShHan, Total;
     private Button Pay;
     private RecyclerView mRecyclerView;
-    private List<Description> mDescription;
+    private List<Description> mDescription = new ArrayList<>();
+    List<String> NAME = new ArrayList<>();
+    List<Integer> QUANTITY = new ArrayList<>();
+    List<Double> PRICE = new ArrayList<>();
+    List<Double> TOTAL = new ArrayList<>();
     private DescriptionAdapter mAdapter;
     private ScrollView view;
 
@@ -37,9 +41,11 @@ public class InvoiceView extends AppCompat implements Serializable {
         myInvoice = getIntent().getParcelableExtra("View");
         //mDescription = getIntent().getParcelableExtra("Description");
 
-        Intent intent = getIntent();
-        Bundle args = intent.getBundleExtra("BUNDLE");
-        List<Description> description = (List<Description>) args.getSerializable("ARRAYLIST");
+        Intent i = getIntent();
+        NAME = (List<String>) i.getSerializableExtra("NAME");
+        QUANTITY = (List<Integer>) i.getSerializableExtra("QUANTITY");
+        PRICE = (List<Double>) i.getSerializableExtra("PRICE");
+        TOTAL = (List<Double>) i.getSerializableExtra("TOTAL");
 
 
         InvoiceNo = findViewById(R.id.tv_no1);
@@ -86,13 +92,14 @@ public class InvoiceView extends AppCompat implements Serializable {
             mDescription.add(myInvoice.getDescriptionList().get(a));
         }
 */
-        int i = description.size();
-        for(int a = 0; a<i; a++){
-            Description d = new Description();
-            String name = description.get(a).getName();
-            int quantity = description.get(a).getQuantity();
-            double price = description.get(a).getPrice();
-            double total = description.get(a).getTotal();
+
+        int A = NAME.size();
+        for(int a = 0; a<A; a++){
+        Description d = new Description();
+            String name = NAME.get(a);
+            int quantity = QUANTITY.get(a);
+            double price = PRICE.get(a);
+            double total = TOTAL.get(a);
             d.setName(name);
             d.setQuantity(quantity);
             d.setPrice(price);
