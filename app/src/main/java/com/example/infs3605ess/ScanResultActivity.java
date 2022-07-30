@@ -118,19 +118,22 @@ public class ScanResultActivity extends AppCompat {
                 i.putExtra("Total", String.valueOf(description.getTotal()));
                 i.putExtra("ItemNumber", String.valueOf(DescriptionID));
                 startActivity(i);
+                finish();
             }
         };
 
-        if(getIntent().getStringExtra("Name") != null){
-            String itemposition = getIntent().getStringExtra("ItemNumber");
-            String NameI = getIntent().getStringExtra("Name");
-            String PriceI = getIntent().getStringExtra("Price");
-            String QuantityI = getIntent().getStringExtra("Quantity");
-            String TotalI = getIntent().getStringExtra("Total");
-            Double price = Double.parseDouble(PriceI);
-            Double total = Double.parseDouble(TotalI);
-            int quantity = Integer.parseInt(QuantityI);
-            Description update = new Description(NameI, quantity, price, total);
+        String Name1 = getIntent().getStringExtra("Name1");
+        System.out.println("??????????????" + Name1);
+        if(getIntent().getStringExtra("Name1") != null){
+            String itemposition = getIntent().getStringExtra("ItemNumber1");
+            String NameM = getIntent().getStringExtra("Name1");
+            String PriceM = getIntent().getStringExtra("Price1");
+            String QuantityM = getIntent().getStringExtra("Quantity1");
+            String TotalM = getIntent().getStringExtra("Total1");
+            Double priceM = Double.parseDouble(PriceM);
+            Double totalM = Double.parseDouble(TotalM);
+            int quantityM = Integer.parseInt(QuantityM);
+            Description update = new Description(NameM, quantityM, priceM, totalM);
             mDescription.set(Integer.parseInt(itemposition), update);
             mAdapter.notifyDataSetChanged();
         }

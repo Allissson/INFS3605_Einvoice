@@ -65,11 +65,11 @@ public class ScanDescriptionModify extends AppCompat{
                 }else{
                     Intent i = new Intent(view.getContext(), ScanResultActivity.class);
                     i.putExtra("Edit", message);
-                    i.putExtra("Name", Name.getText());
-                    i.putExtra("Price", Price.getText());
-                    i.putExtra("Quantity", Quantity.getText());
-                    i.putExtra("Total", Total.getText());
-                    i.putExtra("ItemNumber", getIntent().getStringExtra("ItemNumber"));
+                    i.putExtra("Name1", Name.getText());
+                    i.putExtra("Price1", Price.getText());
+                    i.putExtra("Quantity1", Quantity.getText());
+                    i.putExtra("Total1", Total.getText());
+                    i.putExtra("ItemNumber1", getIntent().getStringExtra("ItemNumber"));
                     startActivity(i);
                 }
             }
