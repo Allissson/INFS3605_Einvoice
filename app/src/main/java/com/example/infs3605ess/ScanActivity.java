@@ -37,7 +37,7 @@ public class ScanActivity extends AppCompat {
     private Bitmap bitmap;
     private Uri image_uri;
     private LinearLayout scan,choosefrom;
-    
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);

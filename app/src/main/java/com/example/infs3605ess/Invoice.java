@@ -1,11 +1,13 @@
 package com.example.infs3605ess;
 
 import android.graphics.Bitmap;
+import android.os.Parcel;
+import android.os.Parcelable;
 
 import java.util.Date;
 import java.util.List;
 
-public class Invoice {
+public class Invoice implements Parcelable {
 
     public String issuer;
     public String country;
@@ -13,6 +15,33 @@ public class Invoice {
     public String city;
     public String street;
     public String invoiceNum;
+
+    protected Invoice(Parcel in) {
+        issuer = in.readString();
+        country = in.readString();
+        state = in.readString();
+        city = in.readString();
+        street = in.readString();
+        invoiceNum = in.readString();
+        bankslip = in.readParcelable(Bitmap.class.getClassLoader());
+        status = in.readString();
+        subTotal = in.readDouble();
+        shipHand = in.readDouble();
+        total = in.readDouble();
+        extra = in.readDouble();
+    }
+
+    public static final Creator<Invoice> CREATOR = new Creator<Invoice>() {
+        @Override
+        public Invoice createFromParcel(Parcel in) {
+            return new Invoice(in);
+        }
+
+        @Override
+        public Invoice[] newArray(int size) {
+            return new Invoice[size];
+        }
+    };
 
     public Bitmap getBankslip() {
         return bankslip;
@@ -181,4 +210,25 @@ public class Invoice {
     }
 
     public List<Description> descriptionList;
+
+    @Override
+    public int describeContents() {
+        return 0;
+    }
+
+    @Override
+    public void writeToParcel(Parcel parcel, int i) {
+        parcel.writeString(issuer);
+        parcel.writeString(country);
+        parcel.writeString(state);
+        parcel.writeString(city);
+        parcel.writeString(street);
+        parcel.writeString(invoiceNum);
+        parcel.writeParcelable(bankslip, i);
+        parcel.writeString(status);
+        parcel.writeDouble(subTotal);
+        parcel.writeDouble(shipHand);
+        parcel.writeDouble(total);
+        parcel.writeDouble(extra);
+    }
 }

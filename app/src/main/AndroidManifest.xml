@@ -21,6 +21,7 @@
         <activity android:name=".ScanResultActivity" />
         <activity android:name=".ScanResultViewActivity" />
         <activity android:name=".ScanDescriptionModify" />
+        <activity android:name=".InvoiceView" />
         <activity
             android:name=".HomeActivity"
             android:label="@string/title_activity_home" />

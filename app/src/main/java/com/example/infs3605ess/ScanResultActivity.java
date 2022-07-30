@@ -36,7 +36,6 @@ public class ScanResultActivity extends AppCompat {
     private DescriptionAdapter mAdapter;
     private RecyclerView mRecyclerView;
     private int bonus =0;
-
     private Button save;
 
 

@@ -90,7 +90,6 @@ public class InvoicesFragment extends Fragment {
                     Invoice invoice = snapshot1.getValue(Invoice.class);
                     //mInvoice.add(invoice);
                     Invoice.add(invoice);
-                    System.out.println("TestP: " + Invoice.size());
                 }
                 //mAdapter.notifyDataSetChanged();
 
@@ -105,7 +104,6 @@ public class InvoicesFragment extends Fragment {
         overdue = view.findViewById(R.id.Overdue);
 
         StatusTabs = view.findViewById(R.id.StatusTab);
-        String unpaid = "unpaid";
         StatusTabs.addOnTabSelectedListener(new TabLayout.OnTabSelectedListener() {
             @Override
             public void onTabSelected(TabLayout.Tab tab) {

@@ -7,11 +7,23 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
 
+import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.Task;
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
+import java.util.Locale;
 
 public class ScanResultViewActivity extends  AppCompat{
     private static final String TAG = "ScanResultViewActivity";
@@ -21,6 +33,9 @@ public class ScanResultViewActivity extends  AppCompat{
     private List<Description> mDescription = new ArrayList<>();
     private DescriptionAdapter mAdapter;
     private RecyclerView mRecyclerView;
+    private DatabaseReference uDb;
+    private int bonus =0;
+    private java.util.Date dInvoiceDate, dDueDate;
 
 
 
@@ -89,7 +104,6 @@ public class ScanResultViewActivity extends  AppCompat{
             @Override
             public void onProductClick(View view, int DescriptionID) {
                 Description description = mDescription.get(DescriptionID);
-                //Toast.makeText(getApplicationContext(), description.getName()+"\nPrice = $"+description.getPrice(), Toast.LENGTH_SHORT).show();
             }
         };
 
@@ -103,34 +117,6 @@ public class ScanResultViewActivity extends  AppCompat{
             pricetotal += mDescription.get(b).getTotal();
             PriceTotal.setText(String.valueOf(pricetotal));
         }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
         //Address
         String FromInfo = ScanResult.substring(0, ScanResult.indexOf("INVOICE"));
@@ -179,12 +165,73 @@ public class ScanResultViewActivity extends  AppCompat{
         ShHan.setText(shippinghandling);
         Total.setText(total);
 
+        //Upload data to database
+        uDb = FirebaseDatabase.getInstance().getReference().child("User");
+        //Change date from string to Date
+        SimpleDateFormat formatter = new SimpleDateFormat("dd-MMM-yyyy", Locale.US);
+        try {
+            dInvoiceDate = formatter.parse(invoicedate);
+        } catch (ParseException e) {
+            e.printStackTrace();
+        }
+        try {
+            dDueDate = formatter.parse(duedate);
+        } catch (ParseException e) {
+            e.printStackTrace();
+        }
 
+        //Retrieve data from Invoice
+        double dSub = convert(subtotal);
+        double dShip = convert(shippinghandling);
+        double dTotal = convert(total);
+        double dExtra = convert(tax);
+        String dName = Name;
+        String dCountry = country;
+        String dState = state;
+        String dCity = city;
+        String dStreet = street;
+        String dInvoiceNumber = invoicenumber;
 
+        //Set value to firebase
+        Invoice invoice =new Invoice(dName,dCountry,dState,dCity,dStreet,dInvoiceNumber,dInvoiceDate,dDueDate,dSub,dShip,dTotal,dExtra,mDescription,"unpaid");
+        uDb.child(FirebaseAuth.getInstance().getCurrentUser().getUid()).child("Invoice").child(invoicenumber).setValue(invoice);
+        uDb.child(FirebaseAuth.getInstance().getCurrentUser().getUid()).child("Bonus").get().addOnCompleteListener(new OnCompleteListener<DataSnapshot>() {
+            @Override
+            public void onComplete(@NonNull Task<DataSnapshot> task) {
+                if (!task.isSuccessful()) {
+                    Log.e("firebase", "Error getting data", task.getException());
+                }
+                else {
+                    Log.d("firebase", String.valueOf(task.getResult().getValue()));
+                    String sbonus=String.valueOf(task.getResult().getValue());
+                    System.out.println(sbonus.length());
+                    //bonus = Integer.parseInt(String.valueOf(task.getResult().getValue()));
+                    if(sbonus.equals("null")){
+                        bonus = 0;
+                    }
+                    else{
+                        bonus = Integer.parseInt(sbonus);
+                    }
+                }
+            }
+        });
 
-
-
-
-
+        //OnClick Listener to upload invoice to firebase
+        Save.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                uDb.child(FirebaseAuth.getInstance().getCurrentUser().getUid()).child("Bonus").setValue(bonus+1);
+            }
+        });
     }
+
+    //Convert Method
+    private double convert (String number){
+        number = number.replace("s","");
+        number= number.replace("$","");
+        number = number.replace(",","");
+        double resNum = Double.parseDouble(number);
+        return resNum;
+    }
+
 }
