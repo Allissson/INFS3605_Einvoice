@@ -65,24 +65,16 @@
                     android:src="@mipmap/ic_invoice_status_red" />
 
                 <TextView
-                    android:id="@+id/tv_no_title"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="8dp"
-                    android:layout_marginLeft="16dp"
-                    android:text="Invoice no"
-                    android:textColor="@color/black"
-                    android:textSize="15sp"
-                    android:textStyle="bold" />
-
-                <TextView
                     android:id="@+id/tv_no"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginTop="2dp"
+                    android:layout_marginTop="5dp"
                     android:layout_marginLeft="16dp"
                     android:text="Invoice no"
-                    android:textColor="#888888" />
+                    android:textColor="@color/black"
+                    android:textSize="20sp"
+                    android:textStyle="bold" />
+
 
                 <View
                     android:id="@+id/line1"
@@ -97,20 +89,26 @@
                     android:orientation="horizontal">
 
                     <TextView
-                        android:id="@+id/tv_name_title"
-                        android:layout_width="278dp"
+                        android:id="@+id/tv_name"
+                        android:layout_width="259dp"
                         android:layout_height="wrap_content"
+                        android:layout_marginStart="16dp"
+                        android:layout_marginLeft="16dp"
                         android:layout_marginTop="3dp"
                         android:layout_weight="1"
                         android:text="Issuer Name"
-                        android:textColor="#333333" />
+                        android:textColor="#333333"
+                        android:textSize="18dp"
+                        android:textStyle="bold" />
 
                     <TextView
                         android:id="@+id/tv_date_title"
-                        android:layout_width="120dp"
+                        android:layout_width="114dp"
                         android:layout_height="match_parent"
                         android:layout_gravity="right"
                         android:layout_marginRight="0dp"
+                        android:layout_weight="600"
+                        android:gravity="bottom"
                         android:text="Date"
                         android:textColor="#333333" />
 
@@ -122,17 +120,18 @@
                     android:orientation="horizontal">
 
                     <TextView
-                        android:id="@+id/tv_name"
-                        android:layout_width="295dp"
+                        android:id="@+id/tv_address"
+                        android:layout_width="259dp"
                         android:layout_height="wrap_content"
-                        android:layout_marginTop="0dp"
-                        android:layout_weight="1"
-                        android:text="111"
-                        android:textColor="#888888" />
+                        android:layout_marginStart="16dp"
+                        android:layout_marginLeft="16dp"
+                        android:layout_marginTop="4dp"
+                        android:text="Issuer Address"
+                        android:textColor="#333333" />
 
                     <TextView
                         android:id="@+id/tv_date"
-                        android:layout_width="120dp"
+                        android:layout_width="117dp"
                         android:layout_height="match_parent"
                         android:layout_gravity="right"
                         android:layout_marginTop="0dp"
@@ -145,28 +144,14 @@
                 </LinearLayout>
 
                 <TextView
-                    android:id="@+id/tv_address_title"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="4dp"
-                    android:text="Issuer Address"
-                    android:textColor="#333333" />
-
-                <TextView
-                    android:id="@+id/tv_address"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="4dp"
-                    android:text="111"
-                    android:textColor="#888888" />
-
-                <TextView
                     android:id="@+id/recycle_view_title"
-                    android:layout_width="wrap_content"
+                    android:layout_width="395dp"
                     android:layout_height="wrap_content"
+                    android:layout_marginLeft="5dp"
                     android:layout_marginTop="12dp"
+                    android:gravity="center"
                     android:text="Product Description"
-                    android:textColor="#888888" />
+                    android:textColor="@color/black" />
 
                 <View
                     android:id="@+id/line2"
@@ -184,8 +169,8 @@
                         android:id="@+id/textView41"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:layout_marginStart="2dp"
-                        android:layout_marginLeft="2dp"
+                        android:layout_marginStart="16dp"
+                        android:layout_marginLeft="16dp"
                         android:layout_weight="1"
                         android:text="@string/invoice_view_name" />
 
@@ -209,6 +194,7 @@
                         android:layout_height="wrap_content"
                         android:layout_weight="1"
                         android:gravity="end"
+                        android:paddingRight="15dp"
                         android:text="@string/invoice_view_tp" />
                 </LinearLayout>
 
@@ -240,8 +226,8 @@
                     android:layout_height="wrap_content"
                     android:layout_gravity="right"
                     android:layout_marginTop="12dp"
-                    android:layout_marginEnd="2dp"
-                    android:layout_marginRight="2dp"
+                    android:layout_marginEnd="12dp"
+                    android:layout_marginRight="12dp"
                     android:text="Price Total"
                     android:textColor="#888888" />
 
@@ -264,8 +250,8 @@
                         android:id="@+id/tv_total"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:layout_marginEnd="2dp"
-                        android:layout_marginRight="2dp"
+                        android:layout_marginEnd="12dp"
+                        android:layout_marginRight="12dp"
                         android:text="111"
                         android:textColor="#333333"
                         android:textSize="18sp" />
@@ -288,9 +274,11 @@
                         android:id="@+id/tv_due_date_title"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
+                        android:layout_marginStart="12dp"
+                        android:layout_marginLeft="12dp"
                         android:layout_marginTop="0dp"
-                        android:text="Due date"
                         android:layout_weight="1"
+                        android:text="Due date"
                         android:textColor="#888888" />
 
                     <TextView
@@ -299,14 +287,16 @@
                         android:layout_height="wrap_content"
                         android:layout_marginRight="4dp"
                         android:text="Tax:"
-                        android:textColor="#333333" />
+                        android:textColor="#888888" />
 
                     <TextView
                         android:id="@+id/tv_tax"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
+                        android:layout_marginEnd="12dp"
+                        android:layout_marginRight="12dp"
                         android:text="111"
-                        android:textColor="#888888" />
+                        android:textColor="@color/black" />
                 </LinearLayout>
 
                 <LinearLayout
@@ -318,6 +308,8 @@
                         android:id="@+id/tv_due_date"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
+                        android:layout_marginStart="12dp"
+                        android:layout_marginLeft="12dp"
                         android:layout_marginTop="0dp"
                         android:layout_weight="1"
                         android:text="111"
@@ -331,16 +323,18 @@
                         android:layout_gravity="right"
                         android:layout_marginRight="4dp"
                         android:text="Subtotal:"
-                        android:textColor="#333333" />
+                        android:textColor="#888888" />
 
                     <TextView
                         android:id="@+id/tv_subtotal"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:layout_marginTop="4dp"
-                        android:text="111"
                         android:layout_gravity="right"
-                        android:textColor="#888888" />
+                        android:layout_marginTop="4dp"
+                        android:layout_marginEnd="12dp"
+                        android:layout_marginRight="12dp"
+                        android:text="111"
+                        android:textColor="@color/black" />
                 </LinearLayout>
 
 
@@ -358,7 +352,7 @@
                         android:layout_marginTop="0dp"
                         android:layout_marginRight="4dp"
                         android:text="Shipping  Handling:"
-                        android:textColor="#333333"
+                        android:textColor="#888888"
                         android:textSize="14sp"
                         android:textStyle="normal" />
 
@@ -367,9 +361,10 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginTop="0dp"
-                        android:layout_marginRight="0dp"
+                        android:layout_marginEnd="12dp"
+                        android:layout_marginRight="12dp"
                         android:text="111"
-                        android:textColor="#888888" />
+                        android:textColor="@color/black" />
                 </LinearLayout>
 
                 <LinearLayout
@@ -381,13 +376,26 @@
 
                     <TextView
                         android:id="@+id/total_due"
-                        android:layout_width="wrap_content"
+                        android:layout_width="345dp"
                         android:layout_height="wrap_content"
                         android:layout_marginTop="0dp"
                         android:layout_marginRight="4dp"
+                        android:gravity="end"
                         android:text="Total due:"
-                        android:textColor="#333333"
+                        android:textColor="#888888"
                         android:textSize="16sp"
+                        android:textStyle="bold" />
+
+                    <TextView
+                        android:id="@+id/textView46"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginEnd="3dp"
+                        android:layout_marginRight="3dp"
+                        android:layout_weight="1"
+                        android:text="$"
+                        android:textColor="@color/black"
+                        android:textSize="12sp"
                         android:textStyle="bold" />
 
                     <TextView
@@ -395,9 +403,11 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginTop="0dp"
-                        android:layout_marginRight="0dp"
+                        android:layout_marginEnd="12dp"
+                        android:layout_marginRight="12dp"
                         android:text="111"
-                        android:textColor="#888888" />
+                        android:textColor="@color/black"
+                        android:textStyle="bold" />
                 </LinearLayout>
 
                 <androidx.appcompat.widget.AppCompatButton

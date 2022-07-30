@@ -11,7 +11,7 @@
     <LinearLayout
         android:layout_width="377dp"
         android:layout_height="30dp"
-        android:gravity="center"
+        android:gravity="center_vertical"
         android:orientation="horizontal"
         tools:layout_editor_absoluteX="-2dp"
         tools:layout_editor_absoluteY="0dp">
@@ -25,7 +25,7 @@
 
         <TextView
             android:id="@+id/tvQuantity"
-            android:layout_width="45dp"
+            android:layout_width="51dp"
             android:layout_height="wrap_content"
             android:layout_marginEnd="32dp"
             android:layout_marginRight="32dp"
@@ -43,7 +43,7 @@
             android:id="@+id/tvTotal"
             android:layout_width="113dp"
             android:layout_height="wrap_content"
-            android:gravity="end"
+            android:gravity="center"
             android:text="123"
             android:textStyle="bold" />
     </LinearLayout>
