@@ -2,6 +2,8 @@ package com.example.infs3605ess;
 
 import android.content.Context;
 import android.content.Intent;
+import android.os.Bundle;
+import android.os.Parcelable;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -93,6 +95,9 @@ public class InvoiceAdapter extends RecyclerView.Adapter<InvoiceAdapter.MyViewHo
             public void onClick(View view) {
                 Intent intent = new Intent(view.getContext(), InvoiceView.class);
                 intent.putExtra("View",  mInvoiceFiltered.get(InvoiceID));
+                Bundle args = new Bundle();
+                args.putSerializable("ARRAYLIST",(Serializable)mInvoiceFiltered.get(InvoiceID).getDescriptionList());
+                intent.putExtra("BUNDLE",args);
                 //intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
                 view.getContext().startActivity(intent);
             }

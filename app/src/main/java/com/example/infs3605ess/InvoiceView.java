@@ -35,6 +35,13 @@ public class InvoiceView extends AppCompat implements Serializable {
         setContentView(R.layout.activity_invoice_view);
 
         myInvoice = getIntent().getParcelableExtra("View");
+        //mDescription = getIntent().getParcelableExtra("Description");
+
+        Intent intent = getIntent();
+        Bundle args = intent.getBundleExtra("BUNDLE");
+        List<Description> description = (List<Description>) args.getSerializable("ARRAYLIST");
+
+
         InvoiceNo = findViewById(R.id.tv_no1);
         InvoiceDate = findViewById(R.id.tv_date1);
         Issuer = findViewById(R.id.tv_name1);
@@ -73,9 +80,24 @@ public class InvoiceView extends AppCompat implements Serializable {
         mRecyclerView.setHasFixedSize(true);
         RecyclerView.LayoutManager layoutManager = new LinearLayoutManager(getApplicationContext());
         mRecyclerView.setLayoutManager(layoutManager);
+        /*
         int i = myInvoice.getDescriptionList().size();
         for(int a=0; a<i; a++){
             mDescription.add(myInvoice.getDescriptionList().get(a));
+        }
+*/
+        int i = description.size();
+        for(int a = 0; a<i; a++){
+            Description d = new Description();
+            String name = description.get(a).getName();
+            int quantity = description.get(a).getQuantity();
+            double price = description.get(a).getPrice();
+            double total = description.get(a).getTotal();
+            d.setName(name);
+            d.setQuantity(quantity);
+            d.setPrice(price);
+            d.setTotal(total);
+            mDescription.add(d);
         }
 
         DescriptionAdapter.ClickListener listener = new DescriptionAdapter.ClickListener() {
@@ -84,6 +106,8 @@ public class InvoiceView extends AppCompat implements Serializable {
                 Description description = mDescription.get(DescriptionID);
             }
         };
+
+
 
         mAdapter = new DescriptionAdapter(mDescription, listener);
         mRecyclerView.setAdapter(mAdapter);
