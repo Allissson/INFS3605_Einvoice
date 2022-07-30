@@ -106,6 +106,30 @@ public class ScanResultActivity extends AppCompat {
             mDescription.add(d);
         }*/
 
+        for(int a=0;a<i;a=a+4){
+            Description d = new Description();
+            Log.d(TAG, messageSplit[a]);
+            d.setName(messageSplit[a]);
+            d.setQuantity(Integer.parseInt(messageSplit[a+1]));
+            Log.d(TAG, messageSplit[a+1]);
+            String price = messageSplit[a+2];
+            String destotal = messageSplit[a+3];
+            price = price.replace("$","");
+            price = price.replace(",","");
+            price = price.substring(0, price.length() - 3);
+
+
+            destotal = destotal.replace("$","");
+            destotal = destotal.replace(",","");
+            destotal = destotal.substring(0, destotal.length() - 3);
+
+            d.setTotal(Integer.parseInt(destotal));
+            d.setPrice(Integer.parseInt(price));
+            mDescription.add(d);
+        }
+
+
+
         DescriptionAdapter.ClickListener listener = new DescriptionAdapter.ClickListener() {
             @Override
             public void onProductClick(View view, int DescriptionID) {
@@ -121,6 +145,9 @@ public class ScanResultActivity extends AppCompat {
                 finish();
             }
         };
+        
+        mAdapter = new DescriptionAdapter(mDescription, listener);
+        mRecyclerView.setAdapter(mAdapter);
 
         String Name1 = getIntent().getStringExtra("Name1");
         System.out.println("??????????????" + Name1);
@@ -139,8 +166,7 @@ public class ScanResultActivity extends AppCompat {
         }
 
 
-        mAdapter = new DescriptionAdapter(mDescription, listener);
-        mRecyclerView.setAdapter(mAdapter);
+
 
 
 
@@ -239,27 +265,7 @@ public class ScanResultActivity extends AppCompat {
 //        System.out.println(String.valueOf(i));
 
 
-        for(int a=0;a<i;a=a+4){
-            Description d = new Description();
-            Log.d(TAG, messageSplit[a]);
-            d.setName(messageSplit[a]);
-            d.setQuantity(Integer.parseInt(messageSplit[a+1]));
-            Log.d(TAG, messageSplit[a+1]);
-            String price = messageSplit[a+2];
-            String destotal = messageSplit[a+3];
-            price = price.replace("$","");
-            price = price.replace(",","");
-            price = price.substring(0, price.length() - 3);
 
-
-            destotal = destotal.replace("$","");
-            destotal = destotal.replace(",","");
-            destotal = destotal.substring(0, destotal.length() - 3);
-
-            d.setTotal(Integer.parseInt(destotal));
-            d.setPrice(Integer.parseInt(price));
-            mDescription.add(d);
-        }
 
 
 
