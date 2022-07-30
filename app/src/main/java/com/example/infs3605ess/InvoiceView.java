@@ -39,8 +39,6 @@ public class InvoiceView extends AppCompat implements Serializable {
         setContentView(R.layout.activity_invoice_view);
 
         myInvoice = getIntent().getParcelableExtra("View");
-        //mDescription = getIntent().getParcelableExtra("Description");
-
         Intent i = getIntent();
         NAME = (List<String>) i.getSerializableExtra("NAME");
         QUANTITY = (List<Integer>) i.getSerializableExtra("QUANTITY");
@@ -74,7 +72,6 @@ public class InvoiceView extends AppCompat implements Serializable {
 
         Address.setText(myInvoice.getStreet() + "\n" + myInvoice.getCity() + "\n" + myInvoice.getState() +", " + myInvoice.getCountry());
         InvoiceNo.setText(myInvoice.getInvoiceNum());
-        InvoiceDate.setText((CharSequence) myInvoice.getInvoiceDate());
         //InvoiceDate.setText(String.valueOf(Date.parse(String.valueOf(myInvoice.getInvoiceDate()))));
         Issuer.setText(myInvoice.getIssuer());
         //DueDate.setText(String.valueOf(Date.parse(String.valueOf(myInvoice.getDueDate()))));
@@ -86,12 +83,6 @@ public class InvoiceView extends AppCompat implements Serializable {
         mRecyclerView.setHasFixedSize(true);
         RecyclerView.LayoutManager layoutManager = new LinearLayoutManager(getApplicationContext());
         mRecyclerView.setLayoutManager(layoutManager);
-        /*
-        int i = myInvoice.getDescriptionList().size();
-        for(int a=0; a<i; a++){
-            mDescription.add(myInvoice.getDescriptionList().get(a));
-        }
-*/
 
         int A = NAME.size();
         Double sum = 0.0;
