@@ -94,6 +94,7 @@ public class InvoiceView extends AppCompat implements Serializable {
 */
 
         int A = NAME.size();
+        Double sum = 0.0;
         for(int a = 0; a<A; a++){
         Description d = new Description();
             String name = NAME.get(a);
@@ -104,8 +105,11 @@ public class InvoiceView extends AppCompat implements Serializable {
             d.setQuantity(quantity);
             d.setPrice(price);
             d.setTotal(total);
+            sum += total;
             mDescription.add(d);
         }
+        PriceTotal.setText(String.valueOf(sum));
+
 
         DescriptionAdapter.ClickListener listener = new DescriptionAdapter.ClickListener() {
             @Override
