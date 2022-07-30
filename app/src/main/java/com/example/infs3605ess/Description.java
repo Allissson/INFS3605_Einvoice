@@ -3,10 +3,10 @@ package com.example.infs3605ess;
 public class Description {
     private String name;
     private int quantity;
-    private int price;
-    private int total;
+    private double price;
+    private double total;
 
-    Description(String mName,int mQuantity, int mPrice, int mTotal){
+    Description(String mName,int mQuantity, double mPrice, double mTotal){
         this.name = mName;
         this.quantity = mQuantity;
         this.price = mPrice;
@@ -32,19 +32,19 @@ public class Description {
         this.quantity = quantity;
     }
 
-    public int getPrice() {
+    public double getPrice() {
         return price;
     }
 
-    public void setPrice(int price) {
+    public void setPrice(double price) {
         this.price = price;
     }
 
-    public int getTotal() {
+    public double getTotal() {
         return total;
     }
 
-    public void setTotal(int total) {
+    public void setTotal(double total) {
         this.total = total;
     }
 

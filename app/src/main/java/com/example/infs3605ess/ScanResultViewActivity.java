@@ -68,8 +68,8 @@ public class ScanResultViewActivity extends  AppCompat{
             destotal = destotal.replace(",", "");
             destotal = destotal.substring(0, destotal.length() - 3);
 
-            d.setTotal(Integer.parseInt(destotal));
-            d.setPrice(Integer.parseInt(price));
+            d.setTotal(Double.parseDouble(destotal));
+            d.setPrice(Double.parseDouble(price));
             mDescription.add(d);
         }
 
