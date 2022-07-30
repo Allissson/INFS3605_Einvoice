@@ -2,6 +2,7 @@ package com.example.infs3605ess;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ScrollView;
@@ -12,12 +13,14 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import java.io.Serializable;
+import java.text.SimpleDateFormat;
 import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
 public class InvoiceView extends AppCompat implements Serializable {
+    private static final String TAG ="Invoice View" ;
     private Invoice myInvoice;
     private TextView InvoiceNo, InvoiceDate, Issuer, Address, PriceTotal, DueDate, Tax, SubTotal, ShHan, Total;
     private Button Pay;
@@ -74,7 +77,15 @@ public class InvoiceView extends AppCompat implements Serializable {
 
         Address.setText(myInvoice.getStreet() + "\n" + myInvoice.getCity() + "\n" + myInvoice.getState() +", " + myInvoice.getCountry());
         InvoiceNo.setText(myInvoice.getInvoiceNum());
-        InvoiceDate.setText((CharSequence) myInvoice.getInvoiceDate());
+        //InvoiceDate.setText((CharSequence) myInvoice.getInvoiceDate());
+        SimpleDateFormat sdf1 = new SimpleDateFormat("dd-MMM-yyyy");
+        System.out.println(myInvoice.getDueDate());
+
+
+        String invoiceDate = getIntent().getStringExtra("invoiceDate");
+        String dueDate = getIntent().getStringExtra("dueDate");
+        DueDate.setText(dueDate);
+        InvoiceDate.setText(invoiceDate);
         //InvoiceDate.setText(String.valueOf(Date.parse(String.valueOf(myInvoice.getInvoiceDate()))));
         Issuer.setText(myInvoice.getIssuer());
         //DueDate.setText(String.valueOf(Date.parse(String.valueOf(myInvoice.getDueDate()))));

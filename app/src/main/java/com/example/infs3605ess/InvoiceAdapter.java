@@ -19,6 +19,7 @@ import com.example.infs3605ess.ui.invoices.InvoicesFragment;
 
 import java.io.Externalizable;
 import java.io.Serializable;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Comparator;
@@ -95,6 +96,12 @@ public class InvoiceAdapter extends RecyclerView.Adapter<InvoiceAdapter.MyViewHo
             public void onClick(View view) {
                 Intent intent = new Intent(view.getContext(), InvoiceView.class);
                 intent.putExtra("View",  mInvoiceFiltered.get(InvoiceID));
+
+                SimpleDateFormat sdf1 = new SimpleDateFormat("dd-MMM-yyyy");
+                String invoiceDate = sdf1.format(mInvoiceFiltered.get(InvoiceID).getInvoiceDate());
+                String dueDate = sdf1.format(mInvoiceFiltered.get(InvoiceID).getDueDate());
+                intent.putExtra("invoiceDate",invoiceDate);
+                intent.putExtra("dueDate",dueDate);
 
                 List<String> Name = new ArrayList<>();
                 List<Integer> Quantity = new ArrayList<>();
