@@ -80,7 +80,7 @@ public class InvoiceView extends AppCompat implements Serializable {
         //InvoiceDate.setText((CharSequence) myInvoice.getInvoiceDate());
         SimpleDateFormat sdf1 = new SimpleDateFormat("dd-MMM-yyyy");
         System.out.println(myInvoice.getDueDate());
-
+        
 
         String invoiceDate = getIntent().getStringExtra("invoiceDate");
         String dueDate = getIntent().getStringExtra("dueDate");
