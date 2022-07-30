@@ -68,9 +68,9 @@ public class InvoiceView extends AppCompat implements Serializable {
         Pay.setVisibility(View.GONE);
 
 
-        if(myInvoice.getState().equals("Paid")){
+        if(myInvoice.getStatus().equals("Paid")){
             view.setBackgroundResource(R.drawable.listview_bg_green);
-        }else if(myInvoice.getState().equals("unpaid")){
+        }else if(myInvoice.getStatus().equals("unpaid")){
             view.setBackgroundResource(R.drawable.listview_bg_blue);
             Pay.setVisibility(View.VISIBLE);
         }
