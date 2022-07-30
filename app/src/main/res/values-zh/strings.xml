@@ -61,6 +61,7 @@
     <string name="activity_scan_result_12">小计</string>
     <string name="activity_scan_result_13">勤杂费</string>
     <string name="activity_scan_result_14">总计</string>
+    <string name="activity_scan_result_15">保存</string>
     <string name="fragment_dashboard_1">扫描功能</string>
     <string name="fragment_dashboard_2">扫描纸质单据来生成电子单据</string>
     <string name="fragment_dashboard_3">您最近没有需要支付的单据！</string>

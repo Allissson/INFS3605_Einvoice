@@ -13,11 +13,7 @@
         android:orientation="vertical">
 
 
-        <Button
-            android:id="@+id/save"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="save" />
+
 
         <TextView
             android:id="@+id/Modify_Item"
@@ -46,7 +42,7 @@
         <ScrollView
             android:id="@+id/scrollView2"
             android:layout_width="match_parent"
-            android:layout_height="330dp">
+            android:layout_height="300dp">
 
             <LinearLayout
                 android:layout_width="match_parent"
@@ -318,6 +314,12 @@
             android:layout_width="match_parent"
             android:layout_marginBottom="0dp"
             android:layout_height="wrap_content" />
+
+        <Button
+            android:id="@+id/save"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/activity_scan_result_15" />
 
     </LinearLayout>
 

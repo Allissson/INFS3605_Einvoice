@@ -145,7 +145,7 @@ public class ScanResultActivity extends AppCompat {
                 finish();
             }
         };
-        
+
         mAdapter = new DescriptionAdapter(mDescription, listener);
         mRecyclerView.setAdapter(mAdapter);
 
