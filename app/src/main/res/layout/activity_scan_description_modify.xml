@@ -1,0 +1,127 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+
+    <TextView
+        android:id="@+id/Modify_Item"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="35dp"
+        android:layout_marginLeft="35dp"
+        android:layout_marginTop="45dp"
+        android:text="@string/activity_scan_result_1"
+        android:textColor="#575DFB"
+        android:textFontWeight="700"
+        android:textSize="32dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+
+    <TextView
+        android:id="@+id/textViewName"
+        android:layout_width="300dp"
+        android:layout_height="24dp"
+        android:layout_marginTop="30dp"
+        android:fontFamily="@font/inter"
+        android:text="@string/activity_scan_description_modify_1"
+        android:textColor="#000000"
+        android:textFontWeight="400"
+        android:textSize="16dp"
+        app:layout_constraintStart_toStartOf="@+id/Modify_Item"
+        app:layout_constraintTop_toBottomOf="@+id/Modify_Item" />
+
+    <TextView
+        android:id="@+id/textViewName2"
+        android:layout_width="300dp"
+        android:layout_height="24dp"
+        android:layout_marginTop="15dp"
+        android:fontFamily="@font/inter"
+        android:text="@string/activity_scan_description_modify_4"
+        android:textColor="#000000"
+        android:textFontWeight="400"
+        android:textSize="16dp"
+        app:layout_constraintStart_toStartOf="@+id/Modify_Quantity"
+        app:layout_constraintTop_toBottomOf="@+id/Modify_Quantity" />
+
+    <TextView
+        android:id="@+id/textViewName3"
+        android:layout_width="300dp"
+        android:layout_height="24dp"
+        android:layout_marginTop="15dp"
+        android:fontFamily="@font/inter"
+        android:text="@string/activity_scan_description_modify_3"
+        android:textColor="#000000"
+        android:textFontWeight="400"
+        android:textSize="16dp"
+        app:layout_constraintStart_toStartOf="@+id/Modify_Price"
+        app:layout_constraintTop_toBottomOf="@+id/Modify_Price" />
+
+    <TextView
+        android:id="@+id/textViewName4"
+        android:layout_width="300dp"
+        android:layout_height="24dp"
+        android:layout_marginTop="15dp"
+        android:fontFamily="@font/inter"
+        android:text="@string/activity_scan_description_modify_2"
+        android:textColor="#000000"
+        android:textFontWeight="400"
+        android:textSize="16dp"
+        app:layout_constraintStart_toStartOf="@+id/Modify_Name"
+        app:layout_constraintTop_toBottomOf="@+id/Modify_Name" />
+
+    <EditText
+        android:id="@+id/Modify_Name"
+        android:layout_width="343dp"
+        android:layout_height="56dp"
+        android:layout_marginTop="5dp"
+        android:background="@drawable/login_border"
+        android:editable="true"
+        app:layout_constraintStart_toStartOf="@+id/textViewName"
+        app:layout_constraintTop_toBottomOf="@+id/textViewName" />
+
+    <EditText
+        android:id="@+id/Modify_Price"
+        android:layout_width="343dp"
+        android:layout_height="56dp"
+        android:layout_marginTop="5dp"
+        android:background="@drawable/login_border"
+        android:editable="true"
+        app:layout_constraintStart_toStartOf="@+id/textViewName4"
+        app:layout_constraintTop_toBottomOf="@+id/textViewName4" />
+
+    <EditText
+        android:id="@+id/Modify_Quantity"
+        android:layout_width="343dp"
+        android:layout_height="56dp"
+        android:layout_marginTop="5dp"
+        android:background="@drawable/login_border"
+        android:editable="true"
+        app:layout_constraintStart_toStartOf="@+id/textViewName3"
+        app:layout_constraintTop_toBottomOf="@+id/textViewName3" />
+
+    <EditText
+        android:id="@+id/Modify_Total"
+        android:layout_width="343dp"
+        android:layout_height="56dp"
+        android:layout_marginTop="5dp"
+        android:background="@drawable/login_border"
+        android:editable="true"
+        app:layout_constraintStart_toStartOf="@+id/textViewName2"
+        app:layout_constraintTop_toBottomOf="@+id/textViewName2" />
+
+    <androidx.appcompat.widget.AppCompatButton
+        android:id="@+id/btn_modify_save"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="30dp"
+        android:background="@drawable/shape_btn_red"
+        android:text="Save"
+        android:textColor="@color/white"
+        app:layout_constraintTop_toBottomOf="@+id/Modify_Total"
+        tools:layout_editor_absoluteX="0dp" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

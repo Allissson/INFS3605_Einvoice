@@ -56,9 +56,11 @@
     <string name="activity_scan_result_8">Invoice Number</string>
     <string name="activity_scan_result_9">Invoice Date</string>
     <string name="activity_scan_result_10">Due Date</string>
-    <string name="activity_scan_result_11">Subtotal</string>
-    <string name="activity_scan_result_12">Shipping/Handling</string>
-    <string name="activity_scan_result_13">Total Amount</string>
+    <string name="activity_scan_result_11">Tax</string>
+    <string name="activity_scan_result_12">Subtotal</string>
+    <string name="activity_scan_result_13">Shipping/Handling</string>
+    <string name="activity_scan_result_14">Total Amount</string>
+
     <string name="fragment_dashboard_1">Scan</string>
     <string name="fragment_dashboard_2">Scan paper invoice to generate electronic invoice</string>
     <string name="fragment_dashboard_3">Your don\'t have invoice near the due date!</string>
@@ -92,6 +94,10 @@ plant an actual tree in the forest! </string>
     <string name="invoice_view_qty">Qty</string>
     <string name="invoice_view_up">Unit Price</string>
     <string name="invoice_view_tp">Total Price</string>
+    <string name="activity_scan_description_modify_1">Item Name:</string>
+    <string name="activity_scan_description_modify_2">Price:</string>
+    <string name="activity_scan_description_modify_3">Quantity:</string>
+    <string name="activity_scan_description_modify_4">Total:</string>
 
 
 

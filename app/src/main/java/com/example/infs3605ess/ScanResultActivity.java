@@ -1,17 +1,16 @@
 package com.example.infs3605ess;
 
 import androidx.annotation.NonNull;
-import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.os.Parcelable;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
@@ -30,7 +29,7 @@ import java.util.Locale;
 public class ScanResultActivity extends AppCompat {
     private static final String TAG = "Scan Result Activity";
     private String message,DescriptionInfo;
-    private TextView Issuer, Country, State, City, Street, InvoiceNum, InvoiceDate, DueDate, Subtotal, ShipHand, Total, Extra;
+    private TextView Issuer, Country, State, City, Street, InvoiceNum, InvoiceDate, DueDate, Subtotal, ShipHand, Total, Tax;
     private Button Description;
     private DatabaseReference uDb;
     private Date dInvoiceDate, dDueDate;
@@ -56,9 +55,9 @@ public class ScanResultActivity extends AppCompat {
         InvoiceNum = findViewById(R.id.InvoiceNum);
         InvoiceDate = findViewById(R.id.InvoiceDate);
         DueDate = findViewById(R.id.DueDate);
-        Subtotal = findViewById(R.id.Subtotal);
+        Subtotal = findViewById(R.id.Name);
         ShipHand = findViewById(R.id.ShipHand);
-        Extra = findViewById(R.id.Extra);
+        Tax = findViewById(R.id.Tax);
         Total = findViewById(R.id.Total);
         Description = findViewById(R.id.Description);
 
@@ -66,7 +65,7 @@ public class ScanResultActivity extends AppCompat {
 
 
 
-        message = getIntent().getStringExtra("output");
+        message = getIntent().getStringExtra("Edit");
 
         //Get Scan result
         String ScanResult = message;
@@ -83,8 +82,9 @@ public class ScanResultActivity extends AppCompat {
         String[] messageSplit = DescriptionInfo.split(" ");
         int i = messageSplit.length;
         System.out.println(String.valueOf(i));
-
+/*
         for (int a = 0; a < i; a = a + 4) {
+            mDescription.clear();
             Description d = new Description();
             Log.d(TAG, messageSplit[a]);
             d.setName(messageSplit[a]);
@@ -104,20 +104,41 @@ public class ScanResultActivity extends AppCompat {
             d.setTotal(Integer.parseInt(destotal));
             d.setPrice(Integer.parseInt(price));
             mDescription.add(d);
-        }
+        }*/
 
         DescriptionAdapter.ClickListener listener = new DescriptionAdapter.ClickListener() {
             @Override
             public void onProductClick(View view, int DescriptionID) {
-                //Model model=(Model)adapter.getItem(position);
                 Description description = mDescription.get(DescriptionID);
-                // Display details for the selected RecyclerView item (product on the list)
-                /////Toast.makeText(getApplicationContext(), description.getName()+"\nPrice = $"+description.getPrice(), Toast.LENGTH_SHORT).show();
+                Intent i = new Intent(view.getContext(), ScanDescriptionModify.class);
+                i.putExtra("Edit", message);
+                i.putExtra("Name", description.getName());
+                i.putExtra("Price", String.valueOf(description.getPrice()));
+                i.putExtra("Quantity", String.valueOf(description.getQuantity()));
+                i.putExtra("Total", String.valueOf(description.getTotal()));
+                i.putExtra("ItemNumber", String.valueOf(DescriptionID));
+                startActivity(i);
             }
         };
 
+        if(getIntent().getStringExtra("Name") != null){
+            String itemposition = getIntent().getStringExtra("ItemNumber");
+            String NameI = getIntent().getStringExtra("Name");
+            String PriceI = getIntent().getStringExtra("Price");
+            String QuantityI = getIntent().getStringExtra("Quantity");
+            String TotalI = getIntent().getStringExtra("Total");
+            Double price = Double.parseDouble(PriceI);
+            Double total = Double.parseDouble(TotalI);
+            int quantity = Integer.parseInt(QuantityI);
+            Description update = new Description(NameI, quantity, price, total);
+            mDescription.set(Integer.parseInt(itemposition), update);
+            mAdapter.notifyDataSetChanged();
+        }
+
+
         mAdapter = new DescriptionAdapter(mDescription, listener);
         mRecyclerView.setAdapter(mAdapter);
+
 
 
         //Get variables
@@ -145,15 +166,6 @@ public class ScanResultActivity extends AppCompat {
         String invoicedate = (ScanResult.substring(ScanResult.indexOf("Date: ") + 6)).substring(0, 11);
         String duedate = (ScanResult.substring(ScanResult.indexOf("Due Date: ") + 10)).substring(0, 11);
 
-System.out.println(invoicedate);
-        //思路如果是multiple description， 用if查一下$的数量。
-        /*String DescriptionT = ScanResult.substring(ScanResult.indexOf("Amount ") + 7);
-        DescriptionT = DescriptionT.substring(0, DescriptionT.indexOf(" Tax "));
-        String[] DescriptionSplit = DescriptionT.split(" \\$");
-        String Description1Name = DescriptionSplit[0];
-        String Description1Price = DescriptionSplit[1];
-        String Description1Amount = DescriptionSplit[2];
-        */
         DescriptionInfo = ScanResult.substring(ScanResult.indexOf("Amount ") + 7);
         DescriptionInfo = DescriptionInfo.substring(0, DescriptionInfo.indexOf(" Tax "));
         System.out.println(DescriptionInfo);
@@ -162,8 +174,8 @@ System.out.println(invoicedate);
 
 
         //Tax, subtotal, shipping & handling, Total Due
-        String Tax = ScanResult.substring(ScanResult.indexOf("Tax ") + 4);
-        Tax = Tax.substring(0, Tax.indexOf(" Sub Total"));
+        String tax = ScanResult.substring(ScanResult.indexOf("Tax ") + 4);
+        tax = tax.substring(0, tax.indexOf(" Sub Total"));
 
         String SubTotal = ScanResult.substring(ScanResult.indexOf("Sub Total ") + 10);
         SubTotal = SubTotal.substring(0, SubTotal.indexOf(" Shipping"));
@@ -173,14 +185,6 @@ System.out.println(invoicedate);
 
         String total = ScanResult.substring(ScanResult.indexOf("Total Due ") + 10);
         total = total.substring(0, total.indexOf(" Please make"));
-
-
-        //String Description2
-        //String subtotal = ScanResult.substring(ScanResult.indexOf("Subtotal ") + 9, ScanResult.indexOf("Shipping/handling"));
-        //String ShippingHandling = ScanResult.substring(ScanResult.indexOf("Shipping/handling ") + 18, ScanResult.indexOf("GST"));
-
-
-        System.out.println(message);
 
         Issuer.setText(Name);
         Country.setText(country);
@@ -193,7 +197,7 @@ System.out.println(invoicedate);
         Subtotal.setText(SubTotal);
         ShipHand.setText(ShippingHandling);
         Total.setText(total);
-        Extra.setText(Test);
+        Tax.setText(tax);
 
         Description.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -208,9 +212,6 @@ System.out.println(invoicedate);
         uDb = FirebaseDatabase.getInstance().getReference().child("User");
         // change date from string to Date
         SimpleDateFormat formatter = new SimpleDateFormat("dd-MMM-yyyy", Locale.US);
-
-
-
         try {
             dInvoiceDate = formatter.parse(invoicedate);
             System.out.println("Test: " + dInvoiceDate.toString());
@@ -222,7 +223,6 @@ System.out.println(invoicedate);
         } catch (ParseException e) {
             e.printStackTrace();
         }
-
 
         double dSub = convert(SubTotal);
         double dShip = convert(ShippingHandling);

@@ -20,7 +20,7 @@
             android:text="save" />
 
         <TextView
-            android:id="@+id/textView18"
+            android:id="@+id/Modify_Item"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="35dp"
@@ -234,7 +234,7 @@
                     android:textSize="16dp" />
 
                 <EditText
-                    android:id="@+id/Subtotal"
+                    android:id="@+id/Tax"
                     android:layout_width="343dp"
                     android:layout_height="56dp"
                     android:layout_marginLeft="35dp"
@@ -255,7 +255,7 @@
                     android:textSize="16dp" />
 
                 <EditText
-                    android:id="@+id/ShipHand"
+                    android:id="@+id/Name"
                     android:layout_width="343dp"
                     android:layout_height="56dp"
                     android:layout_marginLeft="35dp"
@@ -276,7 +276,7 @@
                     android:textSize="16dp" />
 
                 <EditText
-                    android:id="@+id/Total"
+                    android:id="@+id/ShipHand"
                     android:layout_width="343dp"
                     android:layout_height="56dp"
                     android:layout_marginLeft="35dp"
@@ -291,13 +291,13 @@
                     android:layout_marginLeft="35dp"
                     android:layout_marginTop="5dp"
                     android:fontFamily="@font/inter"
-                    android:text="TestEXTRA"
+                    android:text="@string/activity_scan_result_14"
                     android:textColor="#000000"
                     android:textFontWeight="400"
                     android:textSize="16dp" />
 
                 <EditText
-                    android:id="@+id/Extra"
+                    android:id="@+id/Total"
                     android:layout_width="343dp"
                     android:layout_height="56dp"
                     android:layout_marginLeft="35dp"

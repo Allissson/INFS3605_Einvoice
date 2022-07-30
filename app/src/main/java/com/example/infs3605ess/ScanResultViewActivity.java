@@ -1,8 +1,10 @@
 package com.example.infs3605ess;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
+import android.widget.Button;
 import android.widget.TextView;
 
 import androidx.recyclerview.widget.LinearLayoutManager;
@@ -14,6 +16,7 @@ import java.util.List;
 public class ScanResultViewActivity extends  AppCompat{
     private static final String TAG = "ScanResultViewActivity";
     private TextView InvoiceNo, Date, Issuer, Address, PriceTotal, DueDate, Tax, SubTotal, ShHan, Total;
+    private Button Save, Edit;
     private String message,DescriptionInfo;
     private List<Description> mDescription = new ArrayList<>();
     private DescriptionAdapter mAdapter;
@@ -35,11 +38,23 @@ public class ScanResultViewActivity extends  AppCompat{
         SubTotal = findViewById(R.id.tv_subtotal);
         ShHan = findViewById(R.id.tv_shiphand);
         Total = findViewById(R.id.tv_total_due);
+        Save = findViewById(R.id.btn_save);
+        Edit = findViewById(R.id.btn_modify_save);
         mRecyclerView = findViewById(R.id.recyclerview);
 
         message = getIntent().getStringExtra("output");
         String ScanResult = message;
 
+        Edit.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(view.getContext(), ScanResultActivity.class);
+                intent.putExtra("Edit", ScanResult);
+                startActivity(intent);
+            }
+        });
+
+        //Recycler View
         mRecyclerView.setHasFixedSize(true);
         RecyclerView.LayoutManager layoutManager = new LinearLayoutManager(getApplicationContext());
         mRecyclerView.setLayoutManager(layoutManager);
@@ -62,12 +77,9 @@ public class ScanResultViewActivity extends  AppCompat{
             price = price.replace("$", "");
             price = price.replace(",", "");
             price = price.substring(0, price.length() - 3);
-
-
             destotal = destotal.replace("$", "");
             destotal = destotal.replace(",", "");
             destotal = destotal.substring(0, destotal.length() - 3);
-
             d.setTotal(Double.parseDouble(destotal));
             d.setPrice(Double.parseDouble(price));
             mDescription.add(d);
