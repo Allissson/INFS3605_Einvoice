@@ -27,7 +27,6 @@
         <activity android:name=".ScanActivity" />
         <activity android:name=".ForgotPasswordActivity" />
         <activity android:name=".RegisterActivity" />
-        <activity android:name=".DescriptionActivity" />
         <activity
             android:name=".MainActivity"
             android:exported="true">

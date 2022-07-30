@@ -301,11 +301,6 @@
                     android:background="@drawable/login_border"
                     android:editable="true" />
 
-                <Button
-                    android:id="@+id/Description"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:text="Description" />
             </LinearLayout>
         </ScrollView>
 

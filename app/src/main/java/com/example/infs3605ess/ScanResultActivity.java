@@ -30,7 +30,6 @@ public class ScanResultActivity extends AppCompat {
     private static final String TAG = "Scan Result Activity";
     private String message,DescriptionInfo;
     private TextView Issuer, Country, State, City, Street, InvoiceNum, InvoiceDate, DueDate, Subtotal, ShipHand, Total, Tax;
-    private Button Description;
     private DatabaseReference uDb;
     private Date dInvoiceDate, dDueDate;
     private List<Description> mDescription = new ArrayList<>();
@@ -59,53 +58,24 @@ public class ScanResultActivity extends AppCompat {
         ShipHand = findViewById(R.id.ShipHand);
         Tax = findViewById(R.id.Tax);
         Total = findViewById(R.id.Total);
-        Description = findViewById(R.id.Description);
-
         mRecyclerView = findViewById(R.id.recycleView);
 
-
-
+        //GetIntent
         message = getIntent().getStringExtra("Edit");
-
-        //Get Scan result
         String ScanResult = message;
 
-
+        //Initiate mRecyclerView
         mRecyclerView.setHasFixedSize(true);
         RecyclerView.LayoutManager layoutManager = new LinearLayoutManager(getApplicationContext());
         mRecyclerView.setLayoutManager(layoutManager);
 
-
+        //Get Description Items Info
         DescriptionInfo = ScanResult.substring(ScanResult.indexOf("Amount ") + 7);
         DescriptionInfo = DescriptionInfo.substring(0, DescriptionInfo.indexOf(" Tax "));
 
+        //Pop up mDescription
         String[] messageSplit = DescriptionInfo.split(" ");
         int i = messageSplit.length;
-        System.out.println(String.valueOf(i));
-/*
-        for (int a = 0; a < i; a = a + 4) {
-            mDescription.clear();
-            Description d = new Description();
-            Log.d(TAG, messageSplit[a]);
-            d.setName(messageSplit[a]);
-            d.setQuantity(Integer.parseInt(messageSplit[a + 1]));
-            Log.d(TAG, messageSplit[a + 1]);
-            String price = messageSplit[a + 2];
-            String destotal = messageSplit[a + 3];
-            price = price.replace("$", "");
-            price = price.replace(",", "");
-            price = price.substring(0, price.length() - 3);
-
-
-            destotal = destotal.replace("$", "");
-            destotal = destotal.replace(",", "");
-            destotal = destotal.substring(0, destotal.length() - 3);
-
-            d.setTotal(Integer.parseInt(destotal));
-            d.setPrice(Integer.parseInt(price));
-            mDescription.add(d);
-        }*/
-
         for(int a=0;a<i;a=a+4){
             Description d = new Description();
             Log.d(TAG, messageSplit[a]);
@@ -117,19 +87,15 @@ public class ScanResultActivity extends AppCompat {
             price = price.replace("$","");
             price = price.replace(",","");
             price = price.substring(0, price.length() - 3);
-
-
             destotal = destotal.replace("$","");
             destotal = destotal.replace(",","");
             destotal = destotal.substring(0, destotal.length() - 3);
-
             d.setTotal(Integer.parseInt(destotal));
             d.setPrice(Integer.parseInt(price));
             mDescription.add(d);
         }
 
-
-
+        //Description onClick Listener
         DescriptionAdapter.ClickListener listener = new DescriptionAdapter.ClickListener() {
             @Override
             public void onProductClick(View view, int DescriptionID) {
@@ -146,11 +112,11 @@ public class ScanResultActivity extends AppCompat {
             }
         };
 
+        //Set mAdapter for the recyclerView
         mAdapter = new DescriptionAdapter(mDescription, listener);
         mRecyclerView.setAdapter(mAdapter);
 
-        String Name1 = getIntent().getStringExtra("Name1");
-        System.out.println("??????????????" + Name1);
+        //Detect changes of description items
         if(getIntent().getStringExtra("Name1") != null){
             String itemposition = getIntent().getStringExtra("ItemNumber1");
             String NameM = getIntent().getStringExtra("Name1");
@@ -166,55 +132,52 @@ public class ScanResultActivity extends AppCompat {
         }
 
 
-
-
-
-
         //Get variables
 
-        //发方地址
+        //Address
         String FromInfo = ScanResult.substring(0, ScanResult.indexOf("INVOICE"));
         String[] FromSplit = FromInfo.split(", ");
-
         String country = FromSplit[FromSplit.length - 1];
         String state = FromSplit[FromSplit.length - 2];
         String city = FromSplit[FromSplit.length - 3];
-
         String StreetInfo = FromSplit[FromSplit.length - 4];
         String[] StreetSplit = StreetInfo.split(" ");
         String street = StreetSplit[StreetSplit.length - 3] + " " + StreetSplit[StreetSplit.length - 2] + " " + StreetSplit[StreetSplit.length - 1];
 
-        //发方姓名
+        //Issuer
         String From = ScanResult.substring(0, ScanResult.indexOf(street));
         String[] FromEliminateSpace = From.split(" ");
         String Name = FromEliminateSpace[1] + " " + FromEliminateSpace[2];
 
 
-        //Number, date, due date
+        //Number, Date, Due Date
         String invoicenumber = (ScanResult.substring(ScanResult.indexOf("Invoice No: ") + 12)).substring(0, 5);
         String invoicedate = (ScanResult.substring(ScanResult.indexOf("Date: ") + 6)).substring(0, 11);
         String duedate = (ScanResult.substring(ScanResult.indexOf("Due Date: ") + 10)).substring(0, 11);
 
-        DescriptionInfo = ScanResult.substring(ScanResult.indexOf("Amount ") + 7);
+        /*DescriptionInfo = ScanResult.substring(ScanResult.indexOf("Amount ") + 7);
         DescriptionInfo = DescriptionInfo.substring(0, DescriptionInfo.indexOf(" Tax "));
         System.out.println(DescriptionInfo);
         int count = DescriptionInfo.split("\\$", -1).length - 1;
         String Test = String.valueOf(count);
+        */
 
 
         //Tax, subtotal, shipping & handling, Total Due
         String tax = ScanResult.substring(ScanResult.indexOf("Tax ") + 4);
         tax = tax.substring(0, tax.indexOf(" Sub Total"));
-
+        tax = tax.replace("$", "");
         String SubTotal = ScanResult.substring(ScanResult.indexOf("Sub Total ") + 10);
         SubTotal = SubTotal.substring(0, SubTotal.indexOf(" Shipping"));
-
+        SubTotal = SubTotal.replace("$", "");
         String ShippingHandling = ScanResult.substring(ScanResult.indexOf("Handling ") + 9);
         ShippingHandling = ShippingHandling.substring(0, ShippingHandling.indexOf(" Total Due "));
-
+        ShippingHandling = ShippingHandling.replace("$", "");
         String total = ScanResult.substring(ScanResult.indexOf("Total Due ") + 10);
         total = total.substring(0, total.indexOf(" Please make"));
+        total = total.replace("$", "");
 
+        //Set Text method, Pop up XML file
         Issuer.setText(Name);
         Country.setText(country);
         State.setText(state);
@@ -228,35 +191,34 @@ public class ScanResultActivity extends AppCompat {
         Total.setText(total);
         Tax.setText(tax);
 
-        Description.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                switchActivities();
 
-            }
-        });
-
-        // upload data to database
-
+        //Upload data to database
         uDb = FirebaseDatabase.getInstance().getReference().child("User");
-        // change date from string to Date
+        //Change date from string to Date
         SimpleDateFormat formatter = new SimpleDateFormat("dd-MMM-yyyy", Locale.US);
         try {
-            dInvoiceDate = formatter.parse(invoicedate);
-            System.out.println("Test: " + dInvoiceDate.toString());
+            dInvoiceDate = formatter.parse(String.valueOf(InvoiceDate.getText()));
         } catch (ParseException e) {
             e.printStackTrace();
         }
         try {
-            dDueDate = formatter.parse(duedate);
+            dDueDate = formatter.parse(String.valueOf(DueDate.getText()));
         } catch (ParseException e) {
             e.printStackTrace();
         }
 
-        double dSub = convert(SubTotal);
-        double dShip = convert(ShippingHandling);
-        double dTotal = convert(total);
-        double dExtra = convert(Test);
+        //Retrieve data from User input
+        double dSub = convert(String.valueOf(Subtotal.getText()));
+        double dShip = convert(String.valueOf(ShipHand.getText()));
+        double dTotal = convert(String.valueOf(Total.getText()));
+        double dExtra = convert(String.valueOf(Tax.getText()));
+        String dName = String.valueOf(Issuer.getText());
+        String dCountry = String.valueOf(Country.getText());
+        String dState = String.valueOf(State.getText());
+        String dCity = String.valueOf(City.getText());
+        String dStreet = String.valueOf(Street.getText());
+        String dInvoiceNumber = String.valueOf(InvoiceNum.getText());
+
 
         // split description
 
@@ -264,14 +226,8 @@ public class ScanResultActivity extends AppCompat {
 //        int i = messageSplit.length;
 //        System.out.println(String.valueOf(i));
 
-
-
-
-
-
-
-        // set value to firebase
-        Invoice invoice =new Invoice(Name,country,state,city,street,invoicenumber,dInvoiceDate,dDueDate,dSub,dShip,dTotal,dExtra,mDescription,"unpaid");
+        //Set value to firebase
+        Invoice invoice =new Invoice(dName,dCountry,dState,dCity,dStreet,dInvoiceNumber,dInvoiceDate,dDueDate,dSub,dShip,dTotal,dExtra,mDescription,"unpaid");
         uDb.child(FirebaseAuth.getInstance().getCurrentUser().getUid()).child("Invoice").child(invoicenumber).setValue(invoice);
 
         // Save Bonus
@@ -295,15 +251,14 @@ public class ScanResultActivity extends AppCompat {
                     else{
                         bonus = Integer.parseInt(sbonus);
                     }
-
                 }
             }
         });
 
+        //OnClick Listener to upload invoice to firebase
         save.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-
                 uDb.child(FirebaseAuth.getInstance().getCurrentUser().getUid()).child("Bonus").setValue(bonus+1);
             }
         });
@@ -311,20 +266,12 @@ public class ScanResultActivity extends AppCompat {
 
     }
 
-    private void switchActivities() {
-        Intent i = new Intent(this, DescriptionActivity.class);
-        i.putExtra("key",DescriptionInfo);
-        startActivity(i);
-    }
-
-    private double convert (String number){
+        //Convert Method
+        private double convert (String number){
         number = number.replace("s","");
         number= number.replace("$","");
         number = number.replace(",","");
         double resNum = Double.parseDouble(number);
         return resNum;
     }
-
-
-
 }

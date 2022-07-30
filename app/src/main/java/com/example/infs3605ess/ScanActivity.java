@@ -37,11 +37,7 @@ public class ScanActivity extends AppCompat {
     private Bitmap bitmap;
     private Uri image_uri;
     private LinearLayout scan,choosefrom;
-
-    private void switchActivities() {
-        Intent switchActivityIntent = new Intent(this, DescriptionActivity.class);
-        startActivity(switchActivityIntent);
-    }
+    
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
