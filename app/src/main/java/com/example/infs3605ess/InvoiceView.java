@@ -86,10 +86,10 @@ public class InvoiceView extends AppCompat implements Serializable {
         //InvoiceDate.setText(String.valueOf(Date.parse(String.valueOf(myInvoice.getInvoiceDate()))));
         Issuer.setText(myInvoice.getIssuer());
         //DueDate.setText(String.valueOf(Date.parse(String.valueOf(myInvoice.getDueDate()))));
-        Tax.setText(String.valueOf(myInvoice.getExtra()));
-        SubTotal.setText(String.valueOf(myInvoice.getSubTotal()));
-        ShHan.setText(String.valueOf(myInvoice.getShipHand()));
-        Total.setText(String.valueOf(myInvoice.getTotal()));
+        Tax.setText("$" + String.valueOf(myInvoice.getExtra()));
+        SubTotal.setText("$" + String.valueOf(myInvoice.getSubTotal()));
+        ShHan.setText("$" + String.valueOf(myInvoice.getShipHand()));
+        Total.setText("$" + String.valueOf(myInvoice.getTotal()));
 
         mRecyclerView.setHasFixedSize(true);
         RecyclerView.LayoutManager layoutManager = new LinearLayoutManager(getApplicationContext());

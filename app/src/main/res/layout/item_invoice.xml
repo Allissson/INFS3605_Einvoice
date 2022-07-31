@@ -55,17 +55,19 @@
                 android:layout_marginTop="8dp">
 
                 <TextView
-                    android:id="@+id/tv_money"
+                    android:id="@+id/tv_money1"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginStart="0dp"
                     android:layout_marginLeft="0dp"
                     android:fontFamily="@font/inter"
-                    android:text="Paid"
+                    android:text="@string/item_view_2"
                     android:textColor="#F2AA00"
                     android:textSize="14sp" />
 
                 <TextView
+                    android:id="@+id/tv_money"
+                    android:textColor="#F2AA00"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content" />
 
@@ -92,7 +94,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginTop="2dp"
                 android:background="@drawable/shape_btn_blue"
-                android:text="VIEW"
+                android:text="@string/item_view_1"
                 android:textColor="@color/white" />
 
         </LinearLayout>

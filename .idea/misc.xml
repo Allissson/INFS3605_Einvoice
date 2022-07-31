@@ -9,6 +9,7 @@
         <entry key="..\:/Users/ASUS/Documents/GitHub/INFS3605_Einvoice/app/src/main/res/layout/activity_intro_first.xml" value="0.19427558257345492" />
         <entry key="..\:/Users/ASUS/Documents/GitHub/INFS3605_Einvoice/app/src/main/res/layout/activity_intro_sec.xml" value="0.19427558257345492" />
         <entry key="..\:/Users/ASUS/Documents/GitHub/INFS3605_Einvoice/app/src/main/res/layout/activity_intro_third.xml" value="0.19427558257345492" />
+        <entry key="..\:/Users/ASUS/Documents/GitHub/INFS3605_Einvoice/app/src/main/res/layout/activity_invoice_view.xml" value="0.19630192502532928" />
         <entry key="..\:/Users/ASUS/Documents/GitHub/INFS3605_Einvoice/app/src/main/res/layout/activity_main.xml" value="0.33016304347826086" />
         <entry key="..\:/Users/ASUS/Documents/GitHub/INFS3605_Einvoice/app/src/main/res/layout/activity_pay_success.xml" value="0.24230072463768115" />
         <entry key="..\:/Users/ASUS/Documents/GitHub/INFS3605_Einvoice/app/src/main/res/layout/activity_register.xml" value="0.33016304347826086" />
@@ -20,7 +21,7 @@
         <entry key="..\:/Users/ASUS/Documents/GitHub/INFS3605_Einvoice/app/src/main/res/layout/fragment_dashboard.xml" value="0.21240942028985507" />
         <entry key="..\:/Users/ASUS/Documents/GitHub/INFS3605_Einvoice/app/src/main/res/layout/fragment_invoices.xml" value="0.21240942028985507" />
         <entry key="..\:/Users/ASUS/Documents/GitHub/INFS3605_Einvoice/app/src/main/res/layout/fragment_myaccount.xml" value="0.4" />
-        <entry key="..\:/Users/ASUS/Documents/GitHub/INFS3605_Einvoice/app/src/main/res/layout/item_invoice.xml" value="0.2318840579710145" />
+        <entry key="..\:/Users/ASUS/Documents/GitHub/INFS3605_Einvoice/app/src/main/res/layout/item_invoice.xml" value="0.264" />
         <entry key="..\:/Users/ASUS/Documents/GitHub/INFS3605_Einvoice/app/src/main/res/layout/item_row.xml" value="0.4" />
         <entry key="..\:/Users/ASUS/Documents/GitHub/INFS3605_Einvoice/app/src/main/res/layout/item_urgentpay.xml" value="0.24230072463768115" />
         <entry key="..\:/Users/ASUS/Documents/GitHub/INFS3605_Einvoice/app/src/main/res/layout/popup_translate.xml" value="0.19427558257345492" />
