@@ -10,6 +10,7 @@ import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.Filter;
 import android.widget.Filterable;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
@@ -84,6 +85,15 @@ public class InvoiceAdapter extends RecyclerView.Adapter<InvoiceAdapter.MyViewHo
     public void onBindViewHolder(@NonNull InvoiceAdapter.MyViewHolder holder, int position) {
         final Invoice invoice = mInvoiceFiltered.get(position);
         int InvoiceID = position;
+        SimpleDateFormat sdf1 = new SimpleDateFormat("dd-MMM-yyyy");
+        holder.DateT.setText(sdf1.format(invoice.getInvoiceDate()));
+        if(invoice.getStatus().equals("Paid")){
+            holder.IMG.setImageResource(R.mipmap.paid);
+        }else if (invoice.getStatus().equals("unpaid")){
+            holder.IMG.setImageResource(R.mipmap.unpaid);
+        }else{
+            holder.IMG.setImageResource(R.mipmap.overdue);
+        }
         holder.title.setText(invoice.getInvoiceNum());
         holder.status.setText(invoice.getStatus());
         holder.amount.setText("Total: $"+String.valueOf(invoice.getTotal()));
@@ -139,9 +149,10 @@ public class InvoiceAdapter extends RecyclerView.Adapter<InvoiceAdapter.MyViewHo
 
     // Create view holder. The view holder has two text view elements
     class MyViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener {
-        private TextView title, status, amount;
+        private TextView title, status, amount, DateT;
         private InvoiceAdapter.ClickListener listener;
         private Button View;
+        private ImageView IMG;
 
         public MyViewHolder(@NonNull View itemView, InvoiceAdapter.ClickListener listener) {
             super(itemView);
@@ -151,6 +162,8 @@ public class InvoiceAdapter extends RecyclerView.Adapter<InvoiceAdapter.MyViewHo
             status = itemView.findViewById(R.id.tv_status);
             amount = itemView.findViewById(R.id.tv_money);
             View = itemView.findViewById(R.id.btn_view);
+            IMG = itemView.findViewById(R.id.img);
+            DateT = itemView.findViewById(R.id.tv_time);
         }
 
     //OnClick method
