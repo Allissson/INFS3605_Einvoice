@@ -42,7 +42,7 @@
     <TextView
         android:id="@+id/profile_hint"
         android:layout_width="160dp"
-        android:layout_height="64dp"
+        android:layout_height="65dp"
         android:layout_marginStart="4dp"
         android:layout_marginLeft="4dp"
         android:gravity="center"

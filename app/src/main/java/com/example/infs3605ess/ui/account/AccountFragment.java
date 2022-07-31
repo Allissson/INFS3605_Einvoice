@@ -308,7 +308,10 @@ public class AccountFragment extends Fragment {
             public void onClick(View v) {
                 lang.updateResource("zh");
                 getActivity().recreate();
-                alertDialog.dismiss();
+                //alertDialog.dismiss();
+                Intent intent =  new Intent(getActivity(),HomeActivity.class);
+                startActivity(intent);
+
             }
         });
         eg.setOnClickListener(new View.OnClickListener() {
@@ -316,7 +319,9 @@ public class AccountFragment extends Fragment {
             public void onClick(View v) {
                 lang.updateResource("en");
                 getActivity().recreate();
-                alertDialog.dismiss();
+                //alertDialog.dismiss();
+                Intent intent =  new Intent(getActivity(),HomeActivity.class);
+                startActivity(intent);
             }
         });
         close.setOnClickListener(new View.OnClickListener() {
