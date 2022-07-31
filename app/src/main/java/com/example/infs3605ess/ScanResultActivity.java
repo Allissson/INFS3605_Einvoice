@@ -254,7 +254,7 @@ public class ScanResultActivity extends AppCompat {
                 }
             }
         });
-        Invoice invoice1 =new Invoice(Name,country,state,city,street,invoicenumber,dInvoiceDate,dDueDate,Double.parseDouble(SubTotal),Double.parseDouble(ShippingHandling),Double.parseDouble(total),Double.parseDouble(tax),mDescription,"unpaid");
+        //Invoice invoice1 =new Invoice(Name,country,state,city,street,invoicenumber,dInvoiceDate,dDueDate,Double.parseDouble(SubTotal),Double.parseDouble(ShippingHandling),Double.parseDouble(total),Double.parseDouble(tax),mDescription,"unpaid");
 
         //OnClick Listener to upload invoice to firebase
         save.setOnClickListener(new View.OnClickListener() {
