@@ -50,12 +50,9 @@ public class ScanDescriptionModify extends AppCompat{
                 Double priceFrom = Double.parseDouble(String.valueOf(Price.getText()));
                 Double totalFrom = Double.parseDouble(String.valueOf(Total.getText()));
                 int quantityFrom = Integer.parseInt(String.valueOf(Quantity.getText()));
-                Double totalCal = priceFrom * quantityFrom;
-                if(totalCal != totalFrom){
-                    Toast.makeText(ScanDescriptionModify.this,
-                            "Total does not equal to Quantity * Price, Please double check input details!",
-                            Toast.LENGTH_SHORT).show();
-                }else{
+                Double quantityF = quantityFrom * 1.0;
+                Double totalCal = priceFrom * quantityF;
+                if(String.valueOf(totalCal).equals(String.valueOf(totalFrom))){
                     if(TextUtils.isEmpty(Name.getText().toString())){
                         Toast.makeText(ScanDescriptionModify.this,
                                 "Empty field not allowed!",
@@ -82,6 +79,11 @@ public class ScanDescriptionModify extends AppCompat{
                         i.putExtra("ItemNumber1", getIntent().getStringExtra("ItemNumber"));
                         startActivity(i);
                     }
+                }else{
+                    Toast.makeText(ScanDescriptionModify.this,
+                            "Total does not equal to Quantity * Price, Please double check input details!",
+                            Toast.LENGTH_SHORT).show();
+
                 }
             }
         });

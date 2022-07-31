@@ -187,7 +187,7 @@ public class InvoicesFragment extends Fragment {
 
                             }
                         }
-                        if(mInvoice.isEmpty()){
+                        if(mInvoice.size() == 0){
                             tick.setVisibility(View.VISIBLE);
                             tick.playAnimation();
                             hint.setText(R.string.invoice_list_hint_overdue);

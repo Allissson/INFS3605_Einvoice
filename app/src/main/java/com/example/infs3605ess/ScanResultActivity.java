@@ -12,6 +12,7 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
 
+import com.example.infs3605ess.ui.dashboard.DashboardFragment;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.gms.tasks.Task;
@@ -297,7 +298,7 @@ public class ScanResultActivity extends AppCompat {
                         System.out.println("Success Upload");
                     }
                 });
-                Intent i = new Intent(view.getContext(), ScanActivity.class);
+                Intent i = new Intent(view.getContext(), HomeActivity.class);
                 startActivity(i);
             }
         });

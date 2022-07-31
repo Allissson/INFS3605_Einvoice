@@ -30,7 +30,7 @@ public class PaySuccessActivity extends AppCompat {
         invoiceNumber=findViewById(R.id.successInvoiceNum);
 
         back=findViewById(R.id.back);
-        invoiceNumber.setText(R.string.paysuccess+":"+invoiceNo);
+        invoiceNumber.setText(getString(R.string.paysuccess)+":"+invoiceNo);
         back.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
