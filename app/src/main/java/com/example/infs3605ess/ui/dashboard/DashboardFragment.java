@@ -58,7 +58,7 @@ public class DashboardFragment extends Fragment {
     private RecyclerView mRecyclerView;
     private UrgentPayAdapter mAdapter;
     private DatabaseReference uDb;
-    private ArrayList<Invoice> urgentInvoice = new ArrayList<Invoice>();
+    private List<Invoice> urgentInvoice = new ArrayList<>();
     private TextView noInvoiceHint,name;
     private ProgressBar progressBar;
     private LottieAnimationView lottieAnimationView,tick;
@@ -101,11 +101,12 @@ public class DashboardFragment extends Fragment {
         // Log.d(TAG,String.valueOf(urgentInvoice.isEmpty()));
         mRecyclerView = view.findViewById(R.id.urgentRecyclerView);
         mRecyclerView.setHasFixedSize(true);
-        mRecyclerView.setLayoutManager(new LinearLayoutManager(getActivity()));
+        RecyclerView.LayoutManager layoutManager = new LinearLayoutManager(this.getActivity().getApplicationContext());
+        mRecyclerView.setLayoutManager(layoutManager);
 
-        UrgentPayAdapter.RecyclerViewClickListener mListener = new UrgentPayAdapter.RecyclerViewClickListener() {
+        UrgentPayAdapter.ClickListener listener = new UrgentPayAdapter.ClickListener() {
             @Override
-            public void onClick(View view, int invoiceID) {
+            public void onUrgentPayClick(View view, int invoiceID) {
                 System.out.println("on click");
                 Invoice invoice = urgentInvoice.get(invoiceID);
                 Intent intent = new Intent(view.getContext(), InvoiceView.class);
@@ -137,13 +138,13 @@ public class DashboardFragment extends Fragment {
                 intent.putExtra("QUANTITY", (Serializable) Quantity);
                 intent.putExtra("PRICE", (Serializable) Price);
                 intent.putExtra("TOTAL", (Serializable) Total);
-                view.getContext().startActivity(intent);
+                startActivity(intent);
             }
 
 
         };
         Log.d(TAG,"before set adapter"+String.valueOf(urgentInvoice.isEmpty()));
-        mAdapter = new UrgentPayAdapter(getActivity(),urgentInvoice ,mListener);
+        mAdapter = new UrgentPayAdapter(urgentInvoice, listener);
         Log.d(TAG,"Finish Adapter setup");
         mRecyclerView.setAdapter(mAdapter);
 

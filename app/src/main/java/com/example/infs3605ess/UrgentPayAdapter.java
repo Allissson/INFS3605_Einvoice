@@ -19,33 +19,37 @@ import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Comparator;
+import java.util.List;
 
 public class UrgentPayAdapter extends RecyclerView.Adapter<UrgentPayAdapter.UrgentPayViewHolder> {
 
-    private ArrayList<Invoice> mInvoice;
-    private Context mContext;
-    private RecyclerViewClickListener rListener;
-    public UrgentPayAdapter(Context context, ArrayList<Invoice> urgentpay,RecyclerViewClickListener listener){
-        mContext=context;
-        mInvoice=urgentpay;
-        this.rListener=listener;
+    private List<Invoice> mInvoice;
+    private UrgentPayAdapter.ClickListener mListener;
+    public UrgentPayAdapter(List<Invoice> urgentpay, UrgentPayAdapter.ClickListener listener){
+        this.mInvoice=urgentpay;
+        this.mListener=listener;
     }
+
+    public interface ClickListener {
+        void onUrgentPayClick(View view, int InvoiceID);
+    }
+
     @NonNull
     @Override
-    public UrgentPayViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-        View v = LayoutInflater.from(parent.getContext()).inflate(R.layout.item_urgentpay,parent,false);
-        UrgentPayViewHolder urgentPayViewHolder = new UrgentPayViewHolder(v,rListener);
-        return urgentPayViewHolder;
+    public UrgentPayAdapter.UrgentPayViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
+        View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.item_urgentpay, parent, false);
+        return new UrgentPayAdapter.UrgentPayViewHolder(view, mListener);
     }
 
 
 
-    public interface RecyclerViewClickListener {
-        void onClick(View view, int productID);
-    }
+
 
     @Override
     public void onBindViewHolder(@NonNull UrgentPayAdapter.UrgentPayViewHolder holder, @SuppressLint("RecyclerView") int position) {
+        final Invoice invoice = mInvoice.get(position);
+        int InvoiceID = position;
+        holder.itemView.setTag(InvoiceID);
         holder.urgentIssuer.setText(mInvoice.get(position).getIssuer());
         String amount = String.format("%.2f",mInvoice.get(position).getTotal());
         holder.urgentAmount.setText("$ "+ amount);
@@ -57,9 +61,9 @@ public class UrgentPayAdapter extends RecyclerView.Adapter<UrgentPayAdapter.Urge
             @Override
             public void onClick(View view) {
                 System.out.println("Pay button had been clicked!");
-                Intent intent =  new Intent(mContext,PaySuccessActivity.class);
+                Intent intent =  new Intent(view.getContext(),PaySuccessActivity.class);
                 intent.putExtra("Invoice Number",mInvoice.get(position).getInvoiceNum());
-                mContext.startActivity(intent);
+                view.getContext().startActivity(intent);
             }
         });
 
@@ -71,16 +75,15 @@ public class UrgentPayAdapter extends RecyclerView.Adapter<UrgentPayAdapter.Urge
     }
 
     public class UrgentPayViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener{
-        public final View mView;
         public final TextView urgentNumber, urgentAmount, urgentIssuer,urgentDueDate;
         public final Button pay;
-        public RecyclerViewClickListener bListener;
+        public UrgentPayAdapter.ClickListener listener;
 
 
-        public UrgentPayViewHolder(@NonNull View itemView,RecyclerViewClickListener listener) {
+        public UrgentPayViewHolder(@NonNull View itemView,UrgentPayAdapter.ClickListener listener) {
             super(itemView);
-            mView=itemView;
-            this.bListener=listener;
+            this.listener=listener;
+            itemView.setOnClickListener(UrgentPayAdapter.UrgentPayViewHolder.this);
             urgentNumber=(TextView)itemView.findViewById(R.id.urgentNumber);
             urgentAmount=(TextView) itemView.findViewById(R.id.urgentAmount);
             urgentIssuer=(TextView)itemView.findViewById(R.id.urgentIssuer);
@@ -90,7 +93,7 @@ public class UrgentPayAdapter extends RecyclerView.Adapter<UrgentPayAdapter.Urge
         }
         @Override
         public void onClick(View v ) {
-            bListener.onClick(v, (Integer) v.getTag());
+            listener.onUrgentPayClick(v, (Integer) v.getTag());
         }
     }
     }

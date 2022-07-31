@@ -6,6 +6,7 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ProgressBar;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
@@ -20,6 +21,7 @@ import com.example.infs3605ess.Invoice;
 import com.example.infs3605ess.InvoiceAdapter;
 import com.example.infs3605ess.R;
 import com.example.infs3605ess.ScanActivity;
+import com.example.infs3605ess.ScanDescriptionModify;
 import com.example.infs3605ess.ui.dashboard.DashboardViewModel;
 import com.google.android.material.tabs.TabItem;
 import com.google.android.material.tabs.TabLayout;
@@ -47,6 +49,7 @@ public class InvoicesFragment extends Fragment {
     private DatabaseReference uDb;
     private TabItem paid, unpaid, overdue;
     private TabLayout StatusTabs;
+    private ProgressBar Progress;
 
     private InvoicesViewModel invoicesViewModel;
 
@@ -66,6 +69,7 @@ public class InvoicesFragment extends Fragment {
         unpaid = view.findViewById(R.id.Unpaid);
         overdue = view.findViewById(R.id.Overdue);
         StatusTabs = view.findViewById(R.id.StatusTab);
+        Progress = view.findViewById(R.id.progressBarInvoice);
 
         mRecyclerView.setHasFixedSize(true);
         RecyclerView.LayoutManager layoutManager = new LinearLayoutManager(this.getActivity().getApplicationContext());
@@ -92,10 +96,17 @@ public class InvoicesFragment extends Fragment {
                     Invoice invoice = snapshot1.getValue(Invoice.class);
                     Invoice.add(invoice);
                 }
-
+                Progress.setVisibility(View.GONE);
+                if(Invoice.size() == 0){
+                    paid.setClickable(false);
+                    unpaid.setClickable(false);
+                    overdue.setClickable(false);
+                    Toast.makeText(getContext(), "No Invoice under user database!", Toast.LENGTH_SHORT).show();
+                }
             }
             @Override
             public void onCancelled(@NonNull DatabaseError error) {
+                Toast.makeText(getContext(), "Unable to pull data from database! Check network connection!", Toast.LENGTH_SHORT).show();
             }
         });
 
