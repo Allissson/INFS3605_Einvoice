@@ -27,6 +27,7 @@ import com.airbnb.lottie.LottieAnimationView;
 import com.example.infs3605ess.AppCompat;
 import com.example.infs3605ess.Description;
 import com.example.infs3605ess.Invoice;
+import com.example.infs3605ess.InvoiceView;
 import com.example.infs3605ess.LanguageManager;
 import com.example.infs3605ess.R;
 import com.example.infs3605ess.ScanActivity;
@@ -42,6 +43,7 @@ import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 import com.google.firebase.database.core.Tag;
 
+import java.io.Serializable;
 import java.sql.Struct;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
@@ -103,9 +105,42 @@ public class DashboardFragment extends Fragment {
 
         UrgentPayAdapter.RecyclerViewClickListener mListener = new UrgentPayAdapter.RecyclerViewClickListener() {
             @Override
-            public void onClick(View view, Invoice invoice) {
+            public void onClick(View view, int invoiceID) {
+                System.out.println("on click");
+                Invoice invoice = urgentInvoice.get(invoiceID);
+                Intent intent = new Intent(view.getContext(), InvoiceView.class);
+                intent.putExtra("View",  urgentInvoice.get(invoiceID));
 
+                SimpleDateFormat sdf1 = new SimpleDateFormat("dd-MMM-yyyy");
+                String invoiceDate = sdf1.format(urgentInvoice.get(invoiceID).getInvoiceDate());
+                String dueDate = sdf1.format(urgentInvoice.get(invoiceID).getDueDate());
+                intent.putExtra("invoiceDate",invoiceDate);
+                intent.putExtra("dueDate",dueDate);
+
+                List<String> Name = new ArrayList<>();
+                List<Integer> Quantity = new ArrayList<>();
+                List<Double> Price = new ArrayList<>();
+                List<Double> Total = new ArrayList<>();
+                int i = urgentInvoice.get(invoiceID).getDescriptionList().size();
+                for(int a = 0; a<i; a++){
+                    Description d = new Description();
+                    String name = urgentInvoice.get(invoiceID).getDescriptionList().get(a).getName();
+                    int quantity = urgentInvoice.get(invoiceID).getDescriptionList().get(a).getQuantity();
+                    double price = urgentInvoice.get(invoiceID).getDescriptionList().get(a).getPrice();
+                    double total = urgentInvoice.get(invoiceID).getDescriptionList().get(a).getTotal();
+                    Name.add(name);
+                    Quantity.add(quantity);
+                    Price.add(price);
+                    Total.add(total);
+                }
+                intent.putExtra("NAME", (Serializable) Name);
+                intent.putExtra("QUANTITY", (Serializable) Quantity);
+                intent.putExtra("PRICE", (Serializable) Price);
+                intent.putExtra("TOTAL", (Serializable) Total);
+                view.getContext().startActivity(intent);
             }
+
+
         };
         Log.d(TAG,"before set adapter"+String.valueOf(urgentInvoice.isEmpty()));
         mAdapter = new UrgentPayAdapter(getActivity(),urgentInvoice ,mListener);
@@ -127,12 +162,12 @@ public class DashboardFragment extends Fragment {
                 for (DataSnapshot snapshot1 : snapshot.getChildren()) {
 
                     Invoice invoice = snapshot1.getValue(Invoice.class);
-                    System.out.println(invoice.getDueDate());
+                    System.out.println("/////"+invoice.getInvoiceNum()+invoice.getStatus()+invoice.getDueDate());
 //                    Log.d(TAG,invoice.getStatus());
 //                    Log.d(TAG,invoice.getDueDate().toString());
 //                    System.out.println(String.valueOf(invoice.getDueDate().before(date))+ String.valueOf(invoice.getStatus().equals("unpaid")));
 //                    // check overdue invoice
-                    if(invoice.getStatus().equals("unpaid") && invoice.getDueDate().after(date)){
+                    if(invoice.getStatus().equals("unpaid") && invoice.getDueDate().before(date)){
                         Log.d(TAG,"unpaid change");
                         uDb.child(invoice.getInvoiceNum()).child("status").setValue("Overdue");
                     }
@@ -143,7 +178,10 @@ public class DashboardFragment extends Fragment {
                     System.out.println(invoice.getInvoiceNum()+invoice.getStatus().equals("unpaid"));
                     System.out.println(days);
                     // add urgent invoice to the list
-                    if(invoice.getStatus().equals("unpaid") && days<5){
+//                    if(invoice.getStatus().equals("unpaid") && days<0 && days>=-5){
+//                        urgentInvoice.add(invoice);
+//                    }
+                    if(invoice.getStatus().equals("unpaid") && days<-5){
                         urgentInvoice.add(invoice);
                     }
                     //urgentInvoice.add(invoice);
