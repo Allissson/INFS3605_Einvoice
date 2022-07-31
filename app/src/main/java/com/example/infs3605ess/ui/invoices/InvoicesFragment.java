@@ -116,7 +116,6 @@ public class InvoicesFragment extends Fragment {
                                 mInvoice.add(Invoice.get(i));
                             }
                         }
-                        System.out.println(mInvoice.size());
                         mAdapter.notifyDataSetChanged();
                         break;
                     case 1:
@@ -124,10 +123,8 @@ public class InvoicesFragment extends Fragment {
                        for(int i = 0; i < Invoice.size(); i++){
                         if((Invoice.get(i)).getStatus().equals("unpaid")){
                                 mInvoice.add(Invoice.get(i));
-
                             }
                         }
-                        mInvoice.add(Invoice.get(0));
                         mAdapter.notifyDataSetChanged();
                         break;
                     case 2:
