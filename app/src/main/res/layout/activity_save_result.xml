@@ -29,7 +29,7 @@
         tools:layout_editor_absoluteY="464dp" />
 
     <Button
-        android:id="@+id/button"
+        android:id="@+id/upload_save"
         android:layout_width="137dp"
         android:layout_height="32dp"
         android:layout_marginTop="34dp"
@@ -39,14 +39,14 @@
         app:layout_constraintTop_toBottomOf="@+id/textView47" />
 
     <Button
-        android:id="@+id/button2"
+        android:id="@+id/upload_back"
         android:layout_width="137dp"
         android:layout_height="32dp"
         android:layout_marginTop="36dp"
         android:text="@string/save_success_btt2"
         app:layout_constraintEnd_toEndOf="@+id/lottieAnimationView4"
         app:layout_constraintStart_toStartOf="@+id/lottieAnimationView4"
-        app:layout_constraintTop_toBottomOf="@+id/button" />
+        app:layout_constraintTop_toBottomOf="@+id/upload_save" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>
