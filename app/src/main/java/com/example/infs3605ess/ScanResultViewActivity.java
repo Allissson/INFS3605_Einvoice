@@ -42,6 +42,8 @@ public class ScanResultViewActivity extends  AppCompat{
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+
+        //Locate all xml objects
         setContentView(R.layout.activity_scan_result_view);
         InvoiceNo = findViewById(R.id.tv_no);
         Date = findViewById(R.id.tv_date);
@@ -57,30 +59,22 @@ public class ScanResultViewActivity extends  AppCompat{
         Edit = findViewById(R.id.btn_modify_save);
         mRecyclerView = findViewById(R.id.recyclerview);
 
+        //Get intent, scanned result
         message = getIntent().getStringExtra("output");
         String ScanResult = message;
 
-        Edit.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Intent intent = new Intent(view.getContext(), ScanResultActivity.class);
-                intent.putExtra("Edit", ScanResult);
-                startActivity(intent);
-            }
-        });
 
-        //Recycler View
+
+        //Recycler View set layout
         mRecyclerView.setHasFixedSize(true);
         RecyclerView.LayoutManager layoutManager = new LinearLayoutManager(getApplicationContext());
         mRecyclerView.setLayoutManager(layoutManager);
 
+        //Pop up mDescription for RecyclerView
         DescriptionInfo = ScanResult.substring(ScanResult.indexOf("Amount ") + 7);
         DescriptionInfo = DescriptionInfo.substring(0, DescriptionInfo.indexOf(" Tax "));
-
         String[] messageSplit = DescriptionInfo.split(" ");
         int i = messageSplit.length;
-        System.out.println(String.valueOf(i));
-
         for (int a = 0; a < i; a = a + 4) {
             Description d = new Description();
             Log.d(TAG, messageSplit[a]);
@@ -100,6 +94,7 @@ public class ScanResultViewActivity extends  AppCompat{
             mDescription.add(d);
         }
 
+        //Empty view click listener
         DescriptionAdapter.ClickListener listener = new DescriptionAdapter.ClickListener() {
             @Override
             public void onProductClick(View view, int DescriptionID) {
@@ -107,9 +102,11 @@ public class ScanResultViewActivity extends  AppCompat{
             }
         };
 
+        //Initiate RecyclerView
         mAdapter = new DescriptionAdapter(mDescription, listener);
         mRecyclerView.setAdapter(mAdapter);
 
+        //Calculate Price Total
         int count = DescriptionInfo.split("\\$", -1).length - 1;
         int items = count/2;
         double pricetotal = 0;
@@ -130,7 +127,7 @@ public class ScanResultViewActivity extends  AppCompat{
 
         Address.setText(street + "\n" + city + "\n" + state +", " + country);
 
-        //发方姓名
+        //Issuer Name
         String From = ScanResult.substring(0, ScanResult.indexOf(street));
         String[] FromEliminateSpace = From.split(" ");
         String Name = FromEliminateSpace[1] + " " + FromEliminateSpace[2];
@@ -165,8 +162,9 @@ public class ScanResultViewActivity extends  AppCompat{
         ShHan.setText("$" + shippinghandling);
         Total.setText("$" + total);
 
-        //Upload data to database
+        //Connect firebase
         uDb = FirebaseDatabase.getInstance().getReference().child("User");
+
         //Change date from string to Date
         SimpleDateFormat formatter = new SimpleDateFormat("dd-MMM-yyyy", Locale.US);
         try {
@@ -213,6 +211,16 @@ public class ScanResultViewActivity extends  AppCompat{
                         bonus = Integer.parseInt(sbonus);
                     }
                 }
+            }
+        });
+
+        //Click listener for edit button
+        Edit.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(view.getContext(), ScanResultActivity.class);
+                intent.putExtra("Edit", ScanResult);
+                startActivity(intent);
             }
         });
 
