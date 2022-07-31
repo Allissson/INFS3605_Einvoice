@@ -45,32 +45,43 @@ public class ScanDescriptionModify extends AppCompat{
         Save.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                if(TextUtils.isEmpty(Name.getText().toString())){
+                Double priceFrom = Double.parseDouble(String.valueOf(Price.getText()));
+                Double totalFrom = Double.parseDouble(String.valueOf(Total.getText()));
+                int quantityFrom = Integer.parseInt(String.valueOf(Quantity.getText()));
+                Double totalCal = priceFrom * quantityFrom;
+                if(totalCal != totalFrom){
                     Toast.makeText(ScanDescriptionModify.this,
-                            "Empty field not allowed!",
-                            Toast.LENGTH_SHORT).show();
-                }else if(TextUtils.isEmpty(Price.getText().toString())){
-                    Toast.makeText(ScanDescriptionModify.this,
-                            "Empty field not allowed!",
-                            Toast.LENGTH_SHORT).show();
-                }else if(TextUtils.isEmpty(Quantity.getText().toString())){
-                    Toast.makeText(ScanDescriptionModify.this,
-                            "Empty field not allowed!",
-                            Toast.LENGTH_SHORT).show();
-                }else if(TextUtils.isEmpty(Total.getText().toString())){
-                    Toast.makeText(ScanDescriptionModify.this,
-                            "Empty field not allowed!",
+                            "Total does not equal to Quantity * Price, Please double check input details!",
                             Toast.LENGTH_SHORT).show();
                 }else{
-                    Intent i = new Intent(view.getContext(), ScanResultActivity.class);
-                    i.putExtra("Edit", message);
-                    i.putExtra("Name1", String.valueOf(Name.getText()));
-                    i.putExtra("Price1", String.valueOf(Price.getText()));
-                    i.putExtra("Quantity1", String.valueOf(Quantity.getText()));
-                    i.putExtra("Total1", String.valueOf(Total.getText()));
-                    i.putExtra("ItemNumber1", getIntent().getStringExtra("ItemNumber"));
-                    startActivity(i);
+                    if(TextUtils.isEmpty(Name.getText().toString())){
+                        Toast.makeText(ScanDescriptionModify.this,
+                                "Empty field not allowed!",
+                                Toast.LENGTH_SHORT).show();
+                    }else if(TextUtils.isEmpty(Price.getText().toString())){
+                        Toast.makeText(ScanDescriptionModify.this,
+                                "Empty field not allowed!",
+                                Toast.LENGTH_SHORT).show();
+                    }else if(TextUtils.isEmpty(Quantity.getText().toString())){
+                        Toast.makeText(ScanDescriptionModify.this,
+                                "Empty field not allowed!",
+                                Toast.LENGTH_SHORT).show();
+                    }else if(TextUtils.isEmpty(Total.getText().toString())){
+                        Toast.makeText(ScanDescriptionModify.this,
+                                "Empty field not allowed!",
+                                Toast.LENGTH_SHORT).show();
+                    }else{
+                        Intent i = new Intent(view.getContext(), ScanResultActivity.class);
+                        i.putExtra("Edit", message);
+                        i.putExtra("Name1", String.valueOf(Name.getText()));
+                        i.putExtra("Price1", String.valueOf(Price.getText()));
+                        i.putExtra("Quantity1", String.valueOf(Quantity.getText()));
+                        i.putExtra("Total1", String.valueOf(Total.getText()));
+                        i.putExtra("ItemNumber1", getIntent().getStringExtra("ItemNumber"));
+                        startActivity(i);
+                    }
                 }
+
             }
         });
 
