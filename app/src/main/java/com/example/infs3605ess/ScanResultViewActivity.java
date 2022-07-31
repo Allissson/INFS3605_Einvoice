@@ -230,6 +230,9 @@ public class ScanResultViewActivity extends  AppCompat{
             public void onClick(View view) {
                 uDb.child(FirebaseAuth.getInstance().getCurrentUser().getUid()).child("Bonus").setValue(bonus+1);
                 uDb.child(FirebaseAuth.getInstance().getCurrentUser().getUid()).child("Invoice").child(invoicenumber).setValue(invoice);
+                Intent i = new Intent(view.getContext(), ScanActivity.class);
+                startActivity(i);
+
             }
         });
     }
