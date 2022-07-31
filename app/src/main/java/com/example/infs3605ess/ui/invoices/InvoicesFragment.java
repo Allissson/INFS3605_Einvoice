@@ -95,6 +95,13 @@ public class InvoicesFragment extends Fragment {
                 for (DataSnapshot snapshot1 : snapshot.getChildren()) {
                     Invoice invoice = snapshot1.getValue(Invoice.class);
                     Invoice.add(invoice);
+                    mInvoice.clear();
+                    for(int i=0; i < Invoice.size(); i++){
+                        if(Invoice.get(i).getStatus().equals("Paid")){
+                            mInvoice.add(Invoice.get(i));
+                        }
+                    }
+                    mAdapter.notifyDataSetChanged();
                 }
                 Progress.setVisibility(View.GONE);
                 if(Invoice.size() == 0){
