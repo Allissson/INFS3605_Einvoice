@@ -160,10 +160,10 @@ public class ScanResultViewActivity extends  AppCompat{
         total = total.substring(0, total.indexOf(" Please make"));
         total = total.replace("$","");
 
-        Tax.setText(tax);
-        SubTotal.setText(subtotal);
-        ShHan.setText(shippinghandling);
-        Total.setText(total);
+        Tax.setText("$" + tax);
+        SubTotal.setText("$" + subtotal);
+        ShHan.setText("$" + shippinghandling);
+        Total.setText("$" + total);
 
         //Upload data to database
         uDb = FirebaseDatabase.getInstance().getReference().child("User");

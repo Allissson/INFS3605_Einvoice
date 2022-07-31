@@ -115,6 +115,7 @@ plant an actual tree in the forest! </string>
     <string name="activity_scan_description_modify_3">Quantity:</string>
     <string name="activity_scan_description_modify_4">Total:</string>
     <string name="activity_scan_description_modify_5">Product Description (Click on product to edit)</string>
+    <string name="Scan_description_modify_6">Item</string>
     <string name="save_success_text"> You had successfully upload your Invoice!</string>
     <string name="save_success_btt1"> Upload More</string>
     <string name="save_success_btt2"> Back</string>
@@ -124,6 +125,12 @@ plant an actual tree in the forest! </string>
 
     <string name="item_view_1">View</string>
     <string name="item_view_2">Total: </string>
+
+    <string name="activity_scan_result_view_1">You are good to go!</string>
+    <string name="activity_scan_result_view_2">Check scanned details!</string>
+    <string name="activity_scan_result_view_3">Edit detail information</string>
+    <string name="activity_scan_result_view_4">Save for control</string>
+
 
 
 

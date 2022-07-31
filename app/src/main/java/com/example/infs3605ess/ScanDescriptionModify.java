@@ -40,7 +40,7 @@ public class ScanDescriptionModify extends AppCompat{
         Price.setText(PriceI);
         Quantity.setText(QuantityI);
         Total.setText(String.valueOf(TotalI));
-        Title.setText("Item" + itemposition);
+        Title.setText(getString(R.string.Scan_description_modify_6) + itemposition);
 
         Save.setOnClickListener(new View.OnClickListener() {
             @Override

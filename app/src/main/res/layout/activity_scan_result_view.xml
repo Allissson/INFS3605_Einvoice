@@ -9,7 +9,7 @@
     <ScrollView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:background="@drawable/listview_bg_red"
+        android:background="@drawable/listview_bg_blue"
         tools:layout_editor_absoluteX="36dp">
 
 
@@ -24,7 +24,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="16dp"
                 android:layout_marginTop="20dp"
-                android:text="You're good to go!"
+                android:text="@string/activity_scan_result_view_1"
                 android:textColor="@color/white"
                 android:textSize="24sp" />
 
@@ -34,7 +34,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="16dp"
                 android:layout_marginTop="12dp"
-                android:text="Your invoice had not been paid! "
+                android:text="@string/activity_scan_result_view_2"
                 android:textColor="#e5e5e5" />
 
             <TextView
@@ -43,7 +43,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="16dp"
                 android:layout_marginTop="30dp"
-                android:text="Your Invoice"
+                android:text="@string/invoice_view_1"
                 android:textColor="@color/white"
                 android:textSize="24sp" />
 
@@ -108,7 +108,7 @@
                         android:layout_marginRight="0dp"
                         android:layout_weight="600"
                         android:gravity="bottom"
-                        android:text="Date"
+                        android:text="@string/invoice_view_2"
                         android:textColor="#333333" />
 
                 </LinearLayout>
@@ -149,7 +149,7 @@
                     android:layout_marginLeft="5dp"
                     android:layout_marginTop="12dp"
                     android:gravity="center"
-                    android:text="Product Description"
+                    android:text="@string/invoice_view_3"
                     android:textColor="@color/black" />
 
                 <View
@@ -227,7 +227,7 @@
                     android:layout_marginTop="12dp"
                     android:layout_marginEnd="12dp"
                     android:layout_marginRight="12dp"
-                    android:text="Price Total"
+                    android:text="@string/invoice_view_4"
                     android:textColor="#888888" />
 
                 <LinearLayout
@@ -277,7 +277,7 @@
                         android:layout_marginLeft="12dp"
                         android:layout_marginTop="0dp"
                         android:layout_weight="1"
-                        android:text="Due date"
+                        android:text="@string/invoice_view_5"
                         android:textColor="#888888" />
 
                     <TextView
@@ -285,7 +285,7 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginRight="4dp"
-                        android:text="Tax:"
+                        android:text="@string/invoice_view_6"
                         android:textColor="#888888" />
 
                     <TextView
@@ -321,7 +321,7 @@
                         android:layout_height="wrap_content"
                         android:layout_gravity="right"
                         android:layout_marginRight="4dp"
-                        android:text="Subtotal:"
+                        android:text="@string/invoice_view_7"
                         android:textColor="#888888" />
 
                     <TextView
@@ -350,7 +350,7 @@
                         android:layout_height="wrap_content"
                         android:layout_marginTop="0dp"
                         android:layout_marginRight="4dp"
-                        android:text="Shipping  Handling:"
+                        android:text="@string/invoice_view_8"
                         android:textColor="#888888"
                         android:textSize="14sp"
                         android:textStyle="normal" />
@@ -380,7 +380,7 @@
                         android:layout_marginTop="0dp"
                         android:layout_marginRight="4dp"
                         android:gravity="end"
-                        android:text="Total due:"
+                        android:text="@string/invoice_view_9"
                         android:textColor="#888888"
                         android:textSize="16sp"
                         android:textStyle="bold" />
@@ -417,7 +417,7 @@
                     android:layout_marginTop="20dp"
                     android:layout_marginRight="30dp"
                     android:background="@drawable/shape_btn_dark_blue"
-                    android:text="Edit"
+                    android:text="@string/activity_scan_result_view_3"
                     android:textColor="@color/white"
                     app:layout_constraintTop_toBottomOf="@id/tv_total_due" />
 
@@ -429,7 +429,7 @@
                     android:layout_marginTop="20dp"
                     android:layout_marginRight="30dp"
                     android:background="@drawable/shape_btn_red"
-                    android:text="SAVE FOR CONTROL"
+                    android:text="@string/activity_scan_result_view_4"
                     android:textColor="@color/white"
                     app:layout_constraintTop_toBottomOf="@id/tv_total_due" />
 

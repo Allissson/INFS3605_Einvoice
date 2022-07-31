@@ -5,6 +5,7 @@ import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
+import android.widget.ImageView;
 import android.widget.ScrollView;
 import android.widget.TextView;
 
@@ -32,6 +33,7 @@ public class InvoiceView extends AppCompat implements Serializable {
     List<Double> TOTAL = new ArrayList<>();
     private DescriptionAdapter mAdapter;
     private ScrollView view;
+    private ImageView StatusIMG;
 
 
 
@@ -57,6 +59,7 @@ public class InvoiceView extends AppCompat implements Serializable {
         view = findViewById(R.id.Scroll);
         Title1 = findViewById(R.id.tv_title);
         Title2 = findViewById(R.id.tv_content);
+        StatusIMG = findViewById(R.id.img_status);
 
         //Get intent data from InvoicesFragment
         myInvoice = getIntent().getParcelableExtra("View");
@@ -72,6 +75,15 @@ public class InvoiceView extends AppCompat implements Serializable {
         }else if(myInvoice.getStatus().equals("unpaid")){
             view.setBackgroundResource(R.drawable.listview_bg_blue);
             Pay.setVisibility(View.VISIBLE);
+        }
+
+        //Set status img
+        if(myInvoice.getStatus().equals("Paid")){
+            StatusIMG.setImageResource(R.mipmap.paid);
+        }else if(myInvoice.getStatus().equals("unpaid")){
+            StatusIMG.setImageResource(R.mipmap.unpaid);
+        }else{
+            StatusIMG.setImageResource(R.mipmap.overdue);
         }
 
         //Set title and content

@@ -111,6 +111,7 @@
     <string name="activity_scan_description_modify_3">数量</string>
     <string name="activity_scan_description_modify_4">总价</string>
     <string name="activity_scan_description_modify_5">订购产品详情（点击您想修改的产品）</string>
+    <string name="Scan_description_modify_6">物品</string>
 
     <string name="save_success_text"> 您已成功上传您的电子发票！</string>
     <string name="save_success_btt1"> 上传下一张电子发票</string>
@@ -122,6 +123,12 @@
 
     <string name="item_view_1">详情</string>
     <string name="item_view_2">总计: </string>
+    <string name="activity_scan_result_view_1">一切准备就绪</string>
+    <string name="activity_scan_result_view_2">检查您的单据信息！</string>
+    <string name="activity_scan_result_view_3">编辑信息</string>
+    <string name="activity_scan_result_view_4">保存到数据库</string>
+
+
 
 
 
