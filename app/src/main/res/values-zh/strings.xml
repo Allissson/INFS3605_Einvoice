@@ -95,6 +95,7 @@
     <string name="activity_scan_description_modify_2">单价</string>
     <string name="activity_scan_description_modify_3">数量</string>
     <string name="activity_scan_description_modify_4">总价</string>
+    <string name="activity_scan_description_modify_5">订购产品详情（点击您想修改的产品）</string>
 
 
 </resources>

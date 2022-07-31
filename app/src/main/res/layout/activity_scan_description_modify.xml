@@ -14,7 +14,7 @@
         android:layout_marginLeft="35dp"
         android:layout_marginTop="45dp"
         android:text="@string/activity_scan_result_1"
-        android:textColor="#575DFB"
+        android:textColor="@color/blue"
         android:textFontWeight="700"
         android:textSize="32dp"
         app:layout_constraintStart_toStartOf="parent"
@@ -115,13 +115,14 @@
 
     <androidx.appcompat.widget.AppCompatButton
         android:id="@+id/btn_modify_save"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_width="342dp"
+        android:layout_height="50dp"
         android:layout_marginTop="30dp"
-        android:background="@drawable/shape_btn_red"
+        android:background="@drawable/shape_btn_blue"
         android:text="Save"
         android:textColor="@color/white"
-        app:layout_constraintTop_toBottomOf="@+id/Modify_Total"
-        tools:layout_editor_absoluteX="0dp" />
+        app:layout_constraintEnd_toEndOf="@+id/Modify_Total"
+        app:layout_constraintStart_toStartOf="@+id/Modify_Total"
+        app:layout_constraintTop_toBottomOf="@+id/Modify_Total" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -40,6 +40,7 @@ public class ScanResultActivity extends AppCompat {
 
 
 
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -207,27 +208,27 @@ public class ScanResultActivity extends AppCompat {
         }
 
         //Retrieve data from User input
-        double dSub = convert(String.valueOf(Subtotal.getText()));
-        double dShip = convert(String.valueOf(ShipHand.getText()));
-        double dTotal = convert(String.valueOf(Total.getText()));
-        double dExtra = convert(String.valueOf(Tax.getText()));
-        String dName = String.valueOf(Issuer.getText());
-        String dCountry = String.valueOf(Country.getText());
-        String dState = String.valueOf(State.getText());
-        String dCity = String.valueOf(City.getText());
-        String dStreet = String.valueOf(Street.getText());
-        String dInvoiceNumber = String.valueOf(InvoiceNum.getText());
+//        double dSub = convert(String.valueOf(Subtotal.getText()));
+//        double dShip = convert(String.valueOf(ShipHand.getText()));
+//        double dTotal = convert(String.valueOf(Total.getText()));
+//        double dExtra = convert(String.valueOf(Tax.getText()));
+//        String dName = String.valueOf(Issuer.getText());
+//        String dCountry = String.valueOf(Country.getText());
+//        String dState = String.valueOf(State.getText());
+//        String dCity = String.valueOf(City.getText());
+//        String dStreet = String.valueOf(Street.getText());
+//        String dInvoiceNumber = String.valueOf(InvoiceNum.getText());
+//
+//
+//        // split description
+//
+////        String[] messageSplit = DescriptionInfo.split(" ");
+////        int i = messageSplit.length;
+////        System.out.println(String.valueOf(i));
+//
+//        //Set value to firebase
 
 
-        // split description
-
-//        String[] messageSplit = DescriptionInfo.split(" ");
-//        int i = messageSplit.length;
-//        System.out.println(String.valueOf(i));
-
-        //Set value to firebase
-        Invoice invoice =new Invoice(dName,dCountry,dState,dCity,dStreet,dInvoiceNumber,dInvoiceDate,dDueDate,dSub,dShip,dTotal,dExtra,mDescription,"unpaid");
-        uDb.child(FirebaseAuth.getInstance().getCurrentUser().getUid()).child("Invoice").child(invoicenumber).setValue(invoice);
 
         // Save Bonus
         //int bonus = Integer.parseInt(String.valueOf(uDb.child(FirebaseAuth.getInstance().getCurrentUser().getUid()).child("Bonus").get().getResult().getValue()));
@@ -253,12 +254,28 @@ public class ScanResultActivity extends AppCompat {
                 }
             }
         });
+        Invoice invoice1 =new Invoice(Name,country,state,city,street,invoicenumber,dInvoiceDate,dDueDate,Double.parseDouble(SubTotal),Double.parseDouble(ShippingHandling),Double.parseDouble(total),Double.parseDouble(tax),mDescription,"unpaid");
 
         //OnClick Listener to upload invoice to firebase
         save.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+
+                //Retrieve data from User input
+                double dSub = convert(String.valueOf(Subtotal.getText()));
+                double dShip = convert(String.valueOf(ShipHand.getText()));
+                double dTotal = convert(String.valueOf(Total.getText()));
+                double dExtra = convert(String.valueOf(Tax.getText()));
+                String dName = String.valueOf(Issuer.getText());
+                String dCountry = String.valueOf(Country.getText());
+                String dState = String.valueOf(State.getText());
+                String dCity = String.valueOf(City.getText());
+                String dStreet = String.valueOf(Street.getText());
+                String dInvoiceNumber = String.valueOf(InvoiceNum.getText());
+                Invoice invoice =new Invoice(dName,dCountry,dState,dCity,dStreet,dInvoiceNumber,dInvoiceDate,dDueDate,dSub,dShip,dTotal,dExtra,mDescription,"unpaid");
+                System.out.println("Save clicked!");
                 uDb.child(FirebaseAuth.getInstance().getCurrentUser().getUid()).child("Bonus").setValue(bonus+1);
+                uDb.child(FirebaseAuth.getInstance().getCurrentUser().getUid()).child("Invoice").child(invoicenumber).setValue(invoice);
             }
         });
 

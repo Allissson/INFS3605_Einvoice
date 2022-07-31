@@ -99,6 +99,7 @@ plant an actual tree in the forest! </string>
     <string name="activity_scan_description_modify_2">Price:</string>
     <string name="activity_scan_description_modify_3">Quantity:</string>
     <string name="activity_scan_description_modify_4">Total:</string>
+    <string name="activity_scan_description_modify_5">Product Description (Click on product to edit)</string>
 
 
 

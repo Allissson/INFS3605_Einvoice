@@ -58,28 +58,21 @@ public class DashboardFragment extends Fragment {
     private RecyclerView mRecyclerView;
     private UrgentPayAdapter mAdapter;
     private DatabaseReference uDb;
+<<<<<<< Updated upstream
     private List<Invoice> urgentInvoice = new ArrayList<>();
     private TextView noInvoiceHint,name;
+=======
+    private ArrayList<Invoice> urgentInvoice = new ArrayList<Invoice>();
+    private TextView noInvoiceHint;
+>>>>>>> Stashed changes
     private ProgressBar progressBar;
     private LottieAnimationView lottieAnimationView,tick;
     private long duration=0;
-    private String userName;
     private LinearLayout lscan;
 
 
     public View onCreateView(@NonNull LayoutInflater inflater,
                              ViewGroup container, Bundle savedInstanceState) {
-//        dashboardViewModel =
-//                new ViewModelProvider(this).get(DashboardViewModel.class);
-//        View root = inflater.inflate(R.layout.fragment_dashboard, container, false);
-        //final TextView textView = root.findViewById(R.id.text_dashboard);
-//        dashboardViewModel.getText().observe(getViewLifecycleOwner(), new Observer<String>() {
-//            @Override
-//            public void onChanged(@Nullable String s) {
-//                textView.setText(s);
-//            }
-//        });
-//        return root;
         // Inflate the layout for this fragment
         return inflater.inflate(R.layout.fragment_dashboard, container, false);
     }
@@ -98,7 +91,6 @@ public class DashboardFragment extends Fragment {
 
 
         // set up urgent pay recycler view
-        // Log.d(TAG,String.valueOf(urgentInvoice.isEmpty()));
         mRecyclerView = view.findViewById(R.id.urgentRecyclerView);
         mRecyclerView.setHasFixedSize(true);
         RecyclerView.LayoutManager layoutManager = new LinearLayoutManager(this.getActivity().getApplicationContext());
@@ -156,10 +148,6 @@ public class DashboardFragment extends Fragment {
                 Date date = new Date();
                 System.out.println(date);
 
-//                SimpleDateFormat dateFormat= new SimpleDateFormat("yyyy-MM-dd :hh:mm:ss");
-//                String current = dateFormat.format(date);
-//                System.out.println(date);
-
                 for (DataSnapshot snapshot1 : snapshot.getChildren()) {
 
                     Invoice invoice = snapshot1.getValue(Invoice.class);
@@ -205,23 +193,8 @@ public class DashboardFragment extends Fragment {
 
             }
         });
-        //name=view.findViewById(R.id.dashboard_name);
-//        uDb = FirebaseDatabase.getInstance().getReference();
-//        uDb.child("User").child(FirebaseAuth.getInstance().getCurrentUser().getUid()).child("userName").get().addOnCompleteListener(new OnCompleteListener<DataSnapshot>() {
-//            @Override
-//            public void onComplete(@NonNull Task<DataSnapshot> task) {
-//                if (!task.isSuccessful()) {
-//                    Log.e("firebase", "Error getting data", task.getException());
-//                } else {
-//                    Log.d("firebase", String.valueOf(task.getResult().getValue()));
-//                    userName = String.valueOf(task.getResult().getValue());
-//                    name.setText(userName);
-//                }
-//            }
-//        });
 
         // scan function
-        //scan=view.findViewById(R.id.btt_scan);
         lscan.setOnClickListener(new View.OnClickListener() {
                                     @Override
                                     public void onClick(View view) {
@@ -231,21 +204,7 @@ public class DashboardFragment extends Fragment {
                                 });
 
 
-
-//        // test recycler view
-//        Date dInvoiceDate = null;
-//        SimpleDateFormat formatter=new SimpleDateFormat("dd-MMM-yyyy");
-//        try {
-//            dInvoiceDate = formatter.parse("12-May-2022");
-//        } catch (ParseException e) {
-//            e.printStackTrace();
-//        }
-//        List<Description> des = null;
-//
-//        Invoice test = new Invoice("123","123","123","123","123","123",dInvoiceDate,dInvoiceDate,123.1,123.1,123.123,123.1,des,"Unpaid");
-//        urgentInvoice.add(test);
-
-        // animation
+        // set up animation
         lottieAnimationView =view.findViewById(R.id.lottieAnimationView2);
         lottieAnimationView.setAnimation(R.raw.dashboard_scan);
         lottieAnimationView.playAnimation();
@@ -253,13 +212,13 @@ public class DashboardFragment extends Fragment {
         lottieAnimationView.addAnimatorListener(new Animator.AnimatorListener() {
             @Override
             public void onAnimationStart(Animator animation) {
-                Log.d("Animation:","start");
+                //Log.d("Animation:","start");
                 duration=animation.getDuration();
             }
 
             @Override
             public void onAnimationEnd(Animator animation) {
-                Log.d("Animation:","end");
+                //Log.d("Animation:","end");
 
                 if(duration==2702){
                     lottieAnimationView.setAnimation(R.raw.tree);
@@ -285,17 +244,4 @@ public class DashboardFragment extends Fragment {
 
 
         };
-
-//    private void startAnimation(){
-//        lottieAnimationView =view.f
-//    }
-//    func startAnimation1() {
-//        animationLottieView.animation = Animation.named("Slidetwop1")
-//        animationLottieView.play { (finished) in
-//            // completion handler
-//            self.animationLottieView.animation = Animation.named("Slidetwop2")
-//            self.animationLottieView.play { (finishedAnimation) in
-//                self.startAnimation()}
-//        }
-//    }
     }

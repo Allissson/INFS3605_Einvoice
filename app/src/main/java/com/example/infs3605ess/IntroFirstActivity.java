@@ -19,7 +19,7 @@ public class IntroFirstActivity extends AppCompatActivity {
         setContentView(R.layout.activity_intro_first);
         next=findViewById(R.id.first_next);
         lottieAnimationView = findViewById(R.id.lottietree);
-        //lottieAnimationView.animate().translationY(-1600).setDuration(1000).setStartDelay(4000);
+        // next button
         next.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {

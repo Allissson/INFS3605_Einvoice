@@ -33,6 +33,7 @@ public class ForgotPasswordActivity extends AppCompat {
         foemail=findViewById(R.id.forgot_email);
         mAuth = FirebaseAuth.getInstance();
         progressBar=findViewById(R.id.forgot_progress);
+        // reset user password
         reset.setOnClickListener(new View.OnClickListener() {
 
             @Override
