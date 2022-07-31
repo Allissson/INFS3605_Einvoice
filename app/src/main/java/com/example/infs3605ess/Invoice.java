@@ -9,7 +9,6 @@ import java.util.Date;
 import java.util.List;
 
 public class Invoice implements Parcelable {
-
     public String issuer;
     public String country;
     public String state;
@@ -30,7 +29,6 @@ public class Invoice implements Parcelable {
         shipHand = in.readDouble();
         total = in.readDouble();
         extra = in.readDouble();
-
     }
 
     public static final Creator<Invoice> CREATOR = new Creator<Invoice>() {
@@ -38,7 +36,6 @@ public class Invoice implements Parcelable {
         public Invoice createFromParcel(Parcel in) {
             return new Invoice(in);
         }
-
         @Override
         public Invoice[] newArray(int size) {
             return new Invoice[size];
@@ -66,7 +63,6 @@ public class Invoice implements Parcelable {
     public String status;
 
     public Invoice(){
-
     }
 
     public String getIssuer() {

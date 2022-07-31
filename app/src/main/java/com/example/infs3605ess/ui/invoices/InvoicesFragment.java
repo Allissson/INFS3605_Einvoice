@@ -62,13 +62,14 @@ public class InvoicesFragment extends Fragment {
 
     public void onViewCreated(@NonNull View view, Bundle savedInstanceState) {
         mRecyclerView = view.findViewById(R.id.recycler_view);
-        mRecyclerView.setHasFixedSize(true);
-        RecyclerView.LayoutManager layoutManager = new LinearLayoutManager(this.getActivity().getApplicationContext());
-        mRecyclerView.setLayoutManager(layoutManager);
         paid = view.findViewById(R.id.Paid);
         unpaid = view.findViewById(R.id.Unpaid);
         overdue = view.findViewById(R.id.Overdue);
+        StatusTabs = view.findViewById(R.id.StatusTab);
 
+        mRecyclerView.setHasFixedSize(true);
+        RecyclerView.LayoutManager layoutManager = new LinearLayoutManager(this.getActivity().getApplicationContext());
+        mRecyclerView.setLayoutManager(layoutManager);
 
         InvoiceAdapter.ClickListener listener = new InvoiceAdapter.ClickListener() {
             @Override
@@ -89,10 +90,8 @@ public class InvoicesFragment extends Fragment {
             public void onDataChange(@NonNull DataSnapshot snapshot) {
                 for (DataSnapshot snapshot1 : snapshot.getChildren()) {
                     Invoice invoice = snapshot1.getValue(Invoice.class);
-                    //mInvoice.add(invoice);
                     Invoice.add(invoice);
                 }
-                //mAdapter.notifyDataSetChanged();
 
             }
             @Override
@@ -100,11 +99,7 @@ public class InvoicesFragment extends Fragment {
             }
         });
 
-        paid = view.findViewById(R.id.Paid);
-        unpaid = view.findViewById(R.id.Unpaid);
-        overdue = view.findViewById(R.id.Overdue);
 
-        StatusTabs = view.findViewById(R.id.StatusTab);
         StatusTabs.addOnTabSelectedListener(new TabLayout.OnTabSelectedListener() {
             @Override
             public void onTabSelected(TabLayout.Tab tab) {
@@ -150,51 +145,5 @@ public class InvoicesFragment extends Fragment {
 
             }
         });
-
-        /*
-        unpaid.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                mInvoice.clear();
-                for(int i=1; i <= Invoice.size(); i++){
-                    if(Invoice.get(i).getStatus() == "unpaid"){
-                        mInvoice.add(Invoice.get(i));
-                    }
-                }
-                mAdapter.notifyDataSetChanged();
-            }
-        });
-
-        overdue.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                mInvoice.clear();
-                for(int i=1; i <= Invoice.size(); i++){
-                    if(Invoice.get(i).getStatus() == "Overdue"){
-                        mInvoice.add(Invoice.get(i));
-                    }
-                }
-                mAdapter.notifyDataSetChanged();
-            }
-        });
-
-        paid.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                mInvoice.clear();
-                for(int i=1; i <= Invoice.size(); i++){
-                    if(Invoice.get(i).getStatus() == "Paid"){
-                        mInvoice.add(Invoice.get(i));
-                    }
-                }
-                mAdapter.notifyDataSetChanged();
-            }
-        });
-        */
-
-
-
-        System.out.println("Test: " + mInvoice.size());
-
     }
 }
