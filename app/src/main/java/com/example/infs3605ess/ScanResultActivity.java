@@ -298,7 +298,7 @@ public class ScanResultActivity extends AppCompat {
                     }
                 });
                 Intent i = new Intent(view.getContext(), ScanActivity.class);
-                //startActivity(i);
+                startActivity(i);
             }
         });
 
