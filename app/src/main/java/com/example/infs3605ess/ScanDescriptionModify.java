@@ -45,7 +45,6 @@ public class ScanDescriptionModify extends AppCompat{
         Save.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-
                 if(TextUtils.isEmpty(Name.getText().toString())){
                     Toast.makeText(ScanDescriptionModify.this,
                             "Empty field not allowed!",

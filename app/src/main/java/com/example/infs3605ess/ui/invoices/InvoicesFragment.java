@@ -105,9 +105,7 @@ public class InvoicesFragment extends Fragment {
                 }
                 Progress.setVisibility(View.GONE);
                 if(Invoice.size() == 0){
-                    paid.setClickable(false);
-                    unpaid.setClickable(false);
-                    overdue.setClickable(false);
+                    StatusTabs.setEnabled(false);
                     Toast.makeText(getContext(), "No Invoice under user database!", Toast.LENGTH_SHORT).show();
                 }
             }
