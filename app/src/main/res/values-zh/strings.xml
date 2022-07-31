@@ -44,7 +44,7 @@
     <string name="activity_register_7">注册r</string>
     <string name="activity_register_8">已有账户?</string>
     <string name="activity_register_9">登陆</string>
-    <string name="activity_scan_1">提取</string>
+    <string name="activity_scan_1">确认</string>
     <string name="activity_scan_2">从相机扫描</string>
     <string name="activity_scan_3">从相册选择</string>
     <string name="activity_scan_result_1">扫描结果</string>
