@@ -100,6 +100,12 @@ plant an actual tree in the forest! </string>
     <string name="invoice_view_7">Subtotal:</string>
     <string name="invoice_view_8">Shipping/Handling:</string>
     <string name="invoice_view_9">Total due:</string>
+    <string name="invoice_view_Title_paid">Paid</string>
+    <string name="invoice_view_Title_unpaid">Unpaid</string>
+    <string name="invoice_view_Title_overdue">Overdue</string>
+    <string name="invoice_view_Content_paid">You are good to go!</string>
+    <string name="invoice_view_Content_unpaid">Your invoice had not been paid!</string>
+    <string name="invoice_view_Content_overdue">Consult issuer for more details!</string>
     <string name="invoice_view_name">Name</string>
     <string name="invoice_view_qty">Qty</string>
     <string name="invoice_view_up">Unit Price</string>

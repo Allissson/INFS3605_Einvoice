@@ -96,6 +96,12 @@
     <string name="invoice_view_7">小计:</string>
     <string name="invoice_view_8">勤杂费:</string>
     <string name="invoice_view_9">总计:</string>
+    <string name="invoice_view_Title_paid">已支付</string>
+    <string name="invoice_view_Title_unpaid">未支付</string>
+    <string name="invoice_view_Title_overdue">已逾期</string>
+    <string name="invoice_view_Content_paid">一切就绪！</string>
+    <string name="invoice_view_Content_unpaid">您的单据还没有支付！</string>
+    <string name="invoice_view_Content_overdue">联系发方以获得更多信息！</string>
     <string name="invoice_view_name">产品名</string>
     <string name="invoice_view_qty">数量</string>
     <string name="invoice_view_up">单价</string>

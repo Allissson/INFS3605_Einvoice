@@ -22,7 +22,7 @@ import java.util.List;
 public class InvoiceView extends AppCompat implements Serializable {
     private static final String TAG ="Invoice View" ;
     private Invoice myInvoice;
-    private TextView InvoiceNo, InvoiceDate, Issuer, Address, PriceTotal, DueDate, Tax, SubTotal, ShHan, Total;
+    private TextView InvoiceNo, InvoiceDate, Issuer, Address, PriceTotal, DueDate, Tax, SubTotal, ShHan, Total, Title1, Title2;
     private Button Pay;
     private RecyclerView mRecyclerView;
     private List<Description> mDescription = new ArrayList<>();
@@ -41,16 +41,7 @@ public class InvoiceView extends AppCompat implements Serializable {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_invoice_view);
 
-        myInvoice = getIntent().getParcelableExtra("View");
-        //mDescription = getIntent().getParcelableExtra("Description");
-
-        Intent i = getIntent();
-        NAME = (List<String>) i.getSerializableExtra("NAME");
-        QUANTITY = (List<Integer>) i.getSerializableExtra("QUANTITY");
-        PRICE = (List<Double>) i.getSerializableExtra("PRICE");
-        TOTAL = (List<Double>) i.getSerializableExtra("TOTAL");
-
-
+        //Find XML objects
         InvoiceNo = findViewById(R.id.tv_no1);
         InvoiceDate = findViewById(R.id.tv_date1);
         Issuer = findViewById(R.id.tv_name1);
@@ -64,7 +55,18 @@ public class InvoiceView extends AppCompat implements Serializable {
         Pay = findViewById(R.id.btn_payment);
         mRecyclerView = findViewById(R.id.recyclerview1);
         view = findViewById(R.id.Scroll);
+        Title1 = findViewById(R.id.tv_title);
+        Title2 = findViewById(R.id.tv_content);
 
+        //Get intent data from InvoicesFragment
+        myInvoice = getIntent().getParcelableExtra("View");
+        Intent i = getIntent();
+        NAME = (List<String>) i.getSerializableExtra("NAME");
+        QUANTITY = (List<Integer>) i.getSerializableExtra("QUANTITY");
+        PRICE = (List<Double>) i.getSerializableExtra("PRICE");
+        TOTAL = (List<Double>) i.getSerializableExtra("TOTAL");
+
+        //Set background color
         if(myInvoice.getStatus().equals("Paid")){
             view.setBackgroundResource(R.drawable.listview_bg_green);
         }else if(myInvoice.getStatus().equals("unpaid")){
@@ -72,9 +74,20 @@ public class InvoiceView extends AppCompat implements Serializable {
             Pay.setVisibility(View.VISIBLE);
         }
 
+        //Set title and content
+        if(myInvoice.getStatus().equals("Paid")){
+            Title1.setText(R.string.invoice_view_Title_paid);
+            Title2.setText(R.string.invoice_view_Content_paid);
+        }else if(myInvoice.getStatus().equals("unpaid")){
+            Title1.setText(R.string.invoice_view_Title_unpaid);
+            Title2.setText(R.string.invoice_view_Content_unpaid);
+        }else{
+            Title1.setText(R.string.invoice_view_Title_overdue);
+            Title2.setText(R.string.invoice_view_Content_overdue);
+        }
+
         Address.setText(myInvoice.getStreet() + "\n" + myInvoice.getCity() + "\n" + myInvoice.getState() +", " + myInvoice.getCountry());
         InvoiceNo.setText(myInvoice.getInvoiceNum());
-        //InvoiceDate.setText((CharSequence) myInvoice.getInvoiceDate());
         SimpleDateFormat sdf1 = new SimpleDateFormat("dd-MMM-yyyy");
         System.out.println(myInvoice.getDueDate());
         
@@ -83,9 +96,7 @@ public class InvoiceView extends AppCompat implements Serializable {
         String dueDate = getIntent().getStringExtra("dueDate");
         DueDate.setText(dueDate);
         InvoiceDate.setText(invoiceDate);
-        //InvoiceDate.setText(String.valueOf(Date.parse(String.valueOf(myInvoice.getInvoiceDate()))));
         Issuer.setText(myInvoice.getIssuer());
-        //DueDate.setText(String.valueOf(Date.parse(String.valueOf(myInvoice.getDueDate()))));
         Tax.setText("$" + String.valueOf(myInvoice.getExtra()));
         SubTotal.setText("$" + String.valueOf(myInvoice.getSubTotal()));
         ShHan.setText("$" + String.valueOf(myInvoice.getShipHand()));
@@ -94,12 +105,6 @@ public class InvoiceView extends AppCompat implements Serializable {
         mRecyclerView.setHasFixedSize(true);
         RecyclerView.LayoutManager layoutManager = new LinearLayoutManager(getApplicationContext());
         mRecyclerView.setLayoutManager(layoutManager);
-        /*
-        int i = myInvoice.getDescriptionList().size();
-        for(int a=0; a<i; a++){
-            mDescription.add(myInvoice.getDescriptionList().get(a));
-        }
-*/
 
         int A = NAME.size();
         Double sum = 0.0;
