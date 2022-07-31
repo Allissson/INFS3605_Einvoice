@@ -101,5 +101,9 @@
     <string name="save_success_btt1"> 上传下一张电子发票</string>
     <string name="save_success_btt2"> 返回</string>
 
+    <string name="invoice_list_hint_pay">您还没有已付款的发票</string>
+    <string name="invoice_list_hint_unpaid">您还没有未支付的发票</string>
+    <string name="invoice_list_hint_overdue">您没有超期发票</string>
+
 
 </resources>

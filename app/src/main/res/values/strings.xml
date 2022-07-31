@@ -103,6 +103,9 @@ plant an actual tree in the forest! </string>
     <string name="save_success_text"> You had successfully upload your Invoice!</string>
     <string name="save_success_btt1"> Upload More</string>
     <string name="save_success_btt2"> Back</string>
+    <string name="invoice_list_hint_pay">You don\'t have invoices Paid!</string>
+    <string name="invoice_list_hint_unpaid">You don\'t have invoices Unpaid!</string>
+    <string name="invoice_list_hint_overdue">You don\'t have invoices Overdue!</string>
 
 
 

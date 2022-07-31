@@ -7,45 +7,31 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.view.animation.Animation;
-import android.widget.Button;
 import android.widget.LinearLayout;
 import android.widget.ProgressBar;
-import android.widget.Switch;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
-import androidx.annotation.Nullable;
-import androidx.annotation.RawRes;
 import androidx.fragment.app.Fragment;
-import androidx.lifecycle.Observer;
-import androidx.lifecycle.ViewModelProvider;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.airbnb.lottie.LottieAnimationView;
-import com.example.infs3605ess.AppCompat;
 import com.example.infs3605ess.Description;
 import com.example.infs3605ess.Invoice;
 import com.example.infs3605ess.InvoiceView;
 import com.example.infs3605ess.LanguageManager;
 import com.example.infs3605ess.R;
 import com.example.infs3605ess.ScanActivity;
-import com.example.infs3605ess.ScanResultViewActivity;
 import com.example.infs3605ess.UrgentPayAdapter;
-import com.google.android.gms.tasks.OnCompleteListener;
-import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
-import com.google.firebase.database.core.Tag;
 
 import java.io.Serializable;
-import java.sql.Struct;
-import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
@@ -81,7 +67,7 @@ public class DashboardFragment extends Fragment {
         noInvoiceHint=view.findViewById(R.id.noInvoiceHint);
 
         LanguageManager lang = new LanguageManager(this.getActivity());
-        tick = view.findViewById(R.id.dashboard_tick);
+        tick = view.findViewById(R.id.invoice_tick);
 
         lscan=view.findViewById(R.id.scan);
 

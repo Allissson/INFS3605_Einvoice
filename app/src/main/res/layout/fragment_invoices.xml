@@ -7,6 +7,17 @@
     android:layout_height="match_parent"
     tools:context=".ui.invoices.InvoicesFragment">
 
+    <com.airbnb.lottie.LottieAnimationView
+        android:id="@+id/invoice_tick"
+        android:layout_width="229dp"
+        android:layout_height="220dp"
+        android:visibility="invisible"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/StatusTab"
+        app:lottie_rawRes="@raw/tick" />
+
     <ProgressBar
         android:id="@+id/progressBarInvoice"
         style="?android:attr/progressBarStyle"
@@ -53,5 +64,16 @@
         android:layout_width="match_parent"
         android:background="#F8F9FE"
         android:layout_height="wrap_content"/>
+
+    <TextView
+        android:id="@+id/invoice_hint"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        android:textSize="20sp"
+        android:visibility="invisible"
+        app:layout_constraintEnd_toEndOf="@+id/invoice_tick"
+        app:layout_constraintStart_toStartOf="@+id/invoice_tick"
+        app:layout_constraintTop_toBottomOf="@+id/invoice_tick" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

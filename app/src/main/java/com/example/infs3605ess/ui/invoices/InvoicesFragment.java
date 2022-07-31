@@ -1,5 +1,6 @@
 package com.example.infs3605ess.ui.invoices;
 
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
@@ -7,16 +8,20 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ProgressBar;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
+import androidx.appcompat.app.AlertDialog;
 import androidx.fragment.app.Fragment;
 import androidx.lifecycle.ViewModelProvider;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.airbnb.lottie.LottieAnimationView;
 import com.example.infs3605ess.Description;
 import com.example.infs3605ess.DescriptionAdapter;
+import com.example.infs3605ess.ForgotPasswordActivity;
 import com.example.infs3605ess.Invoice;
 import com.example.infs3605ess.InvoiceAdapter;
 import com.example.infs3605ess.R;
@@ -50,6 +55,8 @@ public class InvoicesFragment extends Fragment {
     private TabItem paid, unpaid, overdue;
     private TabLayout StatusTabs;
     private ProgressBar Progress;
+    private LottieAnimationView tick;
+    private TextView hint;
 
     private InvoicesViewModel invoicesViewModel;
 
@@ -70,6 +77,8 @@ public class InvoicesFragment extends Fragment {
         overdue = view.findViewById(R.id.Overdue);
         StatusTabs = view.findViewById(R.id.StatusTab);
         Progress = view.findViewById(R.id.progressBarInvoice);
+        tick=view.findViewById(R.id.invoice_tick);
+        hint = view.findViewById(R.id.invoice_hint);
 
         mRecyclerView.setHasFixedSize(true);
         RecyclerView.LayoutManager layoutManager = new LinearLayoutManager(this.getActivity().getApplicationContext());
@@ -104,14 +113,20 @@ public class InvoicesFragment extends Fragment {
                     mAdapter.notifyDataSetChanged();
                 }
                 Progress.setVisibility(View.GONE);
+                hint.setText(R.string.invoice_list_hint_pay);
+                hint.setVisibility(View.VISIBLE);
+                tick.setVisibility(View.VISIBLE);
+                tick.playAnimation();
                 if(Invoice.size() == 0){
                     StatusTabs.setEnabled(false);
-                    Toast.makeText(getContext(), "No Invoice under user database!", Toast.LENGTH_SHORT).show();
+                    alter("No Invoice under user database!");
+                    //Toast.makeText(getContext(), "No Invoice under user database!", Toast.LENGTH_SHORT).show();
                 }
             }
             @Override
             public void onCancelled(@NonNull DatabaseError error) {
-                Toast.makeText(getContext(), "Unable to pull data from database! Check network connection!", Toast.LENGTH_SHORT).show();
+                alter("Unable to pull data from database! Check network connection!");
+                //Toast.makeText(getContext(), "Unable to pull data from database! Check network connection!", Toast.LENGTH_SHORT).show();
             }
         });
 
@@ -125,7 +140,19 @@ public class InvoicesFragment extends Fragment {
                         for(int i=0; i < Invoice.size(); i++){
                             if(Invoice.get(i).getStatus().equals("Paid")){
                                 mInvoice.add(Invoice.get(i));
+
                             }
+                        }
+
+                        if(mInvoice.size()==0){
+                            tick.setVisibility(View.VISIBLE);
+                            tick.playAnimation();
+                            hint.setText(R.string.invoice_list_hint_pay);
+                            hint.setVisibility(View.VISIBLE);
+                        }
+                        else{
+                            tick.setVisibility(View.INVISIBLE);
+                            hint.setVisibility(View.INVISIBLE);
                         }
                         mAdapter.notifyDataSetChanged();
                         break;
@@ -134,7 +161,20 @@ public class InvoicesFragment extends Fragment {
                        for(int i = 0; i < Invoice.size(); i++){
                         if((Invoice.get(i)).getStatus().equals("unpaid")){
                                 mInvoice.add(Invoice.get(i));
+                                System.out.println(mInvoice.size());
+
                             }
+
+                        }
+                        if(mInvoice.size()==0){
+                            tick.setVisibility(View.VISIBLE);
+                            tick.playAnimation();
+                            hint.setText(R.string.invoice_list_hint_unpaid);
+                            hint.setVisibility(View.VISIBLE);
+                        }
+                        else{
+                            hint.setVisibility(View.INVISIBLE);
+                            tick.setVisibility(View.INVISIBLE);
                         }
                         mAdapter.notifyDataSetChanged();
                         break;
@@ -144,7 +184,18 @@ public class InvoicesFragment extends Fragment {
                         for(int i=0; i < Invoice.size(); i++){
                             if(Invoice.get(i).getStatus().equals("Overdue") ){
                                 mInvoice.add(Invoice.get(i));
+
                             }
+                        }
+                        if(mInvoice.isEmpty()){
+                            tick.setVisibility(View.VISIBLE);
+                            tick.playAnimation();
+                            hint.setText(R.string.invoice_list_hint_overdue);
+                            hint.setVisibility(View.VISIBLE);
+                        }
+                        else{
+                            hint.setVisibility(View.INVISIBLE);
+                            tick.setVisibility(View.INVISIBLE);
                         }
                         mAdapter.notifyDataSetChanged();
                         break;
@@ -161,5 +212,18 @@ public class InvoicesFragment extends Fragment {
 
             }
         });
+    }
+    // Hint Pop Up Window Method
+    private void alter(String message){
+        AlertDialog alertDialog = new AlertDialog.Builder(getActivity()).setTitle("Message")
+                .setMessage(message)
+                .setPositiveButton("Close", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+                        dialog.dismiss();
+                    }
+                })
+                .create();
+        alertDialog.show();
     }
 }
