@@ -28,7 +28,7 @@ public class UrgentPayAdapter extends RecyclerView.Adapter<UrgentPayAdapter.Urge
     public UrgentPayAdapter(Context context, ArrayList<Invoice> urgentpay,RecyclerViewClickListener listener){
         mContext=context;
         mInvoice=urgentpay;
-        rListener=listener;
+        this.rListener=listener;
     }
     @NonNull
     @Override
@@ -41,7 +41,7 @@ public class UrgentPayAdapter extends RecyclerView.Adapter<UrgentPayAdapter.Urge
 
 
     public interface RecyclerViewClickListener {
-        void onClick(View view, Invoice invoice);
+        void onClick(View view, int productID);
     }
 
     @Override
@@ -56,7 +56,6 @@ public class UrgentPayAdapter extends RecyclerView.Adapter<UrgentPayAdapter.Urge
         holder.pay.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-
                 System.out.println("Pay button had been clicked!");
                 Intent intent =  new Intent(mContext,PaySuccessActivity.class);
                 intent.putExtra("Invoice Number",mInvoice.get(position).getInvoiceNum());
@@ -71,7 +70,7 @@ public class UrgentPayAdapter extends RecyclerView.Adapter<UrgentPayAdapter.Urge
         return mInvoice.size();
     }
 
-    public class UrgentPayViewHolder extends RecyclerView.ViewHolder{
+    public class UrgentPayViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener{
         public final View mView;
         public final TextView urgentNumber, urgentAmount, urgentIssuer,urgentDueDate;
         public final Button pay;
@@ -89,7 +88,14 @@ public class UrgentPayAdapter extends RecyclerView.Adapter<UrgentPayAdapter.Urge
             pay=(Button)itemView.findViewById(R.id.urgentPay);
 
         }
+        @Override
+        public void onClick(View v ) {
+            bListener.onClick(v, (Integer) v.getTag());
+        }
     }
+    }
+
+
 
 //    public void sort(final int sortMethod) {
 //        if (mInvoice.size() > 0) {
@@ -102,4 +108,5 @@ public class UrgentPayAdapter extends RecyclerView.Adapter<UrgentPayAdapter.Urge
 //        }
 //        notifyDataSetChanged();
 //    }
-}
+
+
