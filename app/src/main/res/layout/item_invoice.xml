@@ -39,25 +39,27 @@
                 android:text="Invoice #5000"
                 android:textSize="13sp" />
 
+            <TextView
+                android:id="@+id/tv_status"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/inter"
+                android:text="Paid"
+                android:textColor="@color/black"
+                android:textSize="18sp"
+                android:textStyle="bold" />
+
             <LinearLayout
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="8dp">
 
                 <TextView
-                    android:id="@+id/tv_status"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:fontFamily="@font/inter"
-                    android:text="Paid"
-                    android:textColor="#F2AA00"
-                    android:textSize="14sp" />
-
-                <TextView
                     android:id="@+id/tv_money"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginLeft="8dp"
+                    android:layout_marginStart="0dp"
+                    android:layout_marginLeft="0dp"
                     android:fontFamily="@font/inter"
                     android:text="Paid"
                     android:textColor="#F2AA00"

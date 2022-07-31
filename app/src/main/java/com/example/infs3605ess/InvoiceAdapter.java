@@ -95,7 +95,7 @@ public class InvoiceAdapter extends RecyclerView.Adapter<InvoiceAdapter.MyViewHo
             holder.IMG.setImageResource(R.mipmap.overdue);
         }
         holder.title.setText(invoice.getInvoiceNum());
-        holder.status.setText(invoice.getStatus());
+        holder.status.setText(invoice.getIssuer());
         holder.amount.setText("Total: $"+String.valueOf(invoice.getTotal()));
         holder.itemView.setTag(InvoiceID);
         holder.View.setOnClickListener(new View.OnClickListener() {
