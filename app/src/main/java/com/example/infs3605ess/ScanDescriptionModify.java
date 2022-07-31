@@ -15,14 +15,12 @@ public class ScanDescriptionModify extends AppCompat{
     private Button Save;
     private TextView Title;
 
-
-
-
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_scan_description_modify);
+
+        //Find all xml objects
         Name = findViewById(R.id.Modify_Name);
         Price = findViewById(R.id.Modify_Price);
         Quantity = findViewById(R.id.Modify_Quantity);
@@ -30,18 +28,22 @@ public class ScanDescriptionModify extends AppCompat{
         Title = findViewById(R.id.Modify_Item);
         Save = findViewById(R.id.btn_modify_save);
 
+        //Get intent
         message = getIntent().getStringExtra("Edit");
         itemposition = String.valueOf(Integer.parseInt(getIntent().getStringExtra("ItemNumber")) + 1);
         NameI = getIntent().getStringExtra("Name");
         PriceI = getIntent().getStringExtra("Price");
         QuantityI = getIntent().getStringExtra("Quantity");
         TotalI = getIntent().getStringExtra("Total");
+
+        //Set intent value for textview
         Name.setText(NameI);
         Price.setText(PriceI);
         Quantity.setText(QuantityI);
         Total.setText(String.valueOf(TotalI));
         Title.setText(getString(R.string.Scan_description_modify_6) + itemposition);
 
+        //OnClick listener for save button
         Save.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -81,13 +83,7 @@ public class ScanDescriptionModify extends AppCompat{
                         startActivity(i);
                     }
                 }
-
             }
         });
-
-
-
-
-
     }
 }
