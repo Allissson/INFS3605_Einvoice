@@ -150,12 +150,12 @@ public class DashboardFragment extends Fragment {
                     System.out.println(invoice.getInvoiceNum()+invoice.getStatus().equals("unpaid"));
                     System.out.println(days);
                     // add urgent invoice to the list
-//                    if(invoice.getStatus().equals("unpaid") && days<0 && days>=-5){
-//                        urgentInvoice.add(invoice);
-//                    }
-                    if(invoice.getStatus().equals("unpaid") && days<-5){
+                    if(invoice.getStatus().equals("unpaid") && days<0 && days>=-5){
                         urgentInvoice.add(invoice);
                     }
+//                    if(invoice.getStatus().equals("unpaid") && days<-5){
+//                        urgentInvoice.add(invoice);
+//                    }
                     //urgentInvoice.add(invoice);
 
                 }
