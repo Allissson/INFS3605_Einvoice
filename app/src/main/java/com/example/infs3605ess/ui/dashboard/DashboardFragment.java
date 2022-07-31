@@ -58,13 +58,10 @@ public class DashboardFragment extends Fragment {
     private RecyclerView mRecyclerView;
     private UrgentPayAdapter mAdapter;
     private DatabaseReference uDb;
-<<<<<<< Updated upstream
+
     private List<Invoice> urgentInvoice = new ArrayList<>();
     private TextView noInvoiceHint,name;
-=======
-    private ArrayList<Invoice> urgentInvoice = new ArrayList<Invoice>();
-    private TextView noInvoiceHint;
->>>>>>> Stashed changes
+
     private ProgressBar progressBar;
     private LottieAnimationView lottieAnimationView,tick;
     private long duration=0;

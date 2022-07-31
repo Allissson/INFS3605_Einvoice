@@ -14,7 +14,10 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.INFS3605ESS">
-        <activity android:name=".IntroThirdActivity"></activity>
+        <activity
+            android:name=".SaveResultActivity"
+            android:exported="false" />
+        <activity android:name=".IntroThirdActivity" />
         <activity android:name=".IntroSecActivity" />
         <activity android:name=".IntroFirstActivity" />
         <activity android:name=".PaySuccessActivity" />

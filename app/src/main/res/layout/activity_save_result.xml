@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".SaveResultActivity">
+
+    <com.airbnb.lottie.LottieAnimationView
+        android:id="@+id/lottieAnimationView4"
+        android:layout_width="309dp"
+        android:layout_height="395dp"
+        android:layout_marginTop="20dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:lottie_autoPlay="true"
+        app:lottie_rawRes="@raw/upload" />
+
+    <TextView
+        android:id="@+id/textView47"
+        android:layout_width="266dp"
+        android:layout_height="44dp"
+        android:gravity="center"
+        android:text="@string/save_success_text"
+        android:textSize="20sp"
+        app:layout_constraintEnd_toEndOf="@+id/lottieAnimationView4"
+        app:layout_constraintStart_toStartOf="@+id/lottieAnimationView4"
+        tools:layout_editor_absoluteY="464dp" />
+
+    <Button
+        android:id="@+id/button"
+        android:layout_width="137dp"
+        android:layout_height="32dp"
+        android:layout_marginTop="34dp"
+        android:text="@string/save_success_btt1"
+        app:layout_constraintEnd_toEndOf="@+id/lottieAnimationView4"
+        app:layout_constraintStart_toStartOf="@+id/lottieAnimationView4"
+        app:layout_constraintTop_toBottomOf="@+id/textView47" />
+
+    <Button
+        android:id="@+id/button2"
+        android:layout_width="137dp"
+        android:layout_height="32dp"
+        android:layout_marginTop="36dp"
+        android:text="@string/save_success_btt2"
+        app:layout_constraintEnd_toEndOf="@+id/lottieAnimationView4"
+        app:layout_constraintStart_toStartOf="@+id/lottieAnimationView4"
+        app:layout_constraintTop_toBottomOf="@+id/button" />
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>
