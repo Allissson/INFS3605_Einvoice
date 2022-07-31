@@ -13,6 +13,7 @@ import android.widget.Button;
 import android.widget.TextView;
 
 import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.DataSnapshot;
@@ -194,18 +195,18 @@ public class ScanResultActivity extends AppCompat {
 
         //Upload data to database
         uDb = FirebaseDatabase.getInstance().getReference().child("User");
-        //Change date from string to Date
-        SimpleDateFormat formatter = new SimpleDateFormat("dd-MMM-yyyy", Locale.US);
-        try {
-            dInvoiceDate = formatter.parse(String.valueOf(InvoiceDate.getText()));
-        } catch (ParseException e) {
-            e.printStackTrace();
-        }
-        try {
-            dDueDate = formatter.parse(String.valueOf(DueDate.getText()));
-        } catch (ParseException e) {
-            e.printStackTrace();
-        }
+//        //Change date from string to Date
+//        SimpleDateFormat formatter = new SimpleDateFormat("dd-MMM-yyyy", Locale.US);
+//        try {
+//            dInvoiceDate = formatter.parse(String.valueOf(InvoiceDate.getText()));
+//        } catch (ParseException e) {
+//            e.printStackTrace();
+//        }
+//        try {
+//            dDueDate = formatter.parse(String.valueOf(DueDate.getText()));
+//        } catch (ParseException e) {
+//            e.printStackTrace();
+//        }
 
         //Retrieve data from User input
 //        double dSub = convert(String.valueOf(Subtotal.getText()));
@@ -262,6 +263,19 @@ public class ScanResultActivity extends AppCompat {
             public void onClick(View view) {
 
                 //Retrieve data from User input
+                //Change date from string to Date
+                SimpleDateFormat formatter = new SimpleDateFormat("dd-MMM-yyyy", Locale.US);
+                try {
+                    dInvoiceDate = formatter.parse(String.valueOf(InvoiceDate.getText()));
+                } catch (ParseException e) {
+                    e.printStackTrace();
+                }
+                try {
+                    dDueDate = formatter.parse(String.valueOf(DueDate.getText()));
+                } catch (ParseException e) {
+                    e.printStackTrace();
+                }
+
                 double dSub = convert(String.valueOf(Subtotal.getText()));
                 double dShip = convert(String.valueOf(ShipHand.getText()));
                 double dTotal = convert(String.valueOf(Total.getText()));
@@ -272,12 +286,19 @@ public class ScanResultActivity extends AppCompat {
                 String dCity = String.valueOf(City.getText());
                 String dStreet = String.valueOf(Street.getText());
                 String dInvoiceNumber = String.valueOf(InvoiceNum.getText());
+                System.out.println(mDescription.get(0).getName());
                 Invoice invoice =new Invoice(dName,dCountry,dState,dCity,dStreet,dInvoiceNumber,dInvoiceDate,dDueDate,dSub,dShip,dTotal,dExtra,mDescription,"unpaid");
+                System.out.println("///Issuer"+invoice.getInvoiceNum());
                 System.out.println("Save clicked!");
                 uDb.child(FirebaseAuth.getInstance().getCurrentUser().getUid()).child("Bonus").setValue(bonus+1);
-                uDb.child(FirebaseAuth.getInstance().getCurrentUser().getUid()).child("Invoice").child(invoicenumber).setValue(invoice);
+                uDb.child(FirebaseAuth.getInstance().getCurrentUser().getUid()).child("Invoice").child(dInvoiceNumber).setValue(invoice).addOnSuccessListener(new OnSuccessListener<Void>() {
+                    @Override
+                    public void onSuccess(Void aVoid) {
+                        System.out.println("Success Upload");
+                    }
+                });
                 Intent i = new Intent(view.getContext(), ScanActivity.class);
-                startActivity(i);
+                //startActivity(i);
             }
         });
 
