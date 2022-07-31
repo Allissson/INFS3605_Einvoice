@@ -420,6 +420,7 @@
                     android:background="@drawable/shape_btn_red"
                     android:text="Make Payment"
                     android:textColor="@color/white"
+                    android:visibility="invisible"
                     app:layout_constraintTop_toBottomOf="@id/tv_total_due1" />
 
             </LinearLayout>

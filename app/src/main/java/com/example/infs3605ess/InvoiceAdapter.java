@@ -26,19 +26,17 @@ import java.util.Comparator;
 import java.util.List;
 
 public class InvoiceAdapter extends RecyclerView.Adapter<InvoiceAdapter.MyViewHolder>  implements  Filterable, Serializable {
-
     private List<Invoice> mInvoice;
     private List<Invoice> mInvoiceFiltered;
     private InvoiceAdapter.ClickListener mListener;
 
     public InvoiceAdapter(List<Invoice> invoice, InvoiceAdapter.ClickListener listener){
-
         this.mInvoice = invoice;
         this.mInvoiceFiltered = invoice;
         this.mListener = listener;
     }
 
-
+    //Filter method
     @Override
     public Filter getFilter() {
         return new Filter() {
@@ -60,7 +58,6 @@ public class InvoiceAdapter extends RecyclerView.Adapter<InvoiceAdapter.MyViewHo
                 filterResults.values = mInvoiceFiltered;
                 return filterResults;
             }
-
             @Override
             protected void publishResults(CharSequence constraint, FilterResults results) {
                 mInvoiceFiltered = (ArrayList<Invoice>) results.values;
@@ -69,12 +66,12 @@ public class InvoiceAdapter extends RecyclerView.Adapter<InvoiceAdapter.MyViewHo
         };
     }
 
-    // Allows click events to be caught
+    //Allows click events to be caught
     public interface  ClickListener {
         void onInvoiceClick(View view, int InvoiceID);
     }
 
-    // Inflate the row layout from xml when needed (just the view, no data)
+    //Inflate the row layout from xml when needed (just the view, no data)
     @NonNull
     @Override
     public InvoiceAdapter.MyViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
@@ -92,17 +89,23 @@ public class InvoiceAdapter extends RecyclerView.Adapter<InvoiceAdapter.MyViewHo
         holder.amount.setText("Total: $"+String.valueOf(invoice.getTotal()));
         holder.itemView.setTag(InvoiceID);
         holder.View.setOnClickListener(new View.OnClickListener() {
+
+            //View Button OnClick method
             @Override
             public void onClick(View view) {
+
+                //Pass parcelable object through intent
                 Intent intent = new Intent(view.getContext(), InvoiceView.class);
                 intent.putExtra("View",  mInvoiceFiltered.get(InvoiceID));
 
+                //Pass date items
                 SimpleDateFormat sdf1 = new SimpleDateFormat("dd-MMM-yyyy");
                 String invoiceDate = sdf1.format(mInvoiceFiltered.get(InvoiceID).getInvoiceDate());
                 String dueDate = sdf1.format(mInvoiceFiltered.get(InvoiceID).getDueDate());
                 intent.putExtra("invoiceDate",invoiceDate);
                 intent.putExtra("dueDate",dueDate);
 
+                //Pass description List
                 List<String> Name = new ArrayList<>();
                 List<Integer> Quantity = new ArrayList<>();
                 List<Double> Price = new ArrayList<>();
@@ -148,23 +151,9 @@ public class InvoiceAdapter extends RecyclerView.Adapter<InvoiceAdapter.MyViewHo
             status = itemView.findViewById(R.id.tv_status);
             amount = itemView.findViewById(R.id.tv_money);
             View = itemView.findViewById(R.id.btn_view);
-
-            /*
-            itemView.findViewById(R.id.btn_view).setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View view) {
-                    Intent intent = new Intent(view.getContext(), InvoiceView.class);
-                    intent.putExtra(mInvoiceFiltered.get(mInvoiceFiltered.get))
-                    intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
-                    view.getContext().startActivity(intent);
-                }
-            });
-
-             */
-
-
         }
 
+    //OnClick method
         @Override
         public void onClick(View v) {
             listener.onInvoiceClick(v, (Integer) v.getTag());
@@ -187,6 +176,4 @@ public class InvoiceAdapter extends RecyclerView.Adapter<InvoiceAdapter.MyViewHo
         }
         notifyDataSetChanged();
     }
-
-
 }

@@ -65,9 +65,6 @@ public class InvoiceView extends AppCompat implements Serializable {
         mRecyclerView = findViewById(R.id.recyclerview1);
         view = findViewById(R.id.Scroll);
 
-        Pay.setVisibility(View.GONE);
-
-
         if(myInvoice.getStatus().equals("Paid")){
             view.setBackgroundResource(R.drawable.listview_bg_green);
         }else if(myInvoice.getStatus().equals("unpaid")){
