@@ -113,10 +113,16 @@ public class InvoicesFragment extends Fragment {
                     mAdapter.notifyDataSetChanged();
                 }
                 Progress.setVisibility(View.GONE);
-                hint.setText(R.string.invoice_list_hint_pay);
-                hint.setVisibility(View.VISIBLE);
-                tick.setVisibility(View.VISIBLE);
-                tick.playAnimation();
+                if(mInvoice.size()==0){
+                    tick.setVisibility(View.VISIBLE);
+                    tick.playAnimation();
+                    hint.setText(R.string.invoice_list_hint_pay);
+                    hint.setVisibility(View.VISIBLE);
+                }
+                else{
+                    tick.setVisibility(View.INVISIBLE);
+                    hint.setVisibility(View.INVISIBLE);
+                }
                 if(Invoice.size() == 0){
                     StatusTabs.setEnabled(false);
                     alter("No Invoice under user database!");
