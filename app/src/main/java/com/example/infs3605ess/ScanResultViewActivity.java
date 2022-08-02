@@ -138,7 +138,20 @@ public class ScanResultViewActivity extends  AppCompat{
         //Number, date, due date
         String invoicenumber = (ScanResult.substring(ScanResult.indexOf("Invoice No: ") + 12)).substring(0, 5);
         String invoicedate = (ScanResult.substring(ScanResult.indexOf("Date: ") + 6)).substring(0, 11);
+        String[] invoicedateSplit = invoicedate.split("-");
+        if(invoicedateSplit[1].equals("July") || invoicedateSplit[1].equals("Sept")){
+            invoicedate = (ScanResult.substring(ScanResult.indexOf("Date: ") + 6)).substring(0, 12);
+        }else{
+            invoicedate = (ScanResult.substring(ScanResult.indexOf("Date: ") + 6)).substring(0, 11);
+        }
+
         String duedate = (ScanResult.substring(ScanResult.indexOf("Due Date: ") + 10)).substring(0, 11);
+        String[] duedateSplit = duedate.split("-");
+        if(duedateSplit[1].equals("July") || invoicedateSplit[1].equals("Sept")){
+            duedate = (ScanResult.substring(ScanResult.indexOf("Due Date: ") + 10)).substring(0, 12);
+        }else{
+            duedate = (ScanResult.substring(ScanResult.indexOf("Due Date: ") + 10)).substring(0, 11);
+        }
 
         InvoiceNo.setText(invoicenumber);
         Date.setText(invoicedate);
@@ -169,12 +182,12 @@ public class ScanResultViewActivity extends  AppCompat{
         //Change date from string to Date
         SimpleDateFormat formatter = new SimpleDateFormat("dd-MMM-yyyy", Locale.US);
         try {
-            dInvoiceDate = formatter.parse(invoicedate);
+            dInvoiceDate = formatter.parse(String.valueOf(Date.getText()));
         } catch (ParseException e) {
             e.printStackTrace();
         }
         try {
-            dDueDate = formatter.parse(duedate);
+            dDueDate = formatter.parse(String.valueOf(DueDate.getText()));
         } catch (ParseException e) {
             e.printStackTrace();
         }

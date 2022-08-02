@@ -156,6 +156,18 @@ public class ScanResultActivity extends AppCompat {
         String invoicenumber = (ScanResult.substring(ScanResult.indexOf("Invoice No: ") + 12)).substring(0, 5);
         String invoicedate = (ScanResult.substring(ScanResult.indexOf("Date: ") + 6)).substring(0, 11);
         String duedate = (ScanResult.substring(ScanResult.indexOf("Due Date: ") + 10)).substring(0, 11);
+        String[] invoicedateSplit = invoicedate.split("-");
+        if(invoicedateSplit[1].equals("July") || invoicedateSplit[1].equals("Sept")){
+            invoicedate = (ScanResult.substring(ScanResult.indexOf("Date: ") + 6)).substring(0, 12);
+        }else{
+            invoicedate = (ScanResult.substring(ScanResult.indexOf("Date: ") + 6)).substring(0, 11);
+        }
+        String[] duedateSplit = duedate.split("-");
+        if(duedateSplit[1].equals("July") || invoicedateSplit[1].equals("Sept")){
+            duedate = (ScanResult.substring(ScanResult.indexOf("Due Date: ") + 10)).substring(0, 12);
+        }else{
+            duedate = (ScanResult.substring(ScanResult.indexOf("Due Date: ") + 10)).substring(0, 11);
+        }
 
         /*DescriptionInfo = ScanResult.substring(ScanResult.indexOf("Amount ") + 7);
         DescriptionInfo = DescriptionInfo.substring(0, DescriptionInfo.indexOf(" Tax "));
