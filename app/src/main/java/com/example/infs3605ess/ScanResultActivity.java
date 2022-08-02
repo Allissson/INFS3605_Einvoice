@@ -147,9 +147,9 @@ public class ScanResultActivity extends AppCompat {
         String street = StreetSplit[StreetSplit.length - 3] + " " + StreetSplit[StreetSplit.length - 2] + " " + StreetSplit[StreetSplit.length - 1];
 
         //Issuer
-        String From = ScanResult.substring(0, ScanResult.indexOf(street));
-        String[] FromEliminateSpace = From.split(" ");
-        String Name = FromEliminateSpace[1] + " " + FromEliminateSpace[2];
+        String From = ScanResult.substring(0, ScanResult.indexOf(" " + street));
+        String Name = From.substring(1);
+
 
 
         //Number, Date, Due Date

@@ -125,14 +125,11 @@ public class ScanResultViewActivity extends  AppCompat{
         String StreetInfo = FromSplit[FromSplit.length - 4];
         String[] StreetSplit = StreetInfo.split(" ");
         String street = StreetSplit[StreetSplit.length - 3] + " " + StreetSplit[StreetSplit.length - 2] + " " + StreetSplit[StreetSplit.length - 1];
-
         Address.setText(street + "\n" + city + "\n" + state +", " + country);
 
         //Issuer Name
-        String From = ScanResult.substring(0, ScanResult.indexOf(street));
-        String[] FromEliminateSpace = From.split(" ");
-        String Name = FromEliminateSpace[1] + " " + FromEliminateSpace[2];
-
+        String From = ScanResult.substring(0, ScanResult.indexOf(" " + street));
+        String Name = From.substring(1);
         Issuer.setText(Name);
 
         //Number, date, due date
@@ -144,7 +141,6 @@ public class ScanResultViewActivity extends  AppCompat{
         }else{
             invoicedate = (ScanResult.substring(ScanResult.indexOf("Date: ") + 6)).substring(0, 11);
         }
-
         String duedate = (ScanResult.substring(ScanResult.indexOf("Due Date: ") + 10)).substring(0, 11);
         String[] duedateSplit = duedate.split("-");
         if(duedateSplit[1].equals("July") || invoicedateSplit[1].equals("Sept")){
